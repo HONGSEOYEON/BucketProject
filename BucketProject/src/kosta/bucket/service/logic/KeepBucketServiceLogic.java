@@ -1,4 +1,4 @@
-package kosta.bucket.service;
+package kosta.bucket.service.logic;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kosta.bucket.dao.KeepBucketDao;
 import kosta.bucket.entity.KeepBucket;
+import kosta.bucket.service.KeepBucketService;
 
 @Service
 public class KeepBucketServiceLogic implements KeepBucketService {

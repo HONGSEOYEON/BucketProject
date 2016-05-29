@@ -1,10 +1,11 @@
-package kosta.bucket.service;
+package kosta.bucket.service.logic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kosta.bucket.dao.UserDao;
 import kosta.bucket.entity.User;
+import kosta.bucket.service.UserService;
 
 @Service
 public class UserServiceLogic implements UserService {
