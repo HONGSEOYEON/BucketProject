@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kosta.bucket.dao.mapper.BucketDaoMapper">
+
+<resultMap type="Bucket" id="resultBucket">
+	<id property="bucketId" column="ID"/>
+	<result property="title" column="TITLE"/>
+	<result property="image" column="IMAGE"/>
+	<result property="contents" column="CONTENTS"/>
+	<result property="writerId" column="WRITER_ID"/>
+	<result property="registDate" column="REG_DATE"/>
+	<result property="recomNum" column="RECOMMEND"/>
+	<result property="accuseNum" column="ACCUSED"/>
+</resultMap>
+
+<resultMap type="Comment" id="resultComment">
+	<id property="commentId" column="ID"/>
+	<result property="bucketId" column="BUCKET_ID"/>
+	<result property="contents" column="CONTENTS"/>
+	<result property="writerId" column="WRITER_ID"/>
+	<result property="registDate" column="REG_DATE"/>
+</resultMap>
+
+<sql id="selectBucket">
+SELECT id, title, image, contents, writer_id, reg_date, recommend, accused 
+FROM bucket
+</sql>
+
+<sql id="selectComment">
+SELECT id, bucket_id, contents, writer_id, reg_date 
+FROM comments
+</sql>
+
+<insert id="insertBucket" parameterType="Bucket">
+INSERT INTO bucket (ID, TITLE, IMAGE, CONTENTS, WRITER_ID, REG_DATE)
+VALUES (BUCKET_SEQ.nextval, #{title}, #{image}, #{contents}, #{writerId}, #{registDate})
+</insert>
+</mapper>
