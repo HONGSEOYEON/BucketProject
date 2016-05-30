@@ -32,7 +32,7 @@ public interface BucketService {
 	public List<Bucket> searchAccusedAllBucket();
 	
 	//후기 상세 페이지
-	public Bucket showDetailBucket(Bucket bucket);
+	public Bucket showDetailBucket(String bucketId);
 	//나의 이미지 후기 목록
 	public List<Bucket> showMyBucketList(String userId);
 }
