@@ -24,8 +24,7 @@ public class BucketServiceLogic implements BucketService {
 
 	@Override
 	public Bucket searchBucket(Bucket bucket) {
-		// TODO Auto-generated method stub
-		return null;
+		return bucketDao.retrieveBucket(bucket.getBucketId());
 	}
 
 	@Override
