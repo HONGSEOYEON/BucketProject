@@ -123,4 +123,10 @@ public class BucketDaoImpl implements BucketDao {
 		return 0;
 	}
 
+	@Override
+	public List<Bucket> retrieveAccusedAllBucket() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

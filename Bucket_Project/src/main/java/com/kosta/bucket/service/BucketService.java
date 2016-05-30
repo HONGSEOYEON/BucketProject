@@ -28,7 +28,8 @@ public interface BucketService {
 	
 	//신고된 이미지 후기 삭제
 	public void removeAccusedBucket(String bucketId);
-	
+	//신고된 후기 전체 조회
+	public List<Bucket> searchAccusedAllBucket();
 	
 	//후기 상세 페이지
 	public Bucket showDetailBucket(Bucket bucket);

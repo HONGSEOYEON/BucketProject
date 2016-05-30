@@ -41,6 +41,8 @@ public interface BucketDao {
 	// 신고 관련
 	//신고된 후기 삭제
 	public int deleteAccusedBucket(String bucketId);
+	//신고된 후기 전체 조회
+	public List<Bucket> retrieveAccusedAllBucket();
 	
 	//내가 쓴 이미지 후기 조회
 	public List<Bucket> retrieveMyBucket(String userId);
