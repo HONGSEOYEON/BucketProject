@@ -30,7 +30,7 @@ public class FileUploadController {
 				if(!dir.exists()){
 					dir.mkdirs();
 				}
-				File saveFile = new File(dir.getAbsolutePath() + File.separator + name);
+				File saveFile = new File(dir.getAbsolutePath() + File.separator + name + ".jpg");
 				BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(saveFile));
 				
 				out.write(bytes);
