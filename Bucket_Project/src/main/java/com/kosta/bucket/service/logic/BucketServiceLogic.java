@@ -41,7 +41,7 @@ public class BucketServiceLogic implements BucketService {
 
 	@Override
 	public void registComment(Comment comment) {
-		// TODO Auto-generated method stub
+		bucketDao.createComment(comment);
 
 	}
 
