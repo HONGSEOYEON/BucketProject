@@ -35,7 +35,7 @@ public class BucketServiceLogic implements BucketService {
 	}
 
 	@Override
-	public void removeBucket(String BucketId) {
+	public void removeBucket(String bucketId) {
 		// TODO Auto-generated method stub
 
 	}
@@ -68,6 +68,18 @@ public class BucketServiceLogic implements BucketService {
 	public List<Bucket> showMyBucketList(String userId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void registRecommand(String bucketId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void registAccuse(String bucketId) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

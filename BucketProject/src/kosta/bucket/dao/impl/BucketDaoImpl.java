@@ -105,4 +105,16 @@ public class BucketDaoImpl implements BucketDao {
 		return null;
 	}
 
+	@Override
+	public int createRecommand(String bucketId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int createAccuse(String bucketId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -14,8 +14,11 @@ public interface BucketService {
 	//이미지 후기 수정
 	public void modifyBucket(Bucket bucket);
 	//이미지 후기 삭제
-	public void removeBucket(String BucketId);
-	
+	public void removeBucket(String bucketId);
+	//추천하기
+	public void registRecommand(String bucketId);
+	//신고하기
+	public void registAccuse(String bucketId);
 	
 	//댓글 저장
 	public void registComment(Comment comment);

@@ -26,7 +26,10 @@ public interface BucketDao {
 	public List<Bucket> retrieveBucketBestRecom();
 	//이미지 후기 상세 페이지
 	public Bucket retrieveBucket(String bucketId);
-	
+	//추천하기
+	public int createRecommand(String bucketId);
+	//신고하기
+	public int createAccuse(String bucketId);
 	
 	// 댓글 관련
 	//댓글 저장
