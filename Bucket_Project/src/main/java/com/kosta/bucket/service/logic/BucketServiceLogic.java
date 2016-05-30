@@ -58,7 +58,7 @@ public class BucketServiceLogic implements BucketService {
 	}
 
 	@Override
-	public Bucket showDetailBucket(Bucket bucket) {
+	public Bucket showDetailBucket(String bucketId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
