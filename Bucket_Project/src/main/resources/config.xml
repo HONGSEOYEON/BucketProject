@@ -6,10 +6,10 @@
 <configuration>
 
 <typeAliases>
-	<typeAlias type="kosta.bucket.entity.Bucket" alias="Bucket"/>
-	<typeAlias type="kosta.bucket.entity.Comment" alias="Comment"/>
-	<typeAlias type="kosta.bucket.entity.KeepBucket" alias="KeepBucket"/>
-	<typeAlias type="kosta.bucket.entity.User" alias="User"/>
+	<typeAlias type="com.kosta.bucket.entity.Bucket" alias="Bucket"/>
+	<typeAlias type="com.kosta.bucket.entity.Comment" alias="Comment"/>
+	<typeAlias type="com.kosta.bucket.entity.KeepBucket" alias="KeepBucket"/>
+	<typeAlias type="com.kosta.bucket.entity.User" alias="User"/>
 </typeAliases>
 
 	<environments default="development">
