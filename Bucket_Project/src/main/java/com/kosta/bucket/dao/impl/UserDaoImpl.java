@@ -1,7 +1,5 @@
 package com.kosta.bucket.dao.impl;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;

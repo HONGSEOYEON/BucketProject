@@ -3,7 +3,6 @@ package com.kosta.bucket.service;
 import java.util.List;
 
 import com.kosta.bucket.entity.Bucket;
-import com.kosta.bucket.entity.KeepBucket;
 
 public interface KeepBucketService {
 

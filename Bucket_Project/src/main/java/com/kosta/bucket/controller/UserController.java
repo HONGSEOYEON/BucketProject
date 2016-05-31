@@ -1,11 +1,14 @@
 package com.kosta.bucket.controller;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.User;
@@ -34,7 +37,7 @@ public class UserController {
 			
 			return new ModelAndView("/main").addObject("loginedUser", loginedUser);
 		}
-		throw new RuntimeException("로그인 정보가 일치하지 않습니다.");
+		throw new RuntimeException("濡쒓렇�씤 �젙蹂닿� �씪移섑븯吏� �븡�뒿�땲�떎.");
 	}
 
 	@RequestMapping("/logout")
@@ -54,10 +57,10 @@ public class UserController {
 		user.setUserName((String) session.getAttribute("name"));
 
 		if (user.getUserId().equals(userService.searchUser(user.getUserId()).getUserId())) {
-			throw new RuntimeException("중복된 아이디 입니다");
+			throw new RuntimeException("以묐났�맂 �븘�씠�뵒 �엯�땲�떎");
 		}
 		if (user.getEmail().equals(userService.searchUser(user.getUserId()).getEmail())) {
-			throw new RuntimeException("중복된 이메일 입니다");
+			throw new RuntimeException("以묐났�맂 �씠硫붿씪 �엯�땲�떎");
 		} else {
 			userService.registUser(user);
 
@@ -68,7 +71,7 @@ public class UserController {
 	@RequestMapping("/drop")
 	public ModelAndView removeUser(String userId, HttpSession session) {
 
-		// 자의로 탈퇴하는 시퀀스가 없어 맘대로 return 값으로 userId 받아와야 실행되도록 구현하는중..
+		// �옄�쓽濡� �깉�눜�븯�뒗 �떆���뒪媛� �뾾�뼱 留섎�濡� return 媛믪쑝濡� userId 諛쏆븘���빞 �떎�뻾�릺�룄濡� 援ы쁽�븯�뒗以�..
 		userService.removeUser(userId);
 
 //		session.invalidate();
