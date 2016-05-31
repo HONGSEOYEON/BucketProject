@@ -7,22 +7,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>이미지 후기 등록</title>
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
 </head>
 <body>
-
-	<form action="uploadFile" method="post" enctype="multipart/form-data">
-		File Upload <input type="file" name="file"><br>
-		Name <input type="text" name="name"><br>
-		<input type="submit" value="Upload">
-	</form>
 	
 	<div class="contents">
 
-		<form action="${ctx}/recipe/register.do" method="post"
-			enctype="multipart/form-data">
+		<form action="${ctx}/recipe/register.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="cbId" value="${param.cbId}">
+			
 			<table width="100%" height="300px" border="1">
+			<tr>
+					<td align="center">조리예(이미지)</td>
+					<td colspan="3"><input type="file" name="recipeImage"></td>
+			</tr>
 				<tr>
 					<td align="center">레시피명</td>
 					<td><input type="text" name="name" /></td>
@@ -55,10 +56,7 @@
 						name="procedure" /><br /></td>
 				</tr>
 
-				<tr>
-					<td align="center">조리예(이미지)</td>
-					<td colspan="3"><input type="file" name="recipeImage"></td>
-				</tr>
+				
 
 			</table>
 

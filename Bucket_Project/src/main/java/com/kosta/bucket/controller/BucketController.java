@@ -54,7 +54,11 @@ public class BucketController {
 		return null;
 	}
 	
-	public ModelAndView registBucket(Bucket bucket) {
+	@RequestMapping("/registBucket")
+	public ModelAndView registBucket(Bucket bucket, HttpSession session) {
+		String loginId = (String) session.getAttribute("loginedUser");
+		bucket.setWriterId(loginId);
+		bucketService.registBucket(bucket);
 		return null;
 	}
 	

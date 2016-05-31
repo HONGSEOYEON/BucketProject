@@ -17,7 +17,6 @@ import com.kosta.bucket.entity.KeepBucket;
 import com.kosta.bucket.service.KeepBucketService;
 
 @Controller
-/*@RequestMapping("/keepBucket")*/
 public class KeepBucketController {
 
 	@Autowired
