@@ -31,7 +31,7 @@ import com.kosta.bucket.entity.User;
 import com.kosta.bucket.service.BucketService;
 
 @Controller
-@RequestMapping("/bucket")
+//@RequestMapping("/bucket")
 public class BucketController {
 
 	@Autowired
@@ -52,8 +52,9 @@ public class BucketController {
 	@RequestMapping("/accusedAllBucket")
 	public ModelAndView searchAccusedAllBucket(){
 		List<Bucket> accusedBucketList = bucketService.searchAccusedAllBucket();
-		ModelAndView mav = new ModelAndView("");
-		return null;
+		ModelAndView mav = new ModelAndView("user/managerPage");
+		mav.addObject("accusedBucketList", accusedBucketList);
+		return mav;
 	}
 	@RequestMapping("/recommand")
 	public String registRecommand(String bucketId, HttpServletRequest req) {
