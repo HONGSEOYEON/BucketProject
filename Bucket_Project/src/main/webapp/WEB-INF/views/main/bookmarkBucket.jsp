@@ -46,9 +46,9 @@ h1 {
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>은영 님의 Music List</h1>
+				<h1> 님이 담은 이미지 후기 목록</h1>
 				<div style="text-align: right;">
-					<a class="btn btn-xs btn-default" href="list.html">뮤직차트</a>
+					<a class="btn btn-xs btn-default" href="list.html">다른 사람은 어떤 이미지를?</a>
 				</div><br>
 				<table class="table table-hover table-condensed">
 					<colgroup>
@@ -59,7 +59,7 @@ h1 {
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>곡정보/곡명</th>
+							<th>제목</th>
 							<th>삭제</th>
 						</tr>
 					</thead>
