@@ -10,6 +10,7 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-<a href="accusedAllBucket">관리자 페이지</a>
+<a href="accusedAllBucket">manager page</a><br>
+<a href="detailBucket">detail</a>
 </body>
 </html>
