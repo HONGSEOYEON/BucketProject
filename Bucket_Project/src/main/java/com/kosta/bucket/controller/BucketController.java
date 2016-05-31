@@ -47,7 +47,10 @@ public class BucketController {
 	public ModelAndView searchBucket(String bucketId) {
 		return null;
 	}
+	@RequestMapping("/accusedAllBucket")
 	public ModelAndView searchAccusedAllBucket(){
+		List<Bucket> accusedBucketList = bucketService.searchAccusedAllBucket();
+		ModelAndView mav = new ModelAndView("");
 		return null;
 	}
 	@RequestMapping("/recommand")

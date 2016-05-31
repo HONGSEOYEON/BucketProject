@@ -106,8 +106,7 @@ public class BucketServiceLogic implements BucketService {
 
 	@Override
 	public List<Bucket> searchAccusedAllBucket() {
-		// TODO Auto-generated method stub
-		return null;
+		return bucketDao.retrieveAccusedAllBucket();
 	}
 
 	@Override
