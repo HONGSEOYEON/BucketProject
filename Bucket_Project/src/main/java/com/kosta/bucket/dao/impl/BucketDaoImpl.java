@@ -84,7 +84,6 @@ public class BucketDaoImpl implements BucketDao {
 
 	@Override
 	public int retrieveRecomNum(String bucketId) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -166,14 +165,28 @@ public class BucketDaoImpl implements BucketDao {
 
 	@Override
 	public int createRecommand(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.update("updateRecommand", bucketId);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public int createAccuse(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.update("updateAccuse", bucketId);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
