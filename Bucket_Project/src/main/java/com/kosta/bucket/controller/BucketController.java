@@ -39,8 +39,13 @@ public class BucketController {
 		return null;
 	}
 	 
-	public ModelAndView registComment (Comment comment) {
-		return null;
+	@RequestMapping("/comment")
+	public String registComment (Comment comment) {
+		 int registered = bucketService.registComment(comment);
+		 if(registered!=0) {
+			 return "";
+		 }
+		 return "";
 	}
 	public ModelAndView removeComment (String commentId) {
 		return null;
