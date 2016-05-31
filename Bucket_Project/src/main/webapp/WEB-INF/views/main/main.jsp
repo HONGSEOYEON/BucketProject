@@ -7,6 +7,25 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div>
+	<a>id</a> 님 환영합니다. 
+	<a>사용자 관리</a>
+	<a>로그아웃</a>
+</div><br><br>
 
+<div>
+<form>
+	<input type="text"> 
+	<input type="button" value="검색"> 
+</form>	
+</div>
+
+<div>
+	최신순
+</div>
+
+<div>
+	추천순
+</div>
 </body>
 </html>

@@ -36,6 +36,8 @@ public interface BucketDao {
 	public int createComment(Comment comment);
 	//댓글 삭제
 	public int deleteComment(String commentId);
+	// 댓글 조회
+	public List<Comment> retrieveAllComment();
 	
 	
 	// 신고 관련

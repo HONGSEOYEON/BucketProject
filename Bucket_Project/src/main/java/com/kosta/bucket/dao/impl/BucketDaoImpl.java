@@ -98,6 +98,12 @@ public class BucketDaoImpl implements BucketDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	@Override
+	public List<Comment> retrieveAllComment() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public int deleteAccusedBucket(String bucketId) {
