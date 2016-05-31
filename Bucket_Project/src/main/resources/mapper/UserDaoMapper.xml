@@ -21,21 +21,21 @@ INSERT INTO bucket_user (ID, PASSWORD, NAME, EMAIL])
 VALUES (#{userId}, #{password}, #{userName}, #{email})
 </insert>
 
-<select id="retrieveUser" parameterType="">
+<select id="retrieveUser" parameterType="string">
 <include refid="selectUser" />
 WHERE ID = #{userId}
 </select>
 
-<update id="updateUser" parameterType="">
+<update id="updateUser" parameterType="User">
 
 </update>
 
-<delete id="deleteUser" parameterType="">
+<delete id="deleteUser" parameterType="string">
 DELETE FROM bucket_user
 WHERE ID = #{userId}
 </delete>
 
-<select id="retrieveAccuesedUser" parameterType="">
+<select id="retrieveAccuesedUser" parameterType="string">
 
 </select>
 
