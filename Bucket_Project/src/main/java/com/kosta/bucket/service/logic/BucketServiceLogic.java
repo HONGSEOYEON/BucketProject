@@ -15,70 +15,95 @@ public class BucketServiceLogic implements BucketService {
 
 	@Autowired
 	private BucketDao bucketDao;
-	
-	@Override
-	public void registBucket(Bucket bucket) {
-		bucketDao.createBucket(bucket);
-
-	}
 
 	@Override
-	public Bucket searchBucket(Bucket bucket) {
-		return bucketDao.retrieveBucket(bucket.getBucketId());
-	}
-
-	@Override
-	public void modifyBucket(Bucket bucket) {
+	public int modifyBucket(Bucket bucket) {
 		// TODO Auto-generated method stub
-
+		return 0;
 	}
 
 	@Override
-	public void removeBucket(String bucketId) {
+	public int removeBucket(String bucketId) {
 		// TODO Auto-generated method stub
-
+		return 0;
 	}
 
 	@Override
-	public void registComment(Comment comment) {
-		bucketDao.createComment(comment);
-
-	}
-
-	@Override
-	public void removeComment(String commentId) {
+	public int registBucket(Bucket bucket) {
 		// TODO Auto-generated method stub
-
+		return 0;
 	}
 
 	@Override
-	public void removeAccusedBucket(String bucketId) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Bucket showDetailBucket(String bucketId) {
+	public List<Bucket> searchBucketByContents(String contents) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Bucket> showMyBucketList(String userId) {
+	public List<Bucket> searchBucketByTitle(String title) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void registRecommand(String bucketId) {
+	public List<Bucket> searchAllBucket() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void registAccuse(String bucketId) {
+	public int searchRecomNum(String bucketId) {
 		// TODO Auto-generated method stub
-		
+		return 0;
+	}
+
+	@Override
+	public List<Bucket> searchBucketBestRecom() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Bucket searchBucket(String bucketId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int registRecommand(String bucketId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int registAccuse(String bucketId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int registComment(Comment comment) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int removeComment(String commentId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Comment> searchBucketComment(String bucketId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int removeAccusedBucket(String bucketId) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
@@ -86,5 +111,13 @@ public class BucketServiceLogic implements BucketService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Bucket> searchMyBucket(String userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 
 }

@@ -49,10 +49,5 @@ public class UserDaoImpl implements UserDao {
 		return 0;
 	}
 
-	@Override
-	public List<User> retrieveAccuesedUser(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
