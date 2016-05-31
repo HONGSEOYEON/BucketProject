@@ -39,6 +39,7 @@
 		#{registDate})
 	</insert>
 
+<<<<<<< HEAD
 	<select id="selectAllBucket" resultMap="resultBucket">
 		SELECT id, title, image, contents, writer_id, reg_date, recommend, accuesed
 		FROM bucket
@@ -52,4 +53,21 @@
 		UPDATE bucket set accuesed = accuesed+1 WHERE id=#{bucketId}
 	</update>
 
+=======
+<update id="updateBucket" parameterType="Bucket">
+UPDATE bucket
+SET TITLE = #{title}, IMAGE = #{image}, CONTENTS = #{contents}, REG_DATE = #{registDate}
+WHERE ID = #{bucketId}
+</update>
+
+<delete id="deleteBucket" parameterType="string">
+DELETE FROM bucket
+WHERE ID = #{bucketId}
+</delete>
+
+<select id="selectAllBucket" resultMap="resultBucket">
+SELECT id, title, image, contents, writer_id, reg_date, recommend, accuesed 
+FROM bucket
+</select>
+>>>>>>> refs/remotes/origin/master
 </mapper>

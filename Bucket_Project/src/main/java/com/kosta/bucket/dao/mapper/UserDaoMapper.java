@@ -5,18 +5,12 @@ import java.util.List;
 import com.kosta.bucket.entity.User;
 
 public interface UserDaoMapper {
-	//유저 생성
+	//회원 가입
 	public int createUser(User user);
-
-	//유저 조회
+	//회원 조회
 	public User retrieveUser(String userId);
-		
-	//유저 정보 수정
+	//회원 정보 수정
 	public int updateUser(User user);
-		
-	//유저 삭제
+	//회원 탈퇴
 	public int deleteUser(String userId);
-		
-	//신고된 회원 조회
-	public List<User> retrieveAccuesedUser(String userId);
 }
