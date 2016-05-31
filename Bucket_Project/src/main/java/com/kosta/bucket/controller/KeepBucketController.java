@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.Bucket;
@@ -25,7 +26,7 @@ public class KeepBucketController {
 	private BucketService bucketService;
 
 	@RequestMapping("/registerKeepBucket")
-	public String registerKeepBucket (HttpSession session, @Param("bucketId") String bucketId) {
+	public String registerKeepBucket (HttpSession session, @RequestParam("bucketId") String bucketId) {
 		String userId = (String) session.getAttribute("userId");
 		KeepBucket keepBucket = new KeepBucket(bucketId, userId);
 		keepBucketService.registKeepBucket(keepBucket);
