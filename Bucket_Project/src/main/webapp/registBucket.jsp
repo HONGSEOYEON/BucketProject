@@ -18,6 +18,7 @@
 			return false;
 		}
 		if (document.getElementById("title").value == "") {
+			alert(document.getElementById("image").value);
 			alert("제목을 적어주세요");
 			document.getElementById("title").focus();
 			return false;
@@ -35,13 +36,13 @@
 <body>
 
 	<div class="contents">
-		<form action="/registBucket" method="post" id="registBucket"
+		<form action="registBucket" method="post" id="registBucket"
 			enctype="multipart/form-data">
 			<table width="1000px" height="300px" border="1">
-				<input type="hidden" name="writerId" value="${param.loginedUser}"/>
+				<input type="hidden" name="writerId" value="${param.loginedUser }"/>
 				<tr>
 					<td align="center">이미지 후기 <input type="file" id="image"
-						name="image"/></td>
+						/></td>
 				</tr>
 				<tr>
 					<td align="center">제목 <input type="text" id="title"
