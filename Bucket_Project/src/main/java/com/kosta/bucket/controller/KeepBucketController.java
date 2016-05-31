@@ -14,8 +14,6 @@ public class KeepBucketController {
 	@Autowired
 	private KeepBucketService keepBucketService;
 
-	public ModelAndView registerKeepBucket (String bucketId){
-		return null;
 	public ModelAndView registerKeepBucket (String bucketId) {
 		return null;
 	}
