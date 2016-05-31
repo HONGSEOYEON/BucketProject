@@ -81,8 +81,6 @@ public class BucketServiceLogic implements BucketService {
 
 	@Override
 	public int registComment(Comment comment) {
-		Date today = new Date(Calendar.getInstance().getTimeInMillis());
-		comment.setRegistDate(today);
 		int result = bucketDao.createComment(comment);
 		return result;
 	}

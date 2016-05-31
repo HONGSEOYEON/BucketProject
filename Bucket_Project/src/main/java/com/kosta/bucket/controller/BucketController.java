@@ -1,5 +1,6 @@
 package com.kosta.bucket.controller;
 
+import java.util.Calendar;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.sql.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -77,6 +79,10 @@ public class BucketController {
 	// 댓글 등록
 	@RequestMapping("/commentRegist")
 	public String registComment (Comment comment) {
+		
+		Date today = new Date(Calendar.getInstance().getTimeInMillis());
+		comment.setRegistDate(today);
+		
 		 int registered = bucketService.registComment(comment);
 		 if(registered!=0) {
 			 return "redirect:detailBuket";
@@ -103,14 +109,18 @@ public class BucketController {
 	}
 	
 	@RequestMapping("/detailBuket")
-	public ModelAndView showDetailBucket(String bucketId) {
-		
+	public ModelAndView showDetailBucket(String bucketId, HttpServletRequest req) {
+		// 세션 아이디 가져오기
+		HttpSession session = req.getSession();
+		User user = (User) session.getAttribute("loginedUser");
 		// 댓글 조회
 		List<Comment> comments= bucketService.searchBucketComment(bucketId);
 		ModelAndView modelAndView = new ModelAndView("detailBucket");
 		modelAndView.addObject("comments", comments);
+		modelAndView.addObject("loginedUser", user.getUserId());
 		return modelAndView;
 	}
+	
 	public ModelAndView showMyBucketList(String userId){
 		return null;
 	}

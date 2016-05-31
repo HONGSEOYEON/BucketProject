@@ -1,18 +1,18 @@
 package com.kosta.bucket.service.logic;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.kosta.bucket.dao.KeepBucketDao;
 import com.kosta.bucket.dao.UserDao;
 import com.kosta.bucket.entity.User;
-import com.kosta.bucket.service.BucketService;
 import com.kosta.bucket.service.UserService;
 
+@Service
 public class UserServiceLogic implements UserService {
 
 	@Autowired
 	private UserDao userDao;
-
+	
 	@Override
 	public int registUser(User user) {
 		// TODO Auto-generated method stub
@@ -36,4 +36,5 @@ public class UserServiceLogic implements UserService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 }

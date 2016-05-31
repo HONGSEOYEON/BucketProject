@@ -6,14 +6,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="${pageContext.request.contextPath}/WEB-INF/resources/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+	var check = function() {
+		if (document.getElementById("commentContent").value == "") {
+			alert("댓글을 입력하세요");
+			document.getElementById("commentContent").focus();
+			return false;
+		}
+	};
+</script>
 </head>
 <body>
 <h2>댓글</h2>
-<form action="${pageContext.request.contextPath}/commentRegist" method="post">
-<input type="text" placeholder="입력" name="contents"><input type="submit" value="쓰기">
+<c:if test="${loginedUser != null}">
+<form action="${pageContext.request.contextPath}/commentRegist?writerId=${loginedUser}" method="post">
+<input type="text" placeholder="입력" name="contents" id="commentContent"><input type="submit" value="쓰기">
 </form>
+</c:if>
 <c:forEach items="${comments}" var="comment" varStatus="sts">
-	${comment.writerId} / ${comment.contents} <input type="button" value="삭제" onclick="location.href=' ${pageContext.request.contextPath}/commentRemove'">
+	${comment.writerId} / ${comment.contents} 
+	<c:if test="${loginedUser != null}">
+	<input type="button" value="삭제" onclick="location.href=' ${pageContext.request.contextPath}/commentRemove'">
+	</c:if>
 </c:forEach>
 </body>
 </html>
