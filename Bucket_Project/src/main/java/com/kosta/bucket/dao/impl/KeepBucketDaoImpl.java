@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kosta.bucket.dao.KeepBucketDao;
@@ -13,6 +14,7 @@ import com.kosta.bucket.entity.KeepBucket;
 @Repository
 public class KeepBucketDaoImpl implements KeepBucketDao {
 
+	@Autowired
 	private SqlSessionFactory factory;
 	
 	public KeepBucketDaoImpl(){
@@ -33,14 +35,26 @@ public class KeepBucketDaoImpl implements KeepBucketDao {
 
 	@Override
 	public List<Bucket> retrieveKeepBucketList(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = factory.openSession();
+		try {
+			List<Bucket> buckets = session.selectList("selectAllKeepBucket", userId);
+			return buckets;
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public int deleteKeepBucket(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.delete("deleteKeepBucket", bucketId);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 }

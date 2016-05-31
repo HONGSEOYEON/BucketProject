@@ -11,6 +11,24 @@
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet">
+<script src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+	var check = function() {
+		if (document.getElementById("commentContent").value == "") {
+			alert("댓글을 입력하세요");
+			document.getElementById("commentContent").focus();
+			return false;
+		}
+	};
+	
+	var recommand = function() {
+		if (document.getElementById("recommand").value == "") {
+			alert("댓글을 입력하세요");
+			document.getElementById("commentContent").focus();
+			return false;
+		}
+	};
+</script>	
 <style>
 body {
 	padding: 10% 30%;
@@ -35,6 +53,11 @@ td {
 			class="btn btn-xs btn-info" href="#">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="btn btn-xs btn-info" href="#">수정</a>&nbsp; <a
 			class="btn btn-xs btn-info" href="#">삭제</a>&nbsp;
+		<a class="btn btn-xs btn-info" href="${pageContext.request.contextPath}/registerKeepBucket">담기</a>&nbsp; 
+		<a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand">추천</a>&nbsp; 
+		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a class="btn btn-xs btn-default" href="#">수정</a>&nbsp; <a
+			class="btn btn-xs btn-default" href="#">삭제</a>&nbsp;
 	</div>
 
 	<!-- 테스트   -->
@@ -47,6 +70,8 @@ td {
 				<span class="badge">42</span>
 		</a></div>
 	<h2>${music.name}</h2>
+	<div style="text-align: right;">추천수 &nbsp;<h4>${recomNum}</h4></div>
+	
 	<hr>
 	<table id="musicDetail">
 		<colgroup>
@@ -85,7 +110,7 @@ td {
 	<br>
 
 	<%-- </c:if> --%>
-	<c:forEach items="${comments }" var="comment" varStatus="sts">
+	<c:forEach items="${comments}" var="comment" varStatus="sts">
 	${comment.writerId} 님의 댓글 :  ${comment.contents} 
 	<%-- <c:if test="${loginedUser != null}"> --%>
 		<a class="btn btn-xs btn-default"

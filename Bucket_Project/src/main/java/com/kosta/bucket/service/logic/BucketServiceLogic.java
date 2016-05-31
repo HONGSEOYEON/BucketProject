@@ -1,7 +1,5 @@
 package com.kosta.bucket.service.logic;
 
-import java.sql.Date;
-import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,8 +63,7 @@ public class BucketServiceLogic implements BucketService {
 
 	@Override
 	public Bucket searchBucket(String bucketId) {
-		// TODO Auto-generated method stub
-		return null;
+		return bucketDao.retrieveBucket(bucketId);
 	}
 
 	@Override

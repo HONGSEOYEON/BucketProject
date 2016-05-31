@@ -5,16 +5,25 @@ public class User {
 	private String password;
 	private String userName;
 	private String email;
+	private String isManager;
 	
 	public User() {}
 
-	public User(String userId, String password, String userName, String email) {
+	public User(String userId, String password, String userName, String email, String isManager) {
 		this.userId = userId;
 		this.password = password;
 		this.userName = userName;
 		this.email = email;
+		this.isManager = isManager;
 	}
 
+	public String getIsManager() {
+		return isManager;
+	}
+	
+	public void setIsManager(String isManager) {
+		this.isManager = isManager;
+	}
 	
 	public String getUserId() {
 		return userId;

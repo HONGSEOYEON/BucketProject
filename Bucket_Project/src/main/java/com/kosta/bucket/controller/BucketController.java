@@ -2,6 +2,8 @@ package com.kosta.bucket.controller;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,18 +40,28 @@ public class BucketController {
 	@Autowired
 	private BucketService bucketService;
 	
+	@RequestMapping("/")
+	public ModelAndView main() {
+		ModelAndView mv = new ModelAndView("main/main");
+		return mv;
+	}
+	
 	public ModelAndView modifyBucket (Bucket bucket){
 		return null;
 	}
+	
 	public ModelAndView removeBucket(String bucketId) {
 		return null;
 	}
+	
 	public ModelAndView registBucket(Bucket bucket) {
 		return null;
 	}
+	
 	public ModelAndView searchBucket(String bucketId) {
 		return null;
 	}
+	
 	@RequestMapping("/accusedAllBucket")
 	public ModelAndView searchAccusedAllBucket(){
 		List<Bucket> accusedBucketList = bucketService.searchAccusedAllBucket();
@@ -56,24 +69,25 @@ public class BucketController {
 		mav.addObject("accusedBucketList", accusedBucketList);
 		return mav;
 	}
+	
 	@RequestMapping("/recommand")
 	public String registRecommand(String bucketId, HttpServletRequest req) {
-		HttpSession session = req.getSession();
+		/*HttpSession session = req.getSession();
 		if(session == null || session.getAttribute("loginedUser") == null) {
 			return "redirect:login";
-		}
-		User user = (User)session.getAttribute("loginedUser");
-		bucketService.registRecommand(bucketId);
+		}*/
+		/*User user = (User)session.getAttribute("loginedUser");*/
+		bucketService.registRecommand("1");
 		return "redirect:detailBucket";
 	}
 	@RequestMapping("/accuse")
 	public String registAccuse(String bucketId, HttpServletRequest req) {
-		HttpSession session = req.getSession();
+	/*	HttpSession session = req.getSession();
 		if(session == null || session.getAttribute("loginedUser") == null) {
 			return "redirect:login";
-		}
-		User user = (User)session.getAttribute("loginedUser");
-		bucketService.registAccuse(bucketId);
+		}*/
+		/*User user = (User)session.getAttribute("loginedUser");*/
+		bucketService.registAccuse("1");
 		return "redirect:detailBucket";
 	}
 	 
@@ -120,6 +134,9 @@ public class BucketController {
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
 		modelAndView.addObject("comments", comments);
 //		modelAndView.addObject("loginedUser", user.getUserId());
+		Bucket bucket = bucketService.searchBucket("1");
+		//추천수
+		modelAndView.addObject("recomNum", bucket.getRecomNum());
 		return modelAndView;
 	}
 	

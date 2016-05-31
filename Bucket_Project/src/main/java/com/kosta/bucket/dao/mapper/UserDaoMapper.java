@@ -1,7 +1,5 @@
 package com.kosta.bucket.dao.mapper;
 
-import java.util.List;
-
 import com.kosta.bucket.entity.User;
 
 public interface UserDaoMapper {
