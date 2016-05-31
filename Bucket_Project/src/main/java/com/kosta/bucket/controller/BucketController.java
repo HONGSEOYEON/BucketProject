@@ -1,5 +1,7 @@
 package com.kosta.bucket.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,16 +41,24 @@ public class BucketController {
 		return null;
 	}
 	 
-	@RequestMapping("/comment")
+	// 댓글 등록
+	@RequestMapping("/commentRegist")
 	public String registComment (Comment comment) {
 		 int registered = bucketService.registComment(comment);
 		 if(registered!=0) {
-			 return "";
+			 return "redirect:detailBuket";
 		 }
-		 return "";
+		 return "/WEB-INF/views/bucket/detailBucket.jsp";
 	}
-	public ModelAndView removeComment (String commentId) {
-		return null;
+	
+	// 댓글 삭제
+	@RequestMapping("/commentRemove")
+	public String removeComment (String commentId) {
+		int removed = bucketService.removeComment(commentId);
+		if(removed!=0) {
+			return "redirect:detailBuket";
+		}
+		return "/WEB-INF/views/bucket/detailBucket.jsp";
 	}
 	 
 	public ModelAndView removeAccusedBucket (String bucketId){
@@ -58,8 +68,15 @@ public class BucketController {
 	public ModelAndView showModifyBucket(String bucketId){
 		return null;
 	}
+	
+	@RequestMapping("/detailBuket")
 	public ModelAndView showDetailBucket(String bucketId) {
-		return null;
+		
+		// 댓글 조회
+		List<Comment> comments= bucketService.searchBucketComment(bucketId);
+		ModelAndView modelAndView = new ModelAndView("detailBucket");
+		modelAndView.addObject("comments", comments);
+		return modelAndView;
 	}
 	public ModelAndView showMyBucketList(String userId){
 		return null;

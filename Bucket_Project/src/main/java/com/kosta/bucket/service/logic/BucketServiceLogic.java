@@ -1,5 +1,7 @@
 package com.kosta.bucket.service.logic;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +83,8 @@ public class BucketServiceLogic implements BucketService {
 
 	@Override
 	public int registComment(Comment comment) {
+		Date today = new Date(Calendar.getInstance().getTimeInMillis());
+		comment.setRegistDate(today);
 		int result = bucketDao.createComment(comment);
 		return result;
 	}
