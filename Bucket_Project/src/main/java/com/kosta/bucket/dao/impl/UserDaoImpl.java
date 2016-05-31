@@ -45,14 +45,28 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int updateUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.update("updateUser", user);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public int deleteUser(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.delete("deleteUser", userId);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 
