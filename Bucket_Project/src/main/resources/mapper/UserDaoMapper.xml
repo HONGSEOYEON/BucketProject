@@ -21,4 +21,6 @@ INSERT INTO bucket_user (ID, PASSWORD, NAME, EMAIL])
 VALUES (#{userId}, #{password}, #{userName}, #{email})
 </insert>
 
+
 </mapper>
+
