@@ -21,22 +21,41 @@ INSERT INTO bucket_user (ID, PASSWORD, NAME, EMAIL])
 VALUES (#{userId}, #{password}, #{userName}, #{email})
 </insert>
 
+<<<<<<< HEAD
 <select id="retrieveUser" parameterType="string">
+=======
+<select id="retrieveUser" parameterType="String">
+>>>>>>> branch 'master' of https://github.com/Cruel0412/BucketProject.git
 <include refid="selectUser" />
-WHERE ID = #{userId}
+WHERE id = #{userId}
 </select>
 
 <update id="updateUser" parameterType="User">
+<<<<<<< HEAD
 
+=======
+UPDATE bucket_user
+SET name = #{userName},
+SET password = #{password},
+SET email = #{email}
+WHERE id = #{userId}
+>>>>>>> branch 'master' of https://github.com/Cruel0412/BucketProject.git
 </update>
 
+<<<<<<< HEAD
 <delete id="deleteUser" parameterType="string">
+=======
+<delete id="deleteUser" parameterType="String">
+>>>>>>> branch 'master' of https://github.com/Cruel0412/BucketProject.git
 DELETE FROM bucket_user
-WHERE ID = #{userId}
+WHERE id = #{userId}
 </delete>
+<<<<<<< HEAD
 
 <select id="retrieveAccuesedUser" parameterType="string">
 
 </select>
+=======
+>>>>>>> branch 'master' of https://github.com/Cruel0412/BucketProject.git
 
 </mapper>
