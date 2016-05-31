@@ -84,7 +84,6 @@ public class BucketDaoImpl implements BucketDao {
 
 	@Override
 	public int retrieveRecomNum(String bucketId) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -109,20 +108,47 @@ public class BucketDaoImpl implements BucketDao {
 
 	@Override
 	public int createComment(Comment comment) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.insert("insertComment", comment);
+			if(result > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return result;
 	}
 
 	@Override
 	public int deleteComment(String commentId) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.insert("deleteComment", commentId);
+			if(result > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return result;
 	}
 	
 	@Override
 	public List<Comment> retrieveBucketComment(String bucketId) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = factory.openSession();
+		try {
+			List<Comment> comments = session.selectList("selectBucketComment", bucketId);
+			return comments;
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
@@ -139,14 +165,28 @@ public class BucketDaoImpl implements BucketDao {
 
 	@Override
 	public int createRecommand(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.update("updateRecommand", bucketId);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public int createAccuse(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.update("updateAccuse", bucketId);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override

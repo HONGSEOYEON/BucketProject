@@ -39,7 +39,6 @@ public class UserController {
 	public ModelAndView modifyUser(User user) {
 		return null;
 	}
-	
 	@RequestMapping("/")
 	public ModelAndView showModifyPage(){
 		return null;
