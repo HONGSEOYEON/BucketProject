@@ -34,7 +34,6 @@ public class BucketDaoImpl implements BucketDao {
 	
 	@Override
 	public int updateBucket(Bucket bucket) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -47,7 +46,6 @@ public class BucketDaoImpl implements BucketDao {
 	
 	@Override
 	public List<Bucket> retrieveBucketByContents(String contents) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -83,8 +81,15 @@ public class BucketDaoImpl implements BucketDao {
 
 	@Override
 	public Bucket retrieveBucket(String bucketId) {
-		// TODO Auto-generated method stub
-		return null;
+			SqlSession session = factory.openSession();
+			Bucket bucket;
+			try {
+				bucket = session.selectOne("retrieveBucket", bucketId);
+				session.commit();
+				return bucket;
+			} finally {
+				session.close();
+			}
 	}
 
 	@Override
