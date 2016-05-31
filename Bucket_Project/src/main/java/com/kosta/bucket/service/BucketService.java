@@ -23,7 +23,7 @@ public interface BucketService {
 	//댓글 저장
 	public void registComment(Comment comment);
 	//댓글 삭제
-	public void removeComment(String commentId);
+	public void removeComment(String commentId); 
 	
 	
 	//신고된 이미지 후기 삭제

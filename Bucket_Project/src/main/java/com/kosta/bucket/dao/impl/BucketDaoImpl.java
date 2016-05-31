@@ -100,7 +100,7 @@ public class BucketDaoImpl implements BucketDao {
 	}
 	
 	@Override
-	public List<Comment> retrieveAllComment() {
+	public List<Comment> retrieveBucketComment(String bucketId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
