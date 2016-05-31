@@ -49,6 +49,7 @@ public class BucketController {
 	public ModelAndView searchBucket(String bucketId) {
 		return null;
 	}
+	
 	@RequestMapping("/accusedAllBucket")
 	public ModelAndView searchAccusedAllBucket(){
 		List<Bucket> accusedBucketList = bucketService.searchAccusedAllBucket();
@@ -56,24 +57,25 @@ public class BucketController {
 		mav.addObject("accusedBucketList", accusedBucketList);
 		return mav;
 	}
+	
 	@RequestMapping("/recommand")
 	public String registRecommand(String bucketId, HttpServletRequest req) {
-		HttpSession session = req.getSession();
+		/*HttpSession session = req.getSession();
 		if(session == null || session.getAttribute("loginedUser") == null) {
 			return "redirect:login";
-		}
-		User user = (User)session.getAttribute("loginedUser");
-		bucketService.registRecommand(bucketId);
+		}*/
+		/*User user = (User)session.getAttribute("loginedUser");*/
+		bucketService.registRecommand("1");
 		return "redirect:detailBucket";
 	}
 	@RequestMapping("/accuse")
 	public String registAccuse(String bucketId, HttpServletRequest req) {
-		HttpSession session = req.getSession();
+	/*	HttpSession session = req.getSession();
 		if(session == null || session.getAttribute("loginedUser") == null) {
 			return "redirect:login";
-		}
-		User user = (User)session.getAttribute("loginedUser");
-		bucketService.registAccuse(bucketId);
+		}*/
+		/*User user = (User)session.getAttribute("loginedUser");*/
+		bucketService.registAccuse("1");
 		return "redirect:detailBucket";
 	}
 	 
@@ -120,6 +122,9 @@ public class BucketController {
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
 		modelAndView.addObject("comments", comments);
 //		modelAndView.addObject("loginedUser", user.getUserId());
+		Bucket bucket = bucketService.searchBucket("1");
+		//추천수
+		modelAndView.addObject("recomNum", bucket.getRecomNum());
 		return modelAndView;
 	}
 	
