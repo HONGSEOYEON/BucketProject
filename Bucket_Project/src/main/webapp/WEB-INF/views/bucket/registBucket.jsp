@@ -25,7 +25,7 @@
 		return true;
 	};
 
-	var join = function() {
+	var regist = function() {
 		if (validate()) {
 			document.getElementById("registBucket").submit();
 		}
@@ -55,7 +55,7 @@
 			<button type="button" class="btn" style="float: right"
 				onclick="javascript:history.back()">취소</button>
 			<button type="submit" class="btn" style="float: right"
-				onclick="join(); return false;">게시</button>
+				onclick="regist(); return false;">게시</button>
 				</td>
 				</tr>
 			</table>
