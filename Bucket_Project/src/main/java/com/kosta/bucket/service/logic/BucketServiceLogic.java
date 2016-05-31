@@ -69,14 +69,12 @@ public class BucketServiceLogic implements BucketService {
 
 	@Override
 	public int registRecommand(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return bucketDao.createRecommand(bucketId);
 	}
 
 	@Override
 	public int registAccuse(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return bucketDao.createAccuse(bucketId);
 	}
 
 	@Override
