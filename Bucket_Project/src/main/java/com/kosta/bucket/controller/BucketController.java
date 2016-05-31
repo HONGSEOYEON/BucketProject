@@ -15,57 +15,50 @@ public class BucketController {
 
 	@Autowired
 	private BucketService bucketService;
-
-	public ModelAndView modifyBucket(Bucket bucket) {
-
+	
+	public ModelAndView modifyBucket (Bucket bucket){
+		return null;
 	}
-
 	public ModelAndView removeBucket(String bucketId) {
-
+		return null;
 	}
-
 	public ModelAndView registBucket(Bucket bucket) {
-
+		return null;
 	}
-
 	public ModelAndView searchBucket(String bucketId) {
-
+		return null;
 	}
-
-	public ModelAndView searchAccusedAllBucket() {
-
+	public ModelAndView searchAccusedAllBucket(){
+		return null;
 	}
 
 	public ModelAndView registRecommand(String bucketId) {
-
+		return null;
 	}
-
 	public ModelAndView registAccuse(String bucketId) {
-
+		return null;
 	}
-
-	public ModelAndView registComment(Comment comment) {
-
+	 
+	public ModelAndView registComment (Comment comment) {
+		return null;
 	}
-
-	public ModelAndView removeComment(String commentId) {
-
+	public ModelAndView removeComment (String commentId) {
+		return null;
 	}
-
-	public ModelAndView removeAccusedBucket(String bucketId) {
-
+	 
+	public ModelAndView removeAccusedBucket (String bucketId){
+		return null;
 	}
-
-	public ModelAndView showModifyBucket(String bucketId) {
-
+	 
+	public ModelAndView showModifyBucket(String bucketId){
+		return null;
 	}
-
 	public ModelAndView showDetailBucket(String bucketId) {
-
+		return null;
 	}
-
-	public ModelAndView showMyBucketList(String userId) {
-
+	public ModelAndView showMyBucketList(String userId){
+		return null;
 	}
-
+	
+	
 }

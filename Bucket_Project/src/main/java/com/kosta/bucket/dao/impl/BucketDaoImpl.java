@@ -34,20 +34,33 @@ public class BucketDaoImpl implements BucketDao {
 	
 	@Override
 	public int updateBucket(Bucket bucket) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.update("updateBucket", bucket);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public int deleteBucket(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.delete("deleteBucket", bucketId);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 	
 	@Override
 	public List<Bucket> retrieveBucketByContents(String contents) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -83,8 +96,15 @@ public class BucketDaoImpl implements BucketDao {
 
 	@Override
 	public Bucket retrieveBucket(String bucketId) {
-		// TODO Auto-generated method stub
-		return null;
+			SqlSession session = factory.openSession();
+			Bucket bucket;
+			try {
+				bucket = session.selectOne("retrieveBucket", bucketId);
+				session.commit();
+				return bucket;
+			} finally {
+				session.close();
+			}
 	}
 
 	@Override

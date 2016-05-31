@@ -63,7 +63,6 @@ public class FileController {
 	 
 	    File down_file = new File(filePath); //파일 생성
 	    FileInputStream fileIn = new FileInputStream(down_file); //파일 읽어오기
-	    ByteStreams.copy(fileIn, response.getOutputStream());
 	    response.flushBuffer();
 	 
 	}
