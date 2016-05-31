@@ -1,7 +1,5 @@
 package com.kosta.bucket.dao;
 
-import java.util.List;
-
 import com.kosta.bucket.entity.User;
 
 public interface UserDao {
