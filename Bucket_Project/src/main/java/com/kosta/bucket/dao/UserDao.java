@@ -14,6 +14,4 @@ public interface UserDao {
 	public int updateUser(User user);
 	//회원 탈퇴
 	public int deleteUser(String userId);
-	//신고된 회원 조회
-	public List<User> retrieveAccuesedUser(String userId);
 }

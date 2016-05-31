@@ -2,14 +2,17 @@ package com.kosta.bucket.service;
 
 import java.util.List;
 
+import com.kosta.bucket.entity.Bucket;
 import com.kosta.bucket.entity.KeepBucket;
 
 public interface KeepBucketService {
-	
-	//이미지 후기 담기
-	public void registKeepBucket(KeepBucket keepBucket);
-	//담은 이미지 후기 목록
-	public List<KeepBucket> showKeepBucketList(String userId);
-	//담은 이미지 후기 삭제
-	public void removeKeepBucket(String bucketId);
+
+	// 후기 담아두기
+	public int registKeepBucket(KeepBucket keepBucket);
+
+	// 담아둔 이미지 후기 목록 불러오기
+	public List<Bucket> searchKeepBucketList(String userId);
+
+	// 담아둔 후기 삭제하기
+	public int removeKeepBucket(String bucketId);
 }

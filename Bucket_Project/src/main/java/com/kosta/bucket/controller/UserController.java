@@ -15,9 +15,12 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/create.do")
-	public String create(User user, Model model){
-		userService.joinUser(user);
-		return "";
-	}
+	public ModelAndView loginUser(User)  
+	public ModelAndView logoutUser(User) 
+	public ModelAndView joinUser(User) 
+	public ModelAndView removeUser(userId) 
+	public ModelAndView modifyUser(User) 
+	public ModelAndView showModifyPage()
+	public ModelAndView showLoginPage() 
+	public ModelAndView showJoinPage() 
 }

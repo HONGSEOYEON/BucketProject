@@ -15,10 +15,10 @@ public class KeepBucketController {
 
 	@Autowired
 	private KeepBucketService keepBucketService;
-	
-	@RequestMapping("/regist.do")
-	public String regist(KeepBucket keepBucket, HttpSession session){
-		keepBucketService.registKeepBucket(keepBucket);
-		return "";
-	}
+
+	public ModelAndView registerKeepBucket (bucketId)
+
+	public ModelAndView showKeepBucketList (userId) 
+
+	public ModelAndView removeKeepBucket (bucketId) 
 }

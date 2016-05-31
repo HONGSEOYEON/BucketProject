@@ -16,9 +16,23 @@ public class BucketController {
 	@Autowired
 	private BucketService bucketService;
 	
-	@RequestMapping("/create.do")
-	public String create(Bucket bucket, HttpSession session){
-		bucketService.registBucket(bucket);
-		return "";
-	}
+	public ModelAndView modifyBucket(Bucket)
+	public ModelAndView removeBucket(bucketId) 
+	public ModelAndView registBucket(Bucket) 
+	public ModelAndView searchBucket(bucketId) 
+	public ModelAndView searchAccusedAllBucket()
+
+	public ModelAndView registRecommand(bucketId) 
+	public ModelAndView registAccuse(bucketId) 
+	 
+	public ModelAndView registComment (Comment) 
+	public ModelAndView removeComment (commentId) 
+	 
+	public ModelAndView removeAccusedBucket (bucketId)
+	 
+	public ModelAndView showModifyBucket(bucketId)
+	public ModelAndView showDetailBucket(bucketId) 
+	public ModelAndView showMyBucketList(userId)
+	
+	
 }
