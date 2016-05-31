@@ -22,6 +22,12 @@ public class Bucket {
 		this.writerId = writerId;
 		this.registDate = registDate;
 	}
+	
+	public Bucket(String title, String image, String contents) {
+		this.title = title;
+		this.image = image;
+		this.contents = contents;
+	}
 
 	public Bucket(String bucketId, String title, String image, String contents, String writerId, Date registDate,
 			int recomNum, int accuseNum, Comment comment) {
