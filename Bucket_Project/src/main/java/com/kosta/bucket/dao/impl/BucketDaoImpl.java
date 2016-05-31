@@ -34,13 +34,28 @@ public class BucketDaoImpl implements BucketDao {
 	
 	@Override
 	public int updateBucket(Bucket bucket) {
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.update("updateBucket", bucket);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public int deleteBucket(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.delete("deleteBucket", bucketId);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 	
