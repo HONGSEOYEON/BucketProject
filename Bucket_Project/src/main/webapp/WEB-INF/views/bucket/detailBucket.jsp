@@ -19,16 +19,19 @@
 </head>
 <body>
 <h2>댓글</h2>
-<c:if test="${loginedUser != null}">
-<form action="${pageContext.request.contextPath}/commentRegist?writerId=${loginedUser}" method="post">
+<%-- <c:if test="${loginedUser != null}"> --%>
+<input type="button" value="담기" onclick="location.href=' ${pageContext.request.contextPath}/commentRemove'">
+<input type="button" value="추천" onclick="location.href=' ${pageContext.request.contextPath}/commentRemove'">
+<input type="button" value="신고" onclick="location.href=' ${pageContext.request.contextPath}/commentRemove'">
+<form action="${pageContext.request.contextPath}/commentRegist<%-- ?writerId=${loginedUser} --%>" method="post">
 <input type="text" placeholder="입력" name="contents" id="commentContent"><input type="submit" value="쓰기">
 </form>
-</c:if>
+<%-- </c:if> --%>
 <c:forEach items="${comments}" var="comment" varStatus="sts">
 	${comment.writerId} / ${comment.contents} 
-	<c:if test="${loginedUser != null}">
+	<%-- <c:if test="${loginedUser != null}"> --%>
 	<input type="button" value="삭제" onclick="location.href=' ${pageContext.request.contextPath}/commentRemove'">
-	</c:if>
+	<%-- </c:if> --%>
 </c:forEach>
 </body>
 </html>
