@@ -34,7 +34,7 @@ public class KeepBucketController {
 	public ModelAndView showKeepBucketList (String userId) {
 		List<Bucket> buckets = keepBucketService.searchKeepBucketList(userId);
 		ModelAndView modelAndView = new ModelAndView("/main/bookmarkBucket");
-		modelAndView.addObject("buckets", buckets);
+		modelAndView.addObject("keepbuckets", buckets);
 		return modelAndView;
 	}
 

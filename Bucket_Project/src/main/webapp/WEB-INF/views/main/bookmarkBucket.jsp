@@ -64,7 +64,7 @@ h1 {
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${musicList}" var="music" varStatus="sts">
+					<c:forEach items="${buckets}" var="bucket" varStatus="sts">
                         <tr>
                             <td class="ranking">${sts.count}</td>
                             <td>

@@ -11,7 +11,7 @@ public interface KeepBucketService {
 	public int registKeepBucket(KeepBucket keepBucket);
 
 	// 담아둔 이미지 후기 목록 불러오기
-	public List<Bucket> searchKeepBucketList(String userId);
+	public List<KeepBucket> searchKeepBucketList(String userId);
 
 	// 담아둔 후기 삭제하기
 	public int removeKeepBucket(String bucketId);
