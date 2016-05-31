@@ -41,7 +41,7 @@ public class BucketController {
 	private BucketService bucketService;
 	
 	@RequestMapping("/")
-	public ModelAndView main(Locale locale, Model model) {
+	public ModelAndView main() {
 		ModelAndView mv = new ModelAndView("main/main");
 		return mv;
 	}
@@ -49,12 +49,15 @@ public class BucketController {
 	public ModelAndView modifyBucket (Bucket bucket){
 		return null;
 	}
+	
 	public ModelAndView removeBucket(String bucketId) {
 		return null;
 	}
+	
 	public ModelAndView registBucket(Bucket bucket) {
 		return null;
 	}
+	
 	public ModelAndView searchBucket(String bucketId) {
 		return null;
 	}
