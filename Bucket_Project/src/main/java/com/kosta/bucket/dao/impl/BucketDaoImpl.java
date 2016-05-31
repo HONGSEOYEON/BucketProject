@@ -47,8 +47,15 @@ public class BucketDaoImpl implements BucketDao {
 
 	@Override
 	public int deleteBucket(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.delete("deleteBucket", bucketId);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 	

@@ -40,9 +40,14 @@ VALUES (BUCKET_SEQ.nextval, #{title}, #{image}, #{contents}, #{writerId}, #{regi
 
 <update id="updateBucket" parameterType="Bucket">
 UPDATE bucket
-SET TITLE = ${title}, IMAGE = ${image}, CONTENTS = ${contents}, REG_DATE = ${registDate}
+SET TITLE = #{title}, IMAGE = #{image}, CONTENTS = #{contents}, REG_DATE = #{registDate}
 WHERE ID = #{bucketId}
 </update>
+
+<delete id="deleteBucket" parameterType="string">
+DELETE FROM bucket
+WHERE ID = #{bucketId}
+</delete>
 <select id="selectAllBucket" resultMap="resultBucket">
 SELECT id, title, image, contents, writer_id, reg_date, recommend, accuesed 
 FROM bucket
