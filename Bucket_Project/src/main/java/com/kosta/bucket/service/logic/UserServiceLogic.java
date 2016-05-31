@@ -12,7 +12,7 @@ public class UserServiceLogic implements UserService {
 
 	@Autowired
 	private UserDao userDao;
-
+	
 	@Override
 	public int registUser(User user) {
 		return userDao.createUser(user);
@@ -32,4 +32,5 @@ public class UserServiceLogic implements UserService {
 	public int removeUser(String userId) {
 		return userDao.deleteUser(userId);
 	}
+
 }
