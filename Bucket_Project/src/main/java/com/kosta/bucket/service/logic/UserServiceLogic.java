@@ -15,25 +15,21 @@ public class UserServiceLogic implements UserService {
 
 	@Override
 	public int registUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.createUser(user);
 	}
 
 	@Override
 	public User searchUser(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.retrieveUser(userId);
 	}
 
 	@Override
 	public int modifyUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.updateUser(user);
 	}
 
 	@Override
 	public int removeUser(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.deleteUser(userId);
 	}
 }
