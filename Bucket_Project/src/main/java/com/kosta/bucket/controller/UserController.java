@@ -38,5 +38,28 @@ public class UserController {
 	}
 	public ModelAndView showJoinPage() {
 		return null;
+	public ModelAndView loginUser(User user) {
+		
+	}
+	public ModelAndView logoutUser(User user) {
+		
+	}
+	public ModelAndView joinUser(User user) {
+		
+	}
+	public ModelAndView removeUser(String userId) {
+		
+	}
+	public ModelAndView modifyUser(User user) {
+		
+	}
+	public ModelAndView showModifyPage() {
+		
+	}
+	public ModelAndView showLoginPage() {
+		
+	}
+	public ModelAndView showJoinPage() {
+		
 	}
 }

@@ -16,7 +16,7 @@ public class BucketController {
 	@Autowired
 	private BucketService bucketService;
 	
-	public ModelAndView modifyBucket(Bucket bucket){
+	public ModelAndView modifyBucket (Bucket bucket){
 		return null;
 	}
 	public ModelAndView removeBucket(String bucketId) {
@@ -61,4 +61,58 @@ public class BucketController {
 	}
 	
 	
+=======
+	public ModelAndView modifyBucket(Bucket bucket) {
+
+	}
+
+	public ModelAndView removeBucket(String bucketId) {
+
+	}
+
+	public ModelAndView registBucket(Bucket bucket) {
+
+	}
+
+	public ModelAndView searchBucket(String bucketId) {
+
+	}
+
+	public ModelAndView searchAccusedAllBucket() {
+
+	}
+
+	public ModelAndView registRecommand(String bucketId) {
+
+	}
+
+	public ModelAndView registAccuse(String bucketId) {
+
+	}
+
+	public ModelAndView registComment(Comment comment) {
+
+	}
+
+	public ModelAndView removeComment(String commentId) {
+
+	}
+
+	public ModelAndView removeAccusedBucket(String bucketId) {
+
+	}
+
+	public ModelAndView showModifyBucket(String bucketId) {
+
+	}
+
+	public ModelAndView showDetailBucket(String bucketId) {
+
+	}
+
+	public ModelAndView showMyBucketList(String userId) {
+
+	}
+
+>>>>>>> branch 'master' of https://github.com/Cruel0412/BucketProject.git
 }

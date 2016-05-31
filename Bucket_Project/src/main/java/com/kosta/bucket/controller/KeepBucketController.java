@@ -16,13 +16,17 @@ public class KeepBucketController {
 
 	public ModelAndView registerKeepBucket (String bucketId){
 		return null;
+	public ModelAndView registerKeepBucket (String bucketId) {
+		return null;
 	}
 
 	public ModelAndView showKeepBucketList (String userId) {
 		return null;
+		
 	}
 
 	public ModelAndView removeKeepBucket (String bucketId) {
 		return null;
+		
 	}
 }
