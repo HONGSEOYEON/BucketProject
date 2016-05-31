@@ -55,8 +55,8 @@ public class BucketController {
 	}
 	
 	@RequestMapping("/registBucket")
-	public ModelAndView registBucket(Bucket bucket, HttpSession session) {
-		String loginId = (String) session.getAttribute("loginedUser");
+	public ModelAndView registBucket(Bucket bucket, HttpServletRequest req) {
+		String loginId = (String) req.getAttribute("loginedUser");
 		bucket.setWriterId(loginId);
 		bucketService.registBucket(bucket);
 		return null;
