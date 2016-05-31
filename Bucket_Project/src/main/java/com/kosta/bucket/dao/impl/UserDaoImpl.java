@@ -33,8 +33,14 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User retrieveUser(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = factory.openSession();
+		User user;
+		try {
+			user = session.selectOne("retrieveUser", userId);
+		} finally {
+			session.close();
+		}
+		return user;
 	}
 
 	@Override

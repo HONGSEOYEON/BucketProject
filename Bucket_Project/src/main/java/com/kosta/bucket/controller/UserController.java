@@ -15,21 +15,32 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@RequestMapping("/login")
 	public ModelAndView loginUser(User user) {
-		
+
 	}
+	
+	@RequestMapping("/logout")
 	public ModelAndView logoutUser(User user) {
 		
 	}
+	
+	@RequestMapping("/join")
 	public ModelAndView joinUser(User user) {
 		
 	}
+	
+	@RequestMapping("/drop")
 	public ModelAndView removeUser(String userId) {
 		
 	}
+	
+	@RequestMapping("/modify")
 	public ModelAndView modifyUser(User user) {
 		
 	}
+	
+	@RequestMapping("/")
 	public ModelAndView showModifyPage() {
 		
 	}
