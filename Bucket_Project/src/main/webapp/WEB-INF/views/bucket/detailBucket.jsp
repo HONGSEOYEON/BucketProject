@@ -53,7 +53,7 @@ td {
 			class="btn btn-xs btn-info" href="#">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="btn btn-xs btn-info" href="#">수정</a>&nbsp; <a
 			class="btn btn-xs btn-info" href="#">삭제</a>&nbsp;
-		<a class="btn btn-xs btn-info" href="${pageContext.request.contextPath}/registerKeepBucket">담기</a>&nbsp; 
+		<a class="btn btn-xs btn-info" href="${pageContext.request.contextPath}/registerKeepBucket?bucketId='1'  ">담기</a>&nbsp; 
 		<a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand">추천</a>&nbsp; 
 		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="btn btn-xs btn-default" href="#">수정</a>&nbsp; <a

@@ -47,9 +47,6 @@ h1 {
 		<div class="row">
 			<div class="col-md-12">
 				<h1> 님이 담은 이미지 후기 목록</h1>
-				<div style="text-align: right;">
-					<a class="btn btn-xs btn-default" href="list.html">다른 사람은 어떤 이미지를?</a>
-				</div><br>
 				<table class="table table-hover table-condensed">
 					<colgroup>
 						<col width="80" align="center">
@@ -64,17 +61,17 @@ h1 {
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${buckets}" var="bucket" varStatus="sts">
+					<c:forEach items="${keepbuckets}" var="keepbucket" varStatus="sts">
                         <tr>
                             <td class="ranking">${sts.count}</td>
                             <td>
                             <table>
-                            <tr><td rowspan="2"><img class="imgAlbum" src="resources/img/${music.image}" ></td>
-                            <td><span class="spanTitle">${music.name}</span><a class="btn btn-xs btn-default" href="detail?musicId=${music.id}"><b>i</b></a></td>
+                            <tr><td rowspan="2"><img class="imgAlbum" src="resources/img/${keepbucket.image}" ></td>
+                            <td><span class="spanTitle">${keepbucket.title}</span><a class="btn btn-xs btn-default" href="detailBucket?bucketId=${keepbucket.bucketId}"><b>i</b></a></td>
                             </tr>
-                            <tr><td><p class="pAlbum">${music.artist} - ${music.album}</p></td></tr>
+                            <tr><td><p class="pAlbum">${keepbucket.writerId}</p></td></tr>
                             </table>
-                            <td><a class="btn btn-xs btn-danger btnPlay" href="deleteFavorite?musicId=${music.id}"><b> X </b></a></td>
+                            <td><a class="btn btn-xs btn-danger btnPlay" href="deleteKeepBucket?bucketId=${keepbucket.bucketId}"><b> X </b></a></td>
                         </tr>
                         </c:forEach>
 					</tbody>
