@@ -48,6 +48,7 @@ WHERE ID = #{bucketId}
 DELETE FROM bucket
 WHERE ID = #{bucketId}
 </delete>
+
 <select id="selectAllBucket" resultMap="resultBucket">
 SELECT id, title, image, contents, writer_id, reg_date, recommend, accuesed 
 FROM bucket
