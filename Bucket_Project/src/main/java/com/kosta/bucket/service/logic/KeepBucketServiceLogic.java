@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosta.bucket.dao.KeepBucketDao;
+import com.kosta.bucket.entity.Bucket;
 import com.kosta.bucket.entity.KeepBucket;
 import com.kosta.bucket.service.KeepBucketService;
 
@@ -22,7 +23,7 @@ public class KeepBucketServiceLogic implements KeepBucketService {
 	}
 
 	@Override
-	public List<KeepBucket> searchKeepBucketList(String userId) {
+	public List<Bucket> searchKeepBucketList(String userId) {
 		return keepBucketDao.retrieveKeepBucketList(userId);
 	}
 

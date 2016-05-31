@@ -10,7 +10,7 @@ public interface KeepBucketDao {
 	//후기 담아두기
 	public int createKeepBucket(KeepBucket keepBucket);
 	//담아둔 이미지 후기 목록 불러오기
-	public List<KeepBucket> retrieveKeepBucketList(String userId);
+	public List<Bucket> retrieveKeepBucketList(String userId);
 	//담아둔 후기 삭제하기
 	public int deleteKeepBucket(String bucketId);
 }

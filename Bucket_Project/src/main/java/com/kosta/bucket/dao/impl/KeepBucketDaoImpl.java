@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
 
 import com.kosta.bucket.dao.KeepBucketDao;
+import com.kosta.bucket.entity.Bucket;
 import com.kosta.bucket.entity.KeepBucket;
 
 @Repository
@@ -31,10 +32,10 @@ public class KeepBucketDaoImpl implements KeepBucketDao {
 	}
 
 	@Override
-	public List<KeepBucket> retrieveKeepBucketList(String userId) {
+	public List<Bucket> retrieveKeepBucketList(String userId) {
 		SqlSession session = factory.openSession();
 		try {
-			List<KeepBucket> buckets = session.selectList("selectAllKeepBucket", userId);
+			List<Bucket> buckets = session.selectList("selectAllKeepBucket", userId);
 			return buckets;
 		} finally {
 			session.close();
