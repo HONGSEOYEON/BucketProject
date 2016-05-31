@@ -81,20 +81,19 @@ public class BucketServiceLogic implements BucketService {
 
 	@Override
 	public int registComment(Comment comment) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = bucketDao.createComment(comment);
+		return result;
 	}
 
 	@Override
 	public int removeComment(String commentId) {
-		// TODO Auto-generated method stub
-		return 0;
+		 int result = bucketDao.deleteComment(commentId);
+		return result;
 	}
 
 	@Override
 	public List<Comment> searchBucketComment(String bucketId) {
-		// TODO Auto-generated method stub
-		return null;
+		return bucketDao.retrieveBucketComment(bucketId);
 	}
 
 	@Override
