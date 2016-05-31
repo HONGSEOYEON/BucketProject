@@ -1,5 +1,8 @@
 package com.kosta.bucket.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.Bucket;
 import com.kosta.bucket.entity.Comment;
+import com.kosta.bucket.entity.User;
 import com.kosta.bucket.service.BucketService;
 
 @Controller
@@ -31,12 +35,25 @@ public class BucketController {
 	public ModelAndView searchAccusedAllBucket(){
 		return null;
 	}
-
-	public ModelAndView registRecommand(String bucketId) {
-		return null;
+	@RequestMapping("/recommand")
+	public String registRecommand(String bucketId, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		if(session == null || session.getAttribute("loginedUser") == null) {
+			return "redirect:login";
+		}
+		User user = (User)session.getAttribute("loginedUser");
+		bucketService.registRecommand(bucketId);
+		return "redirect:detailBucket";
 	}
-	public ModelAndView registAccuse(String bucketId) {
-		return null;
+	@RequestMapping("/accuse")
+	public String registAccuse(String bucketId, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		if(session == null || session.getAttribute("loginedUser") == null) {
+			return "redirect:login";
+		}
+		User user = (User)session.getAttribute("loginedUser");
+		bucketService.registAccuse(bucketId);
+		return "redirect:detailBucket";
 	}
 	 
 	public ModelAndView registComment (Comment comment) {
