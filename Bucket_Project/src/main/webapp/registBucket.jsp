@@ -15,28 +15,51 @@
 	rel="stylesheet">
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+	var validate = function() {
+		if (document.getElementById("image").value == "") {
+			alert("이미지를 등록해주세요");
+			return false;
+		}
+		if (document.getElementById("title").value == "") {
+			alert("제목을 적어주세요");
+			document.getElementById("title").focus();
+			return false;
+		}
+		return true;
+	};
+
+	var join = function() {
+		if (validate()) {
+			document.getElementById("registBucket").submit();
+		}
+	};
+</script>
 </head>
 <body>
 
 	<div class="contents">
-		<table width="1000px" height="300px" border="1">
-			<form action="/registBucket" method="post"
-				enctype="multipart/form-data">
+		<form action="/registBucket" method="post" id="registBucket"
+			enctype="multipart/form-data">
+			<table width="1000px" height="300px" border="1">
 				<input type="hidden" name="writerId" value="${param.loginedUser}">
-			<tr>
-				<td align="center">이미지 후기<input type="file" name="image"></td>
-			</tr>
-			<tr>
-				<td align="center" >제목 <input type="text" name="title" /></td>
-			</tr>
-
-			<tr>
-				<td align="center" >후기<br><textarea name="contents" cols="100" rows="20"></textarea></td>
-			</tr>
-		</table>
-			<button type="submit" class="btn" style="float: left">게시</button>
-		<button type="button" class="btn" style="float: left"
-			onclick="javascript:history.back()">취소</button>
+				<tr>
+					<td align="center">이미지 후기<input type="file" id="image"
+						name="image"></td>
+				</tr>
+				<tr>
+					<td align="center">제목 <input type="text" id="title"
+						name="title" /></td>
+				</tr>
+				<tr>
+					<td align="center">후기<br>
+					<textarea name="contents" cols="100" rows="20"></textarea></td>
+				</tr>
+			</table>
+			<button type="submit" class="btn" style="float: left"
+				onclick="join(); return false;">게시</button>
+			<button type="button" class="btn" style="float: left"
+				onclick="javascript:history.back()">취소</button>
 		</form>
 	</div>
 </body>

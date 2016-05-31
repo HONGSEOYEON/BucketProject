@@ -59,7 +59,9 @@ public class BucketController {
 		String loginId = (String) req.getAttribute("loginedUser");
 		bucket.setWriterId(loginId);
 		bucketService.registBucket(bucket);
-		return null;
+		ModelAndView mv = new ModelAndView("bucket/detailBucket");
+		mv.addObject(bucket.getBucketId());
+		return mv;
 	}
 	
 	public ModelAndView searchBucket(String bucketId) {

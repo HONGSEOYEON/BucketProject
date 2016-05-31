@@ -8,66 +8,62 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>이미지 후기 등록</title>
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
-<script src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet">
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+	var validate = function() {
+		if (document.getElementById("image").value == "") {
+			alert("이미지를 등록해주세요");
+			return false;
+		}
+		if (document.getElementById("title").value == "") {
+			alert("제목을 적어주세요");
+			document.getElementById("title").focus();
+			return false;
+		}
+		return true;
+	};
+
+	var join = function() {
+		if (validate()) {
+			document.getElementById("registBucket").submit();
+		}
+	};
+</script>
 </head>
 <body>
-	
+
 	<div class="contents">
-
-		<form action="${ctx}/recipe/register.do" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="cbId" value="${param.cbId}">
-			
-			<table width="100%" height="300px" border="1">
-			<tr>
-					<td align="center">조리예(이미지)</td>
-					<td colspan="3"><input type="file" name="recipeImage"></td>
-			</tr>
+		<form action="/registBucket" method="post" id="registBucket"
+			enctype="multipart/form-data">
+			<table width="1000px" height="300px" border="1">
+				<input type="hidden" name="writerId" value="${param.loginedUser}"/>
 				<tr>
-					<td align="center">레시피명</td>
-					<td><input type="text" name="name" /></td>
-					<td align="center">등록자</td>
-					<td>한식매니아</td>
+					<td align="center">이미지 후기 <input type="file" id="image"
+						name="image"/></td>
 				</tr>
-
 				<tr>
-					<td align="center">조리시간</td>
-					<td><input type="text" name="time"> 분</td>
-					<td align="center">난이도</td>
-					<td><select name="level">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-					</select></td>
+					<td align="center">제목 <input type="text" id="title"
+						name="title" /></td>
 				</tr>
-
 				<tr>
-					<td align="center">재료</td>
-					<td colspan="3"><textarea name="ingredients"></textarea></td>
+					<td align="center">후기<br>
+					<textarea name="contents" cols="100" rows="20"></textarea></td>
 				</tr>
-
 				<tr>
-					<td align="center">조리절차</td>
-					<td colspan="3"><input type="text" name="procedure" /><br /> <input
-						type="text" name="procedure" /><br /> <input type="text"
-						name="procedure" /><br /></td>
-				</tr>
-
-				
-
-			</table>
-
-			<br>
-
-			<button type="submit" class="btn" style="float: right">게시</button>
-			<br>
-			<button type="button" class="btn" style="float: left"
+				<td>
+			<button type="button" class="btn" style="float: right"
 				onclick="javascript:history.back()">취소</button>
-			<br>
-
+			<button type="submit" class="btn" style="float: right"
+				onclick="join(); return false;">게시</button>
+				</td>
+				</tr>
+			</table>
 		</form>
 	</div>
 </body>
