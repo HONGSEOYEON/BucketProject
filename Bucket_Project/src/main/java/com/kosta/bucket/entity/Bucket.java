@@ -9,6 +9,7 @@ public class Bucket {
 	private String contents;
 	private String writerId;
 	private Date registDate;
+	
 	private int recomNum;
 	private int accuseNum;
 	private Comment comment;
