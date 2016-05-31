@@ -43,12 +43,6 @@
 		#{registDate})
 	</insert>
 
-	<select id="selectAllBucket" resultMap="resultBucket">
-		SELECT id, title, image,
-		contents, writer_id, reg_date, recommend, accuesed
-		FROM bucket
-	</select>
-
 	<update id="updateRecommand" parameterType="string">
 		UPDATE bucket set
 		recommend= recommend+1 WHERE id=#{bucketId}
@@ -72,7 +66,6 @@
 	</delete>
 
 	<select id="selectAllBucket" resultMap="resultBucket">
-		SELECT id, title, image, contents, writer_id, reg_date, recommend, accuesed
-		FROM bucket
+		<include refid="selectBucket" />
 	</select>
 </mapper>
