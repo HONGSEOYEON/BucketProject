@@ -2,6 +2,8 @@ package com.kosta.bucket.controller;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,6 +39,12 @@ public class BucketController {
 
 	@Autowired
 	private BucketService bucketService;
+	
+	@RequestMapping("/")
+	public ModelAndView main(Locale locale, Model model) {
+		ModelAndView mv = new ModelAndView("main/main");
+		return mv;
+	}
 	
 	public ModelAndView modifyBucket (Bucket bucket){
 		return null;
