@@ -191,8 +191,15 @@ public class BucketDaoImpl implements BucketDao {
 
 	@Override
 	public List<Bucket> retrieveAccusedAllBucket() {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = factory.openSession();
+		List<Bucket> list = null;
+		try {
+			list = session.selectList("selectAccusedAllBucket");
+			session.commit();
+			return list;
+		} finally {
+			session.close();
+		}
 	}
 
 }
