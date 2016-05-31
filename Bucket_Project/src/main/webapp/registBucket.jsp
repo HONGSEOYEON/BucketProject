@@ -8,13 +8,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>이미지 후기 등록</title>
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/style.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/css/style.css" rel="stylesheet">
+<script	src="/resources/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
 	var validate = function() {
 		if (document.getElementById("image").value == "") {
@@ -42,10 +38,10 @@
 		<form action="/registBucket" method="post" id="registBucket"
 			enctype="multipart/form-data">
 			<table width="1000px" height="300px" border="1">
-				<input type="hidden" name="writerId" value="${param.loginedUser}">
+				<input type="hidden" name="writerId" value="${param.loginedUser}"/>
 				<tr>
-					<td align="center">이미지 후기<input type="file" id="image"
-						name="image"></td>
+					<td align="center">이미지 후기 <input type="file" id="image"
+						name="image"/></td>
 				</tr>
 				<tr>
 					<td align="center">제목 <input type="text" id="title"
@@ -55,11 +51,15 @@
 					<td align="center">후기<br>
 					<textarea name="contents" cols="100" rows="20"></textarea></td>
 				</tr>
-			</table>
-			<button type="submit" class="btn" style="float: left"
-				onclick="join(); return false;">게시</button>
-			<button type="button" class="btn" style="float: left"
+				<tr>
+				<td>
+			<button type="button" class="btn" style="float: right"
 				onclick="javascript:history.back()">취소</button>
+			<button type="submit" class="btn" style="float: right"
+				onclick="join(); return false;">게시</button>
+				</td>
+				</tr>
+			</table>
 		</form>
 	</div>
 </body>
