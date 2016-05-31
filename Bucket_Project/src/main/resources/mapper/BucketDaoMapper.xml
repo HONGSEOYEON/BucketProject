@@ -24,50 +24,49 @@
 	</resultMap>
 
 	<sql id="selectBucket">
-		SELECT id, title, image, contents, writer_id, reg_date, recommend, accuesed
+		SELECT id, title, image, contents, writer_id, reg_date,
+		recommend, accuesed
 		FROM bucket
 	</sql>
 
 	<sql id="selectComment">
 		SELECT id, bucket_id, contents, writer_id, reg_date
-		FROM comments
+		FROM
+		comments
 	</sql>
 
 	<insert id="insertBucket" parameterType="Bucket">
-		INSERT INTO bucket (ID, TITLE, IMAGE, CONTENTS, WRITER_ID, REG_DATE)
-		VALUES (BUCKET_SEQ.nextval, #{title}, #{image}, #{contents}, #{writerId},
+		INSERT INTO bucket (ID,
+		TITLE, IMAGE, CONTENTS, WRITER_ID, REG_DATE)
+		VALUES
+		(BUCKET_SEQ.nextval, #{title}, #{image}, #{contents}, #{writerId},
 		#{registDate})
 	</insert>
 
-<<<<<<< HEAD
-	<select id="selectAllBucket" resultMap="resultBucket">
-		SELECT id, title, image, contents, writer_id, reg_date, recommend, accuesed
-		FROM bucket
-	</select>
 
 	<update id="updateRecommand" parameterType="string">
-		UPDATE bucket set recommend= recommend+1 WHERE id=#{bucketId} 
+		UPDATE bucket set
+		recommend= recommend+1 WHERE id=#{bucketId}
 	</update>
-	
+
 	<update id="updateAccuse" parameterType="String">
-		UPDATE bucket set accuesed = accuesed+1 WHERE id=#{bucketId}
+		UPDATE bucket set
+		accuesed = accuesed+1 WHERE id=#{bucketId}
 	</update>
 
-=======
-<update id="updateBucket" parameterType="Bucket">
-UPDATE bucket
-SET TITLE = #{title}, IMAGE = #{image}, CONTENTS = #{contents}, REG_DATE = #{registDate}
-WHERE ID = #{bucketId}
-</update>
+	<update id="updateBucket" parameterType="Bucket">
+		UPDATE bucket
+		SET TITLE = #{title}, IMAGE = #{image}, CONTENTS = #{contents}, REG_DATE
+		= #{registDate}
+		WHERE ID = #{bucketId}
+	</update>
 
-<delete id="deleteBucket" parameterType="string">
-DELETE FROM bucket
-WHERE ID = #{bucketId}
-</delete>
+	<delete id="deleteBucket" parameterType="string">
+		DELETE FROM bucket
+		WHERE ID = #{bucketId}
+	</delete>
 
-<select id="selectAllBucket" resultMap="resultBucket">
-SELECT id, title, image, contents, writer_id, reg_date, recommend, accuesed 
-FROM bucket
-</select>
->>>>>>> refs/remotes/origin/master
+	<select id="selectAllBucket" resultMap="resultBucket">
+		<include refid="selectBucket" />
+	</select>
 </mapper>
