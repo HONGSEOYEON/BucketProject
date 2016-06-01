@@ -222,6 +222,7 @@ public class BucketController {
 		Bucket bucket = bucketService.searchBucket("1");
 		//추천수
 		modelAndView.addObject("recomNum", bucket.getRecomNum());
+		modelAndView.addObject("bucket", bucket);
 		return modelAndView;
 	}
 	
