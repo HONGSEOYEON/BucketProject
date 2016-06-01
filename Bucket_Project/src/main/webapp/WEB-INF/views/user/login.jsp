@@ -19,7 +19,8 @@ body {
 
 .container {
     padding: 25px;
-    position: fixed;
+    /* position: fixed; */
+    display: height: auto; margin: 0 220px;
 }
 
 .form-login {
