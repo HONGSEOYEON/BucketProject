@@ -35,7 +35,7 @@ public class KeepBucketController {
 
 	@RequestMapping("/showKeepBucket")
 	public ModelAndView showKeepBucketList (String userId) {
-		List<Bucket> keepBuckets = keepBucketService.searchKeepBucketList(userId);
+		List<Bucket> keepBuckets = keepBucketService.searchKeepBucketList("jeong");
 		ModelAndView modelAndView = new ModelAndView("/main/bookmarkBucket");
 		modelAndView.addObject("keepbuckets", keepBuckets);
 		return modelAndView;
