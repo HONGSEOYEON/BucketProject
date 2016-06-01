@@ -13,20 +13,14 @@
 	rel="stylesheet">
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
-	var check = function() {
+// 댓글 유효성 검사
+	var comment = function() {
 		if (document.getElementById("commentContent").value == "") {
 			alert("댓글을 입력하세요");
 			document.getElementById("commentContent").focus();
 			return false;
 		}
-	};
-	
-	var recommand = function() {
-		if (document.getElementById("recommand").value == "") {
-			alert("댓글을 입력하세요");
-			document.getElementById("commentContent").focus();
-			return false;
-		}
+		return true;
 	};
 </script>	
 <style>
@@ -62,9 +56,9 @@ td {
 	
 	<!-- 테스트   -->
 
-	<div style="text-align: right;"><a href="#">추천수
+	<div style="text-align: right;">추천수
 				<span class="badge">${recomNum}</span>
-		</a></div>
+		</div>
 	
 	<hr>
 	<table id="musicDetail">
@@ -98,7 +92,7 @@ td {
 		method="post">
 		<input type="hidden" name="bucketId" value="1"> <input
 			type="text" placeholder="입력" name="contents" id="commentContent"><input
-			type="submit" value="쓰기">
+			type="submit" value="쓰기" onclick="comment(); return false;">
 	</form>
 	<br>
 	<br>

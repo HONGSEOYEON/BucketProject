@@ -183,9 +183,9 @@ public class BucketController {
 	// 댓글 등록
 	@RequestMapping("/commentRegist")
 	public String registComment (Comment comment) {
-		
 		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		comment.setRegistDate(today);
+		
 		 int registered = bucketService.registComment(comment);
 		 
 		 if(registered!=0) {
@@ -199,7 +199,7 @@ public class BucketController {
 	public String removeComment (String commentId) {
 		int removed = bucketService.removeComment(commentId);
 		if(removed!=0) {
-			return "redirect:/detailBucket";
+			return "redirect:detailBucket";
 		}
 		return "/WEB-INF/views/bucket/detailBucket.jsp";
 	}
@@ -215,11 +215,11 @@ public class BucketController {
 		/*HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");*/
 		// 댓글 조회
-		List<Comment> comments= bucketService.searchBucketComment("2");
+		List<Comment> comments= bucketService.searchBucketComment("1");
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
 		modelAndView.addObject("comments", comments);
 //		modelAndView.addObject("loginedUser", user.getUserId());
-		Bucket bucket = bucketService.searchBucket("2");
+		Bucket bucket = bucketService.searchBucket("1");
 		//추천수
 		modelAndView.addObject("recomNum", bucket.getRecomNum());
 		return modelAndView;
