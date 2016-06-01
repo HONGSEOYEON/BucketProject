@@ -9,12 +9,13 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -211,10 +212,10 @@ public class BucketController {
 	
 	// 댓글 삭제
 	@RequestMapping("/commentRemove")
-	public String removeComment (String commentId) {
+	public String removeComment (@RequestParam("commentId") String commentId, @RequestParam("bucketId") String bucketId, HttpServletRequest req) {
 		int removed = bucketService.removeComment(commentId);
 		if(removed!=0) {
-			return "redirect:detailBucket";
+			return "redirect:detailBucket?bucketId=" + bucketId;
 		}
 		return "/WEB-INF/views/bucket/detailBucket.jsp";
 	}

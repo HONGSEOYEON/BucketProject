@@ -38,7 +38,7 @@
 	
 	function bookmarkTest(){
 	    if(bookmark()){
-	        location.href = "${pageContext.request.contextPath}/registerKeepBucket?bucketId=1";
+	        location.href = "${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}";
 	        return true;
 	    } else {
 	        return false;
@@ -129,7 +129,7 @@ td {
 	${comment.writerId} 님의 댓글 :  ${comment.contents} 
 	<%-- <c:if test="${loginedUser != null}"> --%>
 		<a class="btn btn-xs btn-default"
-			href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}">삭제</a>
+			href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a>
 		<br>
 		<br>
 		<%-- </c:if> --%>
