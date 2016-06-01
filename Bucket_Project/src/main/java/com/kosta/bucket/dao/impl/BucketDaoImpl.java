@@ -61,13 +61,22 @@ public class BucketDaoImpl implements BucketDao {
 	
 	@Override
 	public List<Bucket> retrieveBucketByContents(String contents) {
-		return null;
+		SqlSession session = factory.openSession(true);
+		try {
+			return session.selectList("retrieveBucketByContents", contents);
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public List<Bucket> retrieveBucketByTitle(String title) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = factory.openSession(true);
+		try {
+			return session.selectList("retrieveBucketByTitle", title);
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
