@@ -89,8 +89,12 @@ public class BucketDaoImpl implements BucketDao {
 
 	@Override
 	public List<Bucket> retrieveBucketBestRecom() {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = factory.openSession(true);
+		try {
+			return session.selectList("retrieveBucket");
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
@@ -169,11 +173,15 @@ public class BucketDaoImpl implements BucketDao {
 		int result = 0;
 		try {
 			result = session.update("updateRecommand", bucketId);
-			session.commit();
-			return result;
+			if(result > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
 		} finally {
 			session.close();
 		}
+		return result;
 	}
 
 	@Override
@@ -182,11 +190,15 @@ public class BucketDaoImpl implements BucketDao {
 		int result = 0;
 		try {
 			result = session.update("updateAccuse", bucketId);
-			session.commit();
-			return result;
+			if(result > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
 		} finally {
 			session.close();
 		}
+		return result;
 	}
 
 	@Override
