@@ -40,7 +40,12 @@ public class KeepBucketController {
 		 * session.getAttribute("loginedUser");
 		 */
 		List<Bucket> keepBuckets = keepBucketService.searchKeepBucketList("seok");
-		ModelAndView modelAndView = new ModelAndView("/main/bookmarkBucket");
+		
+		for(Bucket keepBucket : keepBuckets) {
+			System.out.println(keepBucket.getTitle());
+		}
+		
+		ModelAndView modelAndView = new ModelAndView("main/bookmarkBucket");
 		// modelAndView.addObject("loginedUser", user.getUserId());
 		modelAndView.addObject("keepbuckets", keepBuckets);
 		return modelAndView;

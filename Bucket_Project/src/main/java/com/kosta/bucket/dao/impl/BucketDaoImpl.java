@@ -163,8 +163,13 @@ public class BucketDaoImpl implements BucketDao {
 
 	@Override
 	public List<Bucket> retrieveMyBucket(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = factory.openSession();
+		try {
+			List<Bucket> buckets = session.selectList("selectMyBuckets", userId);
+			return buckets;
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
