@@ -244,11 +244,11 @@ public class BucketController {
 		modelAndView.addObject("recomNum", bucket.getRecomNum());
 		return modelAndView;
 	}
-	
+	@RequestMapping("/myBucket")
 	public ModelAndView showMyBucketList(HttpSession session){
-		String userId = (String) session.getAttribute("userId");
-		List<Bucket> myBuckets = bucketService.searchMyBucket(userId);
-		ModelAndView mav = new ModelAndView("bucket/myBucket");
+//		String userId = (String) session.getAttribute("userId");
+		List<Bucket> myBuckets = bucketService.searchMyBucket("hong");
+		ModelAndView mav = new ModelAndView("main/myBucket");
 		mav.addObject("myBucketList", myBuckets);
 		return mav;
 	}
