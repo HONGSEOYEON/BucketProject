@@ -101,7 +101,7 @@ public class BucketController {
 	
 	// 이미지 후기 수정
 	@RequestMapping(value = "/modifyBucket" , method = RequestMethod.POST)
-	public ModelAndView modifyBucket (Bucket bucket, HttpServletRequest req, @RequestParam("file")MultipartFile file){
+	public String modifyBucket (Bucket bucket, HttpServletRequest req, @RequestParam("file")MultipartFile file){
 
 		if (!file.isEmpty()){
 			try {
@@ -139,11 +139,7 @@ public class BucketController {
 		//수정 시각은 저장하지 않는다.
 		//이미지 후기 수정
 		bucketService.modifyBucket(bucket);
-		ModelAndView mv = new ModelAndView("bucket/detailBucket");
-//		mv.addObject("loginedUser", bucket.getBucketId());
-		//수정된 이미지 후기를 다시 받아와 뷰에 저장
-		mv.addObject("bucket", bucketService.searchBucket(bucket.getBucketId()));
-		return mv;
+		return "redirect:detailBucket?bucketId=" + bucket.getBucketId();
 	}
 	
 	// 이미지 후기 삭제
