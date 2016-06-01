@@ -13,8 +13,8 @@
     <title>Carousel Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="${ctx }/src/resources/css/carousel.css" rel="stylesheet">
-	<link href="${ctx }/src/resources/css/carousel.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/carousel.css" rel="stylesheet">
 
   </head>
 <!-- NAVBAR
@@ -194,6 +194,6 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="${ctx }/src/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
   </body>
 </html>
