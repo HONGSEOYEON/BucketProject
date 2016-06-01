@@ -69,6 +69,7 @@
 	var clearForm = function() {
 		document.getElementById("formJoin").reset();
 	};
+	
 </script>
 </head>
 <body>
@@ -101,14 +102,14 @@
 				<div class="well">
 					<p>회원가입을 위해 아래 내용들을 작성해 주세요.</p>
 					<form class="form-horizontal" id="formJoin"
-						action="${pageContext.request.contextPath}/user/join.do"
+						action="${pageContext.request.contextPath}/user/join"
 						method="POST">
 						<fieldset>
 							<div class="form-group">
 								<label class="col-lg-2 control-label">아이디</label>
 
 								<div class="col-lg-10">
-									<input type="text" class="form-control" name="id"
+									<input type="text" class="form-control" name="userId"
 										id="iptLoginId" placeholder="아이디">
 								</div>
 								<div id="dplPrint"></div>
@@ -145,6 +146,7 @@
 										id="iptRePassword" placeholder="비밀번호 확인">
 								</div>
 							</div>
+							<input type="hidden" name="isManager" value="N"/>
 							<div class="form-group">
 								<div class="col-lg-10 col-lg-offset-2">
 									<button type="submit" class="btn btn-primary"
@@ -171,7 +173,7 @@
 			} else {
 				$.ajax({
 					type : "POST",
-					url : "${pageContext.request.contextPath}/user/checkId.do",
+					url : "${pageContext.request.contextPath}/user/checkId",
 					data : {
 						"loginId" : $("#iptLoginId").val()
 					},
