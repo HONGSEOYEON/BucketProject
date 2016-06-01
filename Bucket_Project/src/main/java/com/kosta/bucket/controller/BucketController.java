@@ -9,12 +9,13 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -160,16 +161,11 @@ public class BucketController {
 	
 	
 	@RequestMapping(value="/searchBucket", method = RequestMethod.POST)
-	public ModelAndView searchBucket(@Param("word") String word,@Param("sel") String sel) {
+	public ModelAndView searchBucket(@Param("word") String word) {
 		ModelAndView modelAndView = new ModelAndView("/main/main");
-		if("contents".equals(sel)){
 		List<Bucket> List1 = bucketService.searchBucketByContents(word);
+		List1.addAll(bucketService.searchBucketByTitle(word));
 		modelAndView.addObject("bucket1", List1);
-		} else if("title".equals(sel)){
-		List<Bucket> List2 = bucketService.searchBucketByTitle(sel);
-		modelAndView.addObject("bucket2", List2);
-		} else if("".equals(word)){
-		}
 		return modelAndView;
 	}
 	
@@ -209,17 +205,17 @@ public class BucketController {
 		comment.setRegistDate(today);
 		 int registered = bucketService.registComment(comment);
 		 if(registered!=0) {
-			 return "redirect:detailBucket";
+			 return "redirect:detailBucket?bucketId=" + comment.getBucketId();
 		 }
 		 return "/WEB-INF/views/bucket/detailBucket.jsp";
 	}
 	
 	// 댓글 삭제
 	@RequestMapping("/commentRemove")
-	public String removeComment (String commentId) {
+	public String removeComment (@RequestParam("commentId") String commentId, @RequestParam("bucketId") String bucketId, HttpServletRequest req) {
 		int removed = bucketService.removeComment(commentId);
 		if(removed!=0) {
-			return "redirect:detailBucket";
+			return "redirect:detailBucket?bucketId=" + bucketId;
 		}
 		return "/WEB-INF/views/bucket/detailBucket.jsp";
 	}

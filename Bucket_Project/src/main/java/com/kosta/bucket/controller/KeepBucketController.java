@@ -30,7 +30,7 @@ public class KeepBucketController {
 		/*String userId = (String) session.getAttribute("userId");*/
 		KeepBucket keepBucket = new KeepBucket(bucketId, "seok");
 		keepBucketService.registKeepBucket(keepBucket);
-		return "redirect:detailBucket";
+		return "redirect:detailBucket?bucketId=" + bucketId;
 	}
 
 	@RequestMapping("/showKeepBucket")
@@ -54,7 +54,7 @@ public class KeepBucketController {
 	@RequestMapping("/deleteKeepBucket")
 	public String removeKeepBucket(String bucketId, HttpSession session) {
 		/*String userId = (String) session.getAttribute("loginedUser");*/
-		KeepBucket keepBucket = new KeepBucket("1", "seok");
+		KeepBucket keepBucket = new KeepBucket(bucketId, "seok");
 		keepBucketService.removeKeepBucket(keepBucket);
 		return "redirect:showKeepBucket";
 	}

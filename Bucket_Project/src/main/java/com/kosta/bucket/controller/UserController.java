@@ -6,35 +6,37 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.User;
+import com.kosta.bucket.service.BucketService;
 import com.kosta.bucket.service.UserService;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private BucketService bucketService;
 
-	@RequestMapping(value = "/login", method=RequestMethod.POST)
-	public ModelAndView loginUser(User user, HttpServletRequest req, HttpSession session) {
+	@RequestMapping("/login")
+	public ModelAndView loginUser(HttpServletRequest req, HttpSession session) {
 
 		String id = (String) req.getParameter("loginId");
-		user = userService.searchUser(id);
-		if (user != null && user.getPassword().equals(req.getParameter("password"))) {
-
-			User loginedUser = userService.searchUser(user.getUserId());
-
+		User loginedUser = userService.searchUser(id);
+		
+		if (loginedUser != null && loginedUser.getPassword().equals(req.getParameter("password"))) {
+			
 			session.setAttribute("loginedUser", loginedUser);
 
+			System.out.println(loginedUser.getIsManager());
+			
 			ModelAndView model = new ModelAndView("redirect:/");
-			model.addObject("loginedUser", loginedUser);
 			return model;
 		}
+		
 		throw new RuntimeException("로그인 정보가 일치하지 않습니다.");
 	}
 
@@ -43,7 +45,7 @@ public class UserController {
 
 		session.invalidate();
 
-		return new ModelAndView("/main/main");
+		return new ModelAndView("redirect:/");
 	}
 
 	@RequestMapping("/join")
@@ -67,11 +69,11 @@ public class UserController {
 		User manager = userService.searchUser(managerId);
 		if("Y".equals(manager.getIsManager())) {
 			userService.removeUser(userId);
-			return new ModelAndView("/user/managerPage");
+			return new ModelAndView("redirect:/accusedAllBucket");
 		} else {
 			userService.removeUser(userId);
 			session.invalidate();
-			return new ModelAndView("/main/main");
+			return new ModelAndView("redirect:/");
 		}
 	}
 
@@ -83,41 +85,32 @@ public class UserController {
 		user.setPassword(req.getParameter("password"));
 		user.setUserName(req.getParameter("name"));
 
-//		System.out.println(req.getParameter("userId"));
-//		System.out.println(req.getParameter("email"));
-//		System.out.println(req.getParameter("password"));
-//		System.out.println(req.getParameter("name"));
-		
 		userService.modifyUser(user);
 
 		User loginedUser = userService.searchUser(user.getUserId());
 
 		session.setAttribute("loginedUser", loginedUser);
 
-		return new ModelAndView("/main/main").addObject("loginedUser", loginedUser);
+		return new ModelAndView("redirect:/");
 	}
 
-	@RequestMapping("/modify/showPage")
-	public ModelAndView showModifyPage(
-			HttpSession session/* , HttpServletRequest req */) {
+	@RequestMapping("showPageModify")
+	public ModelAndView showModifyPage(HttpSession session) {
 
 		User user = (User) session.getAttribute("loginedUser");
+		
+		session.setAttribute("beforeUser", user);
 
-		// req.setAttribute("userId", user.getUserId());
-		// req.setAttribute("password", user.getPassword());
-		// req.setAttribute("name", user.getUserName());
-		// req.setAttribute("email", user.getEmail());
-
-		return new ModelAndView("/user/modifyUser").addObject("beforeUser", user);
+		return new ModelAndView("redirect:/modify");
 	}
 
-	@RequestMapping("/login/showPage")
+	@RequestMapping("showPageLogin")
 	public ModelAndView showLoginPage() {
 
 		return new ModelAndView("/user/login");
 	}
 
-	@RequestMapping("/join/showPage")
+	@RequestMapping("showPageJoin")
 	public ModelAndView showJoinPage() {
 
 		return new ModelAndView("/user/join");

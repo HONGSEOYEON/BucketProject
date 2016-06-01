@@ -101,13 +101,14 @@
 
 </head>
 <body>
+<form action="searchBucket" method="post">
 <%@include file="/WEB-INF/views/header/header.jspf" %>
 	<div class="container">
 	<div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <div id="imaginary_container"> 
                 <div class="input-group stylish-input-group">
-                    <input type="text" class="form-control"  placeholder="Search" >
+                    <input type="text" class="form-control"  placeholder="검색어를 입력하세요" value="" name="word">
                     <span class="input-group-addon">
                         <button type="submit">
                             <span class="glyphicon glyphicon-search"></span>
@@ -117,8 +118,8 @@
             </div>
         </div>
 	</div>
-</div>
-          
+    </div>
+    </form>
 <!-- Reference: https://github.com/ashleydw/lightbox/ -->
 <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
 <div class="container mt40">
@@ -135,7 +136,7 @@
                 <div class="panel-footer">
                     <h4><a href="detailBucket?bucketId=${bucket.bucketId}" title="Nature Portfolio">${bucket.title }</a></h4>
                     <span class="pull-right">
-                        <i id="like1" class="glyphicon glyphicon-thumbs-up"><h6>${bucket.recomNum }</h6></i> <div id="like1-bs3"></div>
+                        <i id="like1" class="glyphicon glyphicon-thumbs-up"></i><h6>${bucket.recomNum }</h6> 
                     </span>
                 </div>
             </div>
@@ -143,32 +144,6 @@
 </c:forEach>
 </section>
 </div>
-	<%-- <c:forEach items="${bucket1 }" var="bucket">
-		<div>
-			<label><a href="detailBucket?bucketId=${bucket.bucketId}/">
-					<img
-					src="${pageContext.request.contextPath}/resources/img/${bucket.image }"
-					class="img-thumbnail">
-			</a></label>
-		</div>
-		<br>
-		<br>
-	</c:forEach> --%>
-	<!-- <div> -->
-		<%-- <c:forEach items="${bucket2 }" var="bucket">
-	<div>
-	<label><a href="detailBucket?bucketId=${bucket.bucketId}/">
-	<img src="${pageContext.request.contextPath}/resources/img/${bucket.image }" class="img-thumbnail">
-	</a></label>
-	</div><br><br>
-	<div>
-	<img src="..." alt="..." class="img-rounded">
-	<img src="..." alt="..." class="img-circle">
-	<img src="..." alt="..." class="img-thumbnail">
-	</div>
-
-</body>
-</c:forEach> --%>
 <!-- Progress Bar -->
         	<div class="col-md-4">
                   <div class="col-md-11">
@@ -177,7 +152,10 @@
                     </div>
                   </div>
                 </div>
-
+                
+                
+                
+<c:if test="${bucket2 ne null }">
 <div class="container mt40">
     <section class="row">
 <c:forEach items="${bucket2 }" var="bucket">
@@ -191,14 +169,13 @@
                 </div>
                 <div class="panel-footer">
                     <h4><a href="detailBucket?bucketId=${bucket.bucketId}" title="Nature Portfolio">${bucket.title }</a></h4>
-                    <span class="pull-right">
-                       <div id="like1-bs3"><h6>${bucket.registDate }</h6></i></div>
-                    </span>
+                       <div id="like1-bs3"><h6>${bucket.registDate }</h6></div>
                 </div>
             </div>
         </article>
 </c:forEach>
 </section>
 </div>
+</c:if>
 		</body>
 </html>
