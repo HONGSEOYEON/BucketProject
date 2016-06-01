@@ -34,15 +34,12 @@ public class KeepBucketController {
 	}
 
 	@RequestMapping("/showKeepBucket")
-	public ModelAndView showKeepBucketList(/*
-											 * String userId , HttpServletRequest
-											 * req
-											 */ ) {
+	public ModelAndView showKeepBucketList(/* * String userId , HttpServletRequest* req*/ ) {
 		/*
 		 * HttpSession session = req.getSession(); User user = (User)
 		 * session.getAttribute("loginedUser");
 		 */
-		List<Bucket> keepBuckets = keepBucketService.searchKeepBucketList("hong");
+		List<Bucket> keepBuckets = keepBucketService.searchKeepBucketList("jeong");
 		ModelAndView modelAndView = new ModelAndView("/main/bookmarkBucket");
 		// modelAndView.addObject("loginedUser", user.getUserId());
 		modelAndView.addObject("keepbuckets", keepBuckets);

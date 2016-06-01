@@ -185,7 +185,6 @@ public class BucketController {
 	public String registComment (Comment comment) {
 		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		comment.setRegistDate(today);
-		
 		 int registered = bucketService.registComment(comment);
 		 
 		 if(registered!=0) {
@@ -214,15 +213,18 @@ public class BucketController {
 		// 세션 아이디 가져오기
 		/*HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");*/
+		
 		// 댓글 조회
 		List<Comment> comments= bucketService.searchBucketComment("1");
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
-		modelAndView.addObject("comments", comments);
 //		modelAndView.addObject("loginedUser", user.getUserId());
+		
 		Bucket bucket = bucketService.searchBucket("1");
+		modelAndView.addObject("comments", comments);
+		modelAndView.addObject("bucket", bucket);
+		
 		//추천수
 		modelAndView.addObject("recomNum", bucket.getRecomNum());
-		modelAndView.addObject("bucket", bucket);
 		return modelAndView;
 	}
 	
