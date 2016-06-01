@@ -30,12 +30,8 @@ public class UserController {
 			User loginedUser = userService.searchUser(user.getUserId());
 
 			session.setAttribute("loginedUser", loginedUser);
-			/*session.setAttribute("password", loginedUser.getPassword());
-			session.setAttribute("name", loginedUser.getUserName());
-			session.setAttribute("email", loginedUser.getEmail());*/
-//			session.setAttribute("isManager", loginedUser.getIsManager());
 
-			ModelAndView model = new ModelAndView("/main/main");
+			ModelAndView model = new ModelAndView("redirect:/");
 			model.addObject("loginedUser", loginedUser);
 			return model;
 		}
@@ -59,15 +55,8 @@ public class UserController {
 		user.setUserName((String) req.getParameter("name"));
 		user.setIsManager((String) req.getParameter("isManager"));
 
-		 System.out.println(req.getParameter("userId"));
-		 System.out.println(req.getParameter("email"));
-		 System.out.println(req.getParameter("password"));
-		 System.out.println(req.getParameter("name"));
-		 System.out.println(req.getParameter("isManager"));
-
 		userService.registUser(user);
 
-//		return new ModelAndView("/user/login/showPage");
 		return new ModelAndView("/user/login");
 	}
 
@@ -112,7 +101,7 @@ public class UserController {
 	public ModelAndView showModifyPage(
 			HttpSession session/* , HttpServletRequest req */) {
 
-		User user = userService.searchUser((String) session.getAttribute("userId"));
+		User user = (User) session.getAttribute("loginedUser");
 
 		// req.setAttribute("userId", user.getUserId());
 		// req.setAttribute("password", user.getPassword());
