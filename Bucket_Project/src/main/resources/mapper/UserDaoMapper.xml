@@ -29,8 +29,8 @@ WHERE id = #{userId}
 <update id="updateUser" parameterType="User">
 UPDATE bucket_user
 SET name = #{userName},
-SET password = #{password},
-SET email = #{email}
+password = #{password},
+email = #{email}
 WHERE id = #{userId}
 </update>
 

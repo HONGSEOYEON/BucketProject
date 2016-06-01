@@ -80,7 +80,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
-					href="${pageContext.request.contextPath}/index.jsp">회원가입</a>
+					href="${pageContext.request.contextPath}/">메인 페이지로</a>
 			</div>
 		</div>
 	</div>
@@ -93,7 +93,7 @@
 			<div class="col-lg-12">
 
 				<div class="page-header">
-					<h2 id="container">회원 가입하기</h2>
+					<h2 id="container">회원 정보 수정</h2>
 				</div>
 				<div class="well">
 					<p>회원가입을 위해 아래 내용들을 작성해 주세요.</p>
@@ -106,7 +106,7 @@
 
 								<div class="col-lg-10">
 									<input type="text" class="form-control" name="userId"
-										id="iptLoginId" placeholder="아이디" readonly value="${beforeUser.userId}">
+										id="iptLoginId" value="${beforeUser.userId}" readonly>
 								</div>
 								<div id="dplPrint"></div>
 							</div>
@@ -115,7 +115,7 @@
 
 								<div class="col-lg-10">
 									<input type="text" class="form-control" name="name"
-										id="iptName" placeholder="이름" value="${beforeUser.name}">
+										id="iptName" placeholder="${beforeUser.userName}">
 								</div>
 							</div>
 							<div class="form-group">
@@ -123,7 +123,7 @@
 
 								<div class="col-lg-10">
 									<input type="text" class="form-control" name="email"
-										id="iptEmail" placeholder="이메일" value="${beforeUser.email}">
+										id="iptEmail" placeholder="${beforeUser.email}">
 								</div>
 							</div>
 							<div class="form-group">
@@ -131,7 +131,7 @@
 
 								<div class="col-lg-10">
 									<input type="password" class="form-control" name="password"
-										id="iptPassword" placeholder="비밀번호" value="${beforeUser.password}">
+										id="iptPassword" placeholder="${beforeUser.password}">
 								</div>
 							</div>
 							<div class="form-group">
@@ -139,7 +139,7 @@
 
 								<div class="col-lg-10">
 									<input type="password" class="form-control" name="rePassword"
-										id="iptRePassword" placeholder="비밀번호 확인" value="${beforeUser.password}">
+										id="iptRePassword" placeholder="${beforeUser.password}">
 								</div>
 							</div>
 							<input type="hidden" name="isManager" value="N"/>

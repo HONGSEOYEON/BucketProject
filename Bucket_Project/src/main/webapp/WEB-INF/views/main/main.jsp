@@ -30,7 +30,7 @@ div {
 
 </head>
 <body>
-
+	<%@include file="/WEB-INF/views/header/header.jspf"%>
 	<div class="form-group has-success has-feedback">
 		<label class="control-label sr-only" for="inputGroupSuccess4">Input
 			group with success</label>
@@ -51,7 +51,6 @@ div {
 	<img src="..." alt="..." class="img-circle">
 	<img src="..." alt="..." class="img-thumbnail">
 	</div>
-	
 
 </body>
 </html>

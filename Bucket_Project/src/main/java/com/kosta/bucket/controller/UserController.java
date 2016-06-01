@@ -86,6 +86,11 @@ public class UserController {
 		user.setPassword(req.getParameter("password"));
 		user.setUserName(req.getParameter("name"));
 
+//		System.out.println(req.getParameter("userId"));
+//		System.out.println(req.getParameter("email"));
+//		System.out.println(req.getParameter("password"));
+//		System.out.println(req.getParameter("name"));
+		
 		userService.modifyUser(user);
 
 		User loginedUser = userService.searchUser(user.getUserId());
@@ -106,7 +111,7 @@ public class UserController {
 		// req.setAttribute("name", user.getUserName());
 		// req.setAttribute("email", user.getEmail());
 
-		return new ModelAndView("/user/modify").addObject("beforeUser", user);
+		return new ModelAndView("/user/modifyUser").addObject("beforeUser", user);
 	}
 
 	@RequestMapping("/login/showPage")
