@@ -209,7 +209,7 @@ public class BucketController {
 		comment.setRegistDate(today);
 		 int registered = bucketService.registComment(comment);
 		 if(registered!=0) {
-			 return "redirect:detailBucket";
+			 return "redirect:detailBucket?bucketId=" + comment.getBucketId();
 		 }
 		 return "/WEB-INF/views/bucket/detailBucket.jsp";
 	}

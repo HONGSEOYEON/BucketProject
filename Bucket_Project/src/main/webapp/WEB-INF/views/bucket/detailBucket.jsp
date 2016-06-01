@@ -117,7 +117,7 @@ td {
 	<h5>댓글</h5>
 	<form action="${pageContext.request.contextPath}/commentRegist" method="post" id="commentForm">
 		<input type="hidden" name="writerId" value="seok">
-		<input type="hidden" name="bucketId" value="1"> 
+		<input type="hidden" name="bucketId" value=${bucket.bucketId} > 
 		<input type="text" placeholder="입력" name="contents" id="commentContent">
 			<input type="submit" value="쓰기" onclick="registComment(); return false;">
 	</form>
