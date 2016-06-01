@@ -194,7 +194,6 @@ public class BucketController {
 		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		comment.setRegistDate(today);
 		 int registered = bucketService.registComment(comment);
-		 
 		 if(registered!=0) {
 			 return "redirect:detailBucket";
 		 }
