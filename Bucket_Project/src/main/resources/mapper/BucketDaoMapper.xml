@@ -35,6 +35,7 @@
 		comments
 	</sql>
 
+
 	<select id="retrieveBucket" parameterType="string" resultMap="resultBucket">
 		<include refid="selectBucket" />
 		WHERE ID=#{bucketId}
@@ -47,7 +48,7 @@
 	</insert>
 
 	<delete id="deleteComment" parameterType="string">
-		DELETE FROM COMMENTS WHERE BUCKET_ID=#{bucketId}
+		DELETE FROM COMMENTS WHERE ID=#{commentId}
 	</delete>
 
 	<select id="selectBucketComment" parameterType="string"

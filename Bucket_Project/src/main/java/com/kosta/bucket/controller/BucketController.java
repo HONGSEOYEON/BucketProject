@@ -11,6 +11,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -146,10 +147,18 @@ public class BucketController {
 	}
 	
 	
-	
-	public ModelAndView searchBucket(String word) {
-		
-		return null;
+	@RequestMapping(value="/searchBucket", method = RequestMethod.POST)
+	public ModelAndView searchBucket(@Param("word") String word,@Param("sel") String sel) {
+		ModelAndView modelAndView = new ModelAndView("/main/main");
+		if("contents".equals(sel)){
+		List<Bucket> List1 = bucketService.searchBucketByContents(word);
+		modelAndView.addObject("bucket1", List1);
+		} else if("title".equals(sel)){
+		List<Bucket> List2 = bucketService.searchBucketByTitle(sel);
+		modelAndView.addObject("bucket2", List2);
+		} else if("".equals(word)){
+		}
+		return modelAndView;
 	}
 	
 	@RequestMapping("/accusedAllBucket")
@@ -190,7 +199,7 @@ public class BucketController {
 		 int registered = bucketService.registComment(comment);
 		 
 		 if(registered!=0) {
-			 return "redirect:detailBuket";
+			 return "redirect:detailBucket";
 		 }
 		 return "/WEB-INF/views/bucket/detailBucket.jsp";
 	}
@@ -200,7 +209,7 @@ public class BucketController {
 	public String removeComment (String commentId) {
 		int removed = bucketService.removeComment(commentId);
 		if(removed!=0) {
-			return "redirect:detailBuket";
+			return "redirect:/detailBucket";
 		}
 		return "/WEB-INF/views/bucket/detailBucket.jsp";
 	}
@@ -216,12 +225,11 @@ public class BucketController {
 		/*HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");*/
 		// 댓글 조회
-		List<Comment> comments= bucketService.searchBucketComment("1");
-		System.out.println("1");
+		List<Comment> comments= bucketService.searchBucketComment("2");
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
 		modelAndView.addObject("comments", comments);
 //		modelAndView.addObject("loginedUser", user.getUserId());
-		Bucket bucket = bucketService.searchBucket("1");
+		Bucket bucket = bucketService.searchBucket("2");
 		//추천수
 		modelAndView.addObject("recomNum", bucket.getRecomNum());
 		return modelAndView;
