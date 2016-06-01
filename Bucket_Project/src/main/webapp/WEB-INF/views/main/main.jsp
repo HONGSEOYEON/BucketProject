@@ -15,11 +15,16 @@
 body {
 	padding-top: 100px;
 	padding-left: 300px;
-	background-image: url("img/stardust.png");
+	background-image: url("resources/img/congruent_pentagon.png");
 }
 
 div {
 	width: 1000px;
+}
+.imgAlbum {
+	width: 80px;
+	height: 80px;
+	margin-right: 10px;
 }
 </style>
 
@@ -37,7 +42,7 @@ div {
 	</div>
 
 	<div>
-	<img src="..." alt="..." class="img-rounded">
+	<img src="..." alt="..." class="img-rounded" class="imgAlbum">
 	<img src="..." alt="..." class="img-circle">
 	<img src="..." alt="..." class="img-thumbnail">
 	</div><br><br>

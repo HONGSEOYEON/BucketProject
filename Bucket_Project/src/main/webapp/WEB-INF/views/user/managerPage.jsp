@@ -16,7 +16,7 @@
 body {
 	padding-top : 100px;
 	padding-left : 330px;
-	background-image: url("img/stardust.png");
+	background-image: url("resources/img/congruent_pentagon.png");
 }
 
 h1 {
@@ -28,6 +28,7 @@ thead th {
 	width: 200px;
 	border-radius: 4px;
 }
+
 
 /* .ranking {
 	text-align: center;
@@ -74,6 +75,7 @@ table {
  tbody td {
 	width: 200px;
 	text-align: center;
+	background-color: window;
 }
 tbody tr {
 	height: auto;
