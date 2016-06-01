@@ -108,7 +108,7 @@ td {
 	${comment.writerId} 님의 댓글 :  ${comment.contents} 
 	<%-- <c:if test="${loginedUser != null}"> --%>
 		<a class="btn btn-xs btn-default"
-			href="${pageContext.request.contextPath}/commentRemove?commentId=${commentId}">삭제</a>
+			href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}">삭제</a>
 		<br>
 		<br>
 		<%-- </c:if> --%>
