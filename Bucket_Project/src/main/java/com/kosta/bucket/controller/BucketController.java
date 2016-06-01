@@ -208,6 +208,7 @@ public class BucketController {
 		return null;
 	}
 	
+	// 상세 페이지 
 	@RequestMapping(value="/detailBucket")
 	public ModelAndView showDetailBucket(/*String bucketId, HttpServletRequest req*/) {
 		// 세션 아이디 가져오기

@@ -27,8 +27,8 @@ public class KeepBucketServiceLogic implements KeepBucketService {
 	}
 
 	@Override
-	public int removeKeepBucket(String bucketId) {
-		return keepBucketDao.deleteKeepBucket(bucketId);
+	public int removeKeepBucket(KeepBucket keepBucket) {
+		return keepBucketDao.deleteKeepBucket(keepBucket);
 	}
 
 }

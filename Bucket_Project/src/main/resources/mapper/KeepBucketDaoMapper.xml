@@ -33,12 +33,14 @@ ON A.ID = B.BUCKET_ID
 WHERE B.USER_ID=#{userId}
 </select>
 
-<delete id="deleteKeepBucket" parameterType="string">
-DELETE FROM BOOKMARK WHERE BUCKET_ID=#{bucketId}
+<delete id="deleteKeepBucket" parameterType="KeepBucket">
+DELETE FROM BOOKMARK 
+WHERE BUCKET_ID=#{bucketId}
+AND USER_ID=#{userId}
 </delete>
 
 <insert id="insertKeepBucket" parameterType="KeepBucket">
-INSERT INTO bookmark (BUCKET_ID, USER_ID)
+INSERT INTO BOOKMARK(BUCKET_ID, USER_ID)
 VALUES (#{bucketId},#{userId})
 </insert>
 
