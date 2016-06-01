@@ -14,15 +14,22 @@
 
 <style type="text/css">
 body {
-	padding: 300px;
+	padding-top : 100px;
+	padding-left : 330px;
+	background-image: url("img/stardust.png");
 }
 
 h1 {
 	font-weight: bold;
-	color: #A0B0DB;
+	color:  #5bc0de;
 }
 
-.ranking {
+thead th {
+	width: 200px;
+	border-radius: 4px;
+}
+
+/* .ranking {
 	text-align: center;
 	font-size: 28pt;
 }
@@ -46,9 +53,9 @@ h1 {
 
 .btnPlay {
 	margin-top: 40%
-}
-
-div.wrap {
+} */
+ 
+ div.wrap {
 	position: relative;
 	padding-top: 30px;
 	width: 850px;
@@ -60,44 +67,47 @@ div.wrap>div {
 	height: 300px;
 	overflow: auto;
 }
-
+ 
 table {
 	width: 800px
 }
-
-thead tr {
-	position: absolute;
-	top: 0;
-	display: block;
-	background-color: #337ab7;
-	width: 800px;
-	height: 30px;
-}
-
-thead th {
-	width: 200px;
-	border-radius: 4px;
-}
-
-tbody {
-	display: block;
-	height: 300px;
-}
-
-tbody tr {
-	height: auto;
-}
-
-tbody td {
+ tbody td {
 	width: 200px;
 	text-align: center;
+}
+tbody tr {
+	height: auto;
 }
 </style>
 </head>
 <body>
+	<h1>신고된 게시물 목록</h1>
 	<div class="wrap">
 		<div>
-			<table>
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th class="active">ID</th>
+						<th class="success">이미지후기 제목</th>
+						<th class="warning">신고수</th>
+						<th class="danger">탈퇴</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${accusedBucketList}" var="accuseBucket"
+						varStatus="vs">
+
+						<tr class="info">
+							<td>${accuseBucket.bucketId}</td>
+
+							<td>${accuseBucket.title}</td>
+							<td>${accuseBucket.accuseNum}</td>
+							<td><button type="submit" class="btn btn-danger">탈퇴</button></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<%-- <table>
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -107,18 +117,19 @@ tbody td {
 
 
 						<!-- 테스트  -->
-								
-								
-								
-								
-								
+
+
+
+
+
 						<!-- 테스트  -->
 
 					</tr>
 				</thead>
 				<tbody>
 
-					<c:forEach items="${accusedBucketList}" var="accuseBucket" varStatus="vs">
+					<c:forEach items="${accusedBucketList}" var="accuseBucket"
+						varStatus="vs">
 
 						<tr>
 							<td>${accuseBucket.bucketId}</td>
@@ -132,7 +143,7 @@ tbody td {
 
 
 				</tbody>
-			</table>
+			</table> --%>
 		</div>
 	</div>
 </body>
