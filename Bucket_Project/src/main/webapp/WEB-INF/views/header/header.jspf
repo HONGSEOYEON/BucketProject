@@ -2,23 +2,24 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx">${pageContext.request.contextPath}</c:set>
-<div style="position: relative; right: 200px;">
+<div style="position: relative; right: 200px; top: 50px;">
 <c:choose>
-	<c:when test="${loginedUser ne null}">
-	<c:if test="${loginedUser.isManager eq Y}">
-	<div style="text-align:right">
-	<b>${loginedUser.userId}</b> 님!! 환영합니다. [<a href="${ctx}/main/management">사용자 관리</a>] [<a href="${ctx}/user/logout">로그아웃</a>]
-	</div>
-	</c:if>
-		<div style="text-align:right">
-		<a href="showPageModify"><b>${loginedUser.userId}</b></a> 님!! 환영합니다. [<a href="logout">로그아웃</a>] <br>
-		[<a href="${ctx}/main/keepBucketList">마이 이미지 후기</a>] [<a href="${ctx}/showKeepBucket">내가 담은 이미지 후기</a>] [<a href="${ctx}/main/registBucket">이미지 후기 등록</a>]
-		</div>
- 	</c:when>
- 	<c:otherwise>
+
+	<c:when test="${loginedUser eq null}">
 	<div style="text-align:right">
 		<a href="showPageLogin">로그인</a> | <a href="showPageJoin">회원가입</a>
 	</div>
-	</c:otherwise>
+	</c:when>
+	<c:when test="${loginedUser ne null and loginedUser.isManager eq 'N'}">
+		<div style="text-align:right">
+		<a href="showPageModify"><b>${loginedUser.userId}</b></a> 님!! 환영합니다. [<a href="logout">로그아웃</a>] <br>
+		[<a href="myBucket">마이 이미지 후기</a>] [<a href="showKeepBucket">내가 담은 이미지 후기</a>] [<a href="registBucket">이미지 후기 등록</a>]
+		</div>
+ 	</c:when>
+	<c:when test="${loginedUser ne null and loginedUser.isManager eq 'Y'}">
+	<div style="text-align:right">
+		<b>${loginedUser.userId}</b> 님!! 환영합니다. [<a href="accusedAllBucket">사용자 관리</a>] [<a href="logout">로그아웃</a>]
+	</div>
+ 	</c:when>
 </c:choose>
 </div>
