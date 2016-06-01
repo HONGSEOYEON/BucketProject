@@ -76,9 +76,7 @@
 	<update id="updateBucket" parameterType="Bucket">
 		UPDATE bucket
 		SET TITLE =
-		#{title}, IMAGE = #{image}, CONTENTS = #{contents}, REG_DATE
-		=
-		#{registDate}
+		#{title}, IMAGE = #{image}, CONTENTS = #{contents}
 		WHERE ID = #{bucketId}
 	</update>
 

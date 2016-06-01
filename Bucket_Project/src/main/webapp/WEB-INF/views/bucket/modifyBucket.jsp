@@ -25,7 +25,7 @@
 		return true;
 	};
 
-	var join = function() {
+	var modify = function() {
 		if (validate()) {
 			document.getElementById("modifyBucket").submit();
 		}
@@ -56,7 +56,7 @@
 			<button type="button" class="btn" style="float: right"
 				onclick="javascript:history.back()">취소</button>
 			<button type="submit" class="btn" style="float: right"
-				onclick="join(); return false;">게시</button>
+				onclick="modify(); return false;">게시</button>
 				</td>
 				</tr>
 			</table>

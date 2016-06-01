@@ -29,6 +29,13 @@ public class BucketController {
 	@Autowired
 	private BucketService bucketService;
 	
+	// 이미지 후기 등록페이지 출력
+	@RequestMapping(value = "/registBucket", method = RequestMethod.GET)
+	public ModelAndView showRegistBucket(){
+		
+		ModelAndView mv = new ModelAndView("bucket/registBucket");
+		return mv;
+	}
 	
 	//이미지 후기 등록
 	@RequestMapping(value = "/registBucket", method = RequestMethod.POST)

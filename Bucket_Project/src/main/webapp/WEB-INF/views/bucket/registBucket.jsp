@@ -37,26 +37,25 @@
 	<div class="contents">
 		<form action="${ctx}/registBucket" method="post" id="registBucket"
 			enctype="multipart/form-data">
-			<input type="hidden" name="writerId" value="${bucket.writerId}"/>
-				<input type="hidden" name="bucketId" value="${bucket.bucketId}"/>
+			<input type="hidden" name="writerId" value="${param.userId}"/>
 			<table width="1000px" height="300px" border="1">
 				<tr>
 					<td align="center">이미지 후기 <input type="file" id="image" name="file"/></td>
 				</tr>
 				<tr>
 					<td align="center">제목 <input type="text" id="title"
-						name="title" value="${bucket.title}"/></td>
+						name="title"/></td>
 				</tr>
 				<tr>
 					<td align="center">후기<br>
-					<textarea name="contents" cols="100" rows="20">${bucket.contents}</textarea></td>
+					<textarea name="contents" cols="100" rows="20"/></td>
 				</tr>
 				<tr>
 				<td>
 			<button type="button" class="btn" style="float: right"
 				onclick="javascript:history.back()">취소</button>
 			<button type="submit" class="btn" style="float: right"
-				onclick="join(); return false;">게시</button>
+				onclick="regist(); return false;">게시</button>
 				</td>
 				</tr>
 			</table>
