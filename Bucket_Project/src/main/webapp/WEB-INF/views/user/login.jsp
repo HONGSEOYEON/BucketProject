@@ -84,7 +84,7 @@
         <input type="password" class="form-control" id="inputPassword" name="password" placeholder="비밀번호">
         <div class="row form-btn">
             <button class="btn btn-large btn-warning" type="submit">로그인</button>
-            <button class="btn btn-large btn-default" onclick="#">취소</button>
+            <button class="btn btn-large btn-default" onclick="location:href='${pageContext.request.contextPath}/main/main'">취소</button>
         </div>
     </form>
    

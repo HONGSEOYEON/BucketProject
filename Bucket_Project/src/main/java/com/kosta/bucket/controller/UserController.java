@@ -1,14 +1,12 @@
 package com.kosta.bucket.controller;
 
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.User;
@@ -23,21 +21,22 @@ public class UserController {
 
 	@RequestMapping("/login")
 	public ModelAndView loginUser(User user, HttpServletRequest req, HttpSession session) {
-		
+
 		String id = (String) req.getParameter("loginId");
 		user = userService.searchUser(id);
 		if (user != null && user.getPassword().equals(req.getParameter("password"))) {
 
 			User loginedUser = userService.searchUser(user.getUserId());
-			
+
 			session.setAttribute("userId", loginedUser.getUserId());
 			session.setAttribute("password", loginedUser.getPassword());
 			session.setAttribute("name", loginedUser.getUserName());
 			session.setAttribute("email", loginedUser.getEmail());
-			
-			return new ModelAndView("/main").addObject("loginedUser", loginedUser);
+//			session.setAttribute("isManager", loginedUser.getIsManager());
+
+			return new ModelAndView("/main/main").addObject("loginedUser", loginedUser);
 		}
-		throw new RuntimeException("濡쒓렇�씤 �젙蹂닿� �씪移섑븯吏� �븡�뒿�땲�떎.");
+		throw new RuntimeException("로그인 정보가 일치하지 않습니다.");
 	}
 
 	@RequestMapping("/logout")
@@ -45,43 +44,43 @@ public class UserController {
 
 		session.invalidate();
 
-		return new ModelAndView("/main");
+		return new ModelAndView("/main/main");
 	}
 
 	@RequestMapping("/join")
-	public ModelAndView joinUser(User user, HttpServletRequest req, HttpSession session) {
+	public ModelAndView joinUser(User user, HttpServletRequest req) {
+		
+		user.setUserId((String) req.getParameter("userId"));
+		user.setEmail((String) req.getParameter("email"));
+		user.setPassword((String) req.getParameter("password"));
+		user.setUserName((String) req.getParameter("name"));
+		user.setIsManager((String) req.getParameter("isManager"));
 
-		user.setUserId((String) session.getAttribute("userId"));
-		user.setEmail((String) session.getAttribute("email"));
-		user.setPassword((String) session.getAttribute("password"));
-		user.setUserName((String) session.getAttribute("name"));
+		 System.out.println(req.getParameter("userId"));
+		 System.out.println(req.getParameter("email"));
+		 System.out.println(req.getParameter("password"));
+		 System.out.println(req.getParameter("name"));
+		 System.out.println(req.getParameter("isManager"));
 
-		if (user.getUserId().equals(userService.searchUser(user.getUserId()).getUserId())) {
-			throw new RuntimeException("以묐났�맂 �븘�씠�뵒 �엯�땲�떎");
-		}
-		if (user.getEmail().equals(userService.searchUser(user.getUserId()).getEmail())) {
-			throw new RuntimeException("以묐났�맂 �씠硫붿씪 �엯�땲�떎");
-		} else {
-			userService.registUser(user);
+		userService.registUser(user);
 
-			return new ModelAndView("/user/login/showPage");
-		}
+//		return new ModelAndView("/user/login/showPage");
+		return new ModelAndView("/user/login");
 	}
 
 	@RequestMapping("/drop")
 	public ModelAndView removeUser(String userId, HttpSession session) {
 
-		// �옄�쓽濡� �깉�눜�븯�뒗 �떆���뒪媛� �뾾�뼱 留섎�濡� return 媛믪쑝濡� userId 諛쏆븘���빞 �떎�뻾�릺�룄濡� 援ы쁽�븯�뒗以�..
 		userService.removeUser(userId);
 
-//		session.invalidate();
+		// session.invalidate();
 
-		return new ModelAndView("/main");
+		return new ModelAndView("/main/main");
 	}
 
 	@RequestMapping("/modify")
 	public ModelAndView modifyUser(User user, HttpSession session, HttpServletRequest req) {
-		
+
 		user.setUserId(req.getParameter("userId"));
 		user.setEmail(req.getParameter("email"));
 		user.setPassword(req.getParameter("password"));
@@ -91,18 +90,21 @@ public class UserController {
 
 		User loginedUser = userService.searchUser(user.getUserId());
 
-		return new ModelAndView("/main").addObject("loginedUser", loginedUser);
+		session.setAttribute("loginedUser", loginedUser);
+
+		return new ModelAndView("/main/main").addObject("loginedUser", loginedUser);
 	}
 
 	@RequestMapping("/modify/showPage")
-	public ModelAndView showModifyPage(HttpSession session/*, HttpServletRequest req*/) {
+	public ModelAndView showModifyPage(
+			HttpSession session/* , HttpServletRequest req */) {
 
 		User user = userService.searchUser((String) session.getAttribute("userId"));
-		
-//		req.setAttribute("userId", user.getUserId());
-//		req.setAttribute("password", user.getPassword());
-//		req.setAttribute("name", user.getUserName());
-//		req.setAttribute("email", user.getEmail());
+
+		// req.setAttribute("userId", user.getUserId());
+		// req.setAttribute("password", user.getPassword());
+		// req.setAttribute("name", user.getUserName());
+		// req.setAttribute("email", user.getEmail());
 
 		return new ModelAndView("/user/modify").addObject("beforeUser", user);
 	}
@@ -117,5 +119,16 @@ public class UserController {
 	public ModelAndView showJoinPage() {
 
 		return new ModelAndView("/user/join");
+	}
+	
+	@RequestMapping("/checkId")
+	public @ResponseBody String checkId(String loginId) {
+		boolean result = userService.checkId(loginId);
+		
+		if(result) {
+			return "true";
+		}
+		
+		return "false";
 	}
 }

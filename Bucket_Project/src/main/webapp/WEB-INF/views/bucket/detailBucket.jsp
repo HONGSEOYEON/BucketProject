@@ -13,26 +13,33 @@
 	rel="stylesheet">
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
-	var check = function() {
+// 댓글 유효성 검사
+	var comment = function() {
 		if (document.getElementById("commentContent").value == "") {
 			alert("댓글을 입력하세요");
 			document.getElementById("commentContent").focus();
 			return false;
 		}
+		else {
+		return true;
+		}
 	};
 	
-	var recommand = function() {
-		if (document.getElementById("recommand").value == "") {
-			alert("댓글을 입력하세요");
-			document.getElementById("commentContent").focus();
-			return false;
+	var registComment = function() {
+		if (comment()) {
+			document.getElementById("commentForm").submit();
 		}
+	};
+	
+	var bookmark = function() {
+			alert("버킷을 담았습니다!");
+		return true;
 	};
 </script>	
 <style>
 body {
 	padding: 10% 30%;
-	background-image: url("resources/img/congruent_pentagon.png");
+	/* background-image: url("resources/img/back.png"); */
 }
 
 td {
@@ -43,13 +50,18 @@ td {
 	width: 100%;
 }
 
+.imgAlbum {
+	width: 600px;
+	height: 600px;
+}
+
 
 </style>
 </head>
 <body>
-	<h1>이미지 후기 상세페이지</h1>
+	<h1>${bucket.title}</h1>
 	<div style="text-align: left;">
-		<a class="btn btn-xs btn-info" href="${pageContext.request.contextPath}/registerKeepBucket?bucketId='1'  ">담기</a>&nbsp; 
+		<a class="btn btn-xs btn-info"  onclick="bookmark(); return false;" href="${pageContext.request.contextPath}/registerKeepBucket?bucketId='1'  ">담기</a>&nbsp; 
 		<a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand">추천</a>&nbsp; 
 		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="btn btn-xs btn-default" href="#">수정</a>&nbsp; <a
@@ -62,9 +74,9 @@ td {
 	
 	<!-- 테스트   -->
 
-	<div style="text-align: right;"><a href="#">추천수
+	<div style="text-align: right;">추천수
 				<span class="badge">${recomNum}</span>
-		</a></div>
+		</div>
 	
 	<hr>
 	<table id="musicDetail">
@@ -73,7 +85,7 @@ td {
 			<col width="*">
 		</colgroup>
 		<tr>
-			<td><img src="resources/img/${music.image}" width="180px"></td>
+			<td><img src="resources/img/${bucket.image}" width="180px" class="imgAlbum"></td>
 		</tr>
 		<tr>
 			<td>
@@ -83,8 +95,8 @@ td {
 						<col width="*">
 					</colgroup>
 					<tr>
-						<th>내용</th>
-						<td>${music.name}</td>
+						<th>후기</th>
+						<td>${bucket.contents}</td>
 					</tr>
 				</table>
 			</td>
@@ -93,12 +105,11 @@ td {
 	</table>
 	<br>
 	<h5>댓글</h5>
-	<form
-		action="${pageContext.request.contextPath}/commentRegist?writerId='seok' "
-		method="post">
-		<input type="hidden" name="bucketId" value="1"> <input
-			type="text" placeholder="입력" name="contents" id="commentContent"><input
-			type="submit" value="쓰기">
+	<form action="${pageContext.request.contextPath}/commentRegist" method="post" id="commentForm">
+		<input type="hidden" name="writerId" value="seok">
+		<input type="hidden" name="bucketId" value="1"> 
+		<input type="text" placeholder="입력" name="contents" id="commentContent">
+			<input type="submit" value="쓰기" onclick="registComment(); return false;">
 	</form>
 	<br>
 	<br>

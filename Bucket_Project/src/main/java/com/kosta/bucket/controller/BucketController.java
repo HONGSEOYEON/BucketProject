@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
@@ -30,6 +31,13 @@ public class BucketController {
 	@Autowired
 	private BucketService bucketService;
 	
+	// 이미지 후기 등록페이지 출력
+	@RequestMapping(value = "/registBucket", method = RequestMethod.GET)
+	public ModelAndView showRegistBucket(){
+		
+		ModelAndView mv = new ModelAndView("bucket/registBucket");
+		return mv;
+	}
 	
 	//이미지 후기 등록
 	@RequestMapping(value = "/registBucket", method = RequestMethod.POST)
@@ -39,7 +47,7 @@ public class BucketController {
 			try {
 				byte[] bytes=file.getBytes();
 				// rootPath는 /Bucket_Project/src/main/webapp/WEB-INF/resources를 의미
-				String rootPath = req.getSession().getServletContext().getRealPath("/resources");
+				String rootPath = new HttpServletRequestWrapper(req).getRealPath("/resources");
 				// 파일 이름을 받아온다.
 				String fileName = file.getOriginalFilename();
 				System.out.println(fileName);
@@ -75,7 +83,7 @@ public class BucketController {
 		bucketService.registBucket(bucket);
 		
 		//등록이 끝난 후 메인 페이지로 이동
-		return "redirect:main/main";
+		return "redirect:/";
 	}
 	
 	// 이미지 후기 수정페이지 출력
@@ -193,7 +201,6 @@ public class BucketController {
 	// 댓글 등록
 	@RequestMapping("/commentRegist")
 	public String registComment (Comment comment) {
-		
 		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		comment.setRegistDate(today);
 		 int registered = bucketService.registComment(comment);
@@ -209,7 +216,7 @@ public class BucketController {
 	public String removeComment (String commentId) {
 		int removed = bucketService.removeComment(commentId);
 		if(removed!=0) {
-			return "redirect:/detailBucket";
+			return "redirect:detailBucket";
 		}
 		return "/WEB-INF/views/bucket/detailBucket.jsp";
 	}
@@ -224,12 +231,16 @@ public class BucketController {
 		// 세션 아이디 가져오기
 		/*HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");*/
+		
 		// 댓글 조회
-		List<Comment> comments= bucketService.searchBucketComment("2");
+		List<Comment> comments= bucketService.searchBucketComment("1");
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
-		modelAndView.addObject("comments", comments);
 //		modelAndView.addObject("loginedUser", user.getUserId());
-		Bucket bucket = bucketService.searchBucket("2");
+		
+		Bucket bucket = bucketService.searchBucket("1");
+		modelAndView.addObject("comments", comments);
+		modelAndView.addObject("bucket", bucket);
+		
 		//추천수
 		modelAndView.addObject("recomNum", bucket.getRecomNum());
 		return modelAndView;
@@ -242,3 +253,11 @@ public class BucketController {
 	}
 	
 }
+
+		
+		
+		
+		
+		
+		
+		
