@@ -91,11 +91,6 @@ td {
 			class="btn btn-xs btn-default" href="#">삭제</a>&nbsp;
 	</div>
 
-	<!-- 테스트   -->
-
-
-
-	<!-- 테스트   -->
 
 	<div style="text-align: right;">
 		추천수 <span class="badge">${recomNum}</span>
@@ -131,25 +126,23 @@ td {
 	<h5>댓글</h5>
 	<form action="${pageContext.request.contextPath}/commentRegist"
 		method="post" id="commentForm">
-		<input type="hidden" name="writerId" value="seok"> <input
-			type="hidden" name="bucketId" value=${bucket.bucketId} > <input
-			type="text" placeholder="입력" name="contents" id="commentContent">
-		<input type="submit" value="쓰기"
-			onclick="registComment(); return false;">
+		<input type="hidden" name="writerId" value=${loginedUser}> 
+		<input type="hidden" name="bucketId" value=${bucket.bucketId} > 
+		<input type="text" placeholder="입력" name="contents" id="commentContent">
+		<input type="submit" value="쓰기" onclick="registComment(); return false;">
 	</form>
 	<br>
 	<br>
-
-	<%-- </c:if> --%>
+	
+	<table>
 	<c:forEach items="${comments}" var="comment" varStatus="sts">
-	${comment.writerId} 님의 댓글 :  ${comment.contents} 
-	<%-- <c:if test="${loginedUser != null}"> --%>
-		<a class="btn btn-xs btn-default"
-			href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a>
-		<br>
-		<br>
-		<%-- </c:if> --%>
+	<tr>
+		${comment.writerId} 님의 댓글 :  ${comment.contents} 
+		<c:if test="${loginedUser != null && comment.writerId == loginedUser}">
+		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a>
+		</c:if>
+	</tr><br>
 	</c:forEach>
-
+	</table>
 </body>
 </html>

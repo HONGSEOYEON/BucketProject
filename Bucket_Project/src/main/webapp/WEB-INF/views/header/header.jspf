@@ -12,7 +12,7 @@
 	</c:if>
 		<div style="text-align:right">
 		<a href="showPageModify"><b>${loginedUser.userId}</b></a> 님!! 환영합니다. [<a href="logout">로그아웃</a>] <br>
-		[<a href="${ctx}/main/keepBucketList">마이 이미지 후기</a>] [<a href="${ctx}/main/myBucketList">내가 담은 이미지 후기</a>] [<a href="${ctx}/main/registBucket">이미지 후기 등록</a>]
+		[<a href="${ctx}/main/keepBucketList">마이 이미지 후기</a>] [<a href="${ctx}/showKeepBucket">내가 담은 이미지 후기</a>] [<a href="${ctx}/main/registBucket">이미지 후기 등록</a>]
 		</div>
  	</c:when>
  	<c:otherwise>

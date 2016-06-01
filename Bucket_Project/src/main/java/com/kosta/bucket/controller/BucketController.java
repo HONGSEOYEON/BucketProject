@@ -22,9 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.Bucket;
 import com.kosta.bucket.entity.Comment;
-import com.kosta.bucket.entity.KeepBucket;
+import com.kosta.bucket.entity.User;
 import com.kosta.bucket.service.BucketService;
-import com.kosta.bucket.service.KeepBucketService;
 
 @Controller
 public class BucketController {
@@ -180,22 +179,22 @@ public class BucketController {
 	
 	@RequestMapping("/recommand")
 	public String registRecommand(String bucketId, HttpServletRequest req) {
-		/*HttpSession session = req.getSession();
+		HttpSession session = req.getSession();
 		if(session == null || session.getAttribute("loginedUser") == null) {
 			return "redirect:login";
-		}*/
-		/*User user = (User)session.getAttribute("loginedUser");*/
-		bucketService.registRecommand("1");
+		}
+		User user = (User)session.getAttribute("loginedUser");
+		bucketService.registRecommand(bucketId);
 		return "redirect:detailBucket";
 	}
 	@RequestMapping("/accuse")
 	public String registAccuse(String bucketId, HttpServletRequest req) {
-	/*	HttpSession session = req.getSession();
+	HttpSession session = req.getSession();
 		if(session == null || session.getAttribute("loginedUser") == null) {
 			return "redirect:login";
-		}*/
-		/*User user = (User)session.getAttribute("loginedUser");*/
-		bucketService.registAccuse("1");
+		}
+		User user = (User)session.getAttribute("loginedUser");
+		bucketService.registAccuse(bucketId);
 		return "redirect:detailBucket";
 	}
 	 
@@ -227,15 +226,15 @@ public class BucketController {
 	
 	// 상세 페이지 
 	@RequestMapping(value="/detailBucket")
-	public ModelAndView showDetailBucket(String bucketId/*, HttpServletRequest req*/) {
+	public ModelAndView showDetailBucket(String bucketId, HttpServletRequest req) {
 		// 세션 아이디 가져오기
-		/*HttpSession session = req.getSession();
-		User user = (User) session.getAttribute("loginedUser");*/
+		HttpSession session = req.getSession();
+		User user = (User) session.getAttribute("loginedUser");
 		
 		// 댓글 조회
 		List<Comment> comments= bucketService.searchBucketComment(bucketId);
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
-//		modelAndView.addObject("loginedUser", user.getUserId());
+		modelAndView.addObject("loginedUser", user.getUserId());
 		
 		Bucket bucket = bucketService.searchBucket(bucketId);
 		modelAndView.addObject("comments", comments);

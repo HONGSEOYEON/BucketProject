@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.Bucket;
 import com.kosta.bucket.entity.KeepBucket;
+import com.kosta.bucket.entity.User;
 import com.kosta.bucket.service.BucketService;
 import com.kosta.bucket.service.KeepBucketService;
 
@@ -27,34 +28,34 @@ public class KeepBucketController {
 
 	@RequestMapping("/registerKeepBucket")
 	public String registerKeepBucket(HttpSession session, @RequestParam("bucketId") String bucketId) {
-		/*String userId = (String) session.getAttribute("userId");*/
-		KeepBucket keepBucket = new KeepBucket(bucketId, "seok");
+		User user = (User)session.getAttribute("loginedUser");
+		KeepBucket keepBucket = new KeepBucket(bucketId, user.getUserId());
 		keepBucketService.registKeepBucket(keepBucket);
 		return "redirect:detailBucket?bucketId=" + bucketId;
 	}
 
 	@RequestMapping("/showKeepBucket")
-	public ModelAndView showKeepBucketList(/* * String userId , HttpServletRequest* req*/ ) {
-		/*
-		 * HttpSession session = req.getSession(); User user = (User)
-		 * session.getAttribute("loginedUser");
-		 */
-		List<Bucket> keepBuckets = keepBucketService.searchKeepBucketList("seok");
+	public ModelAndView showKeepBucketList(String userId , HttpServletRequest req) {
+		
+		 HttpSession session = req.getSession(); 
+		 User user = (User)session.getAttribute("loginedUser");
+		
+		List<Bucket> keepBuckets = keepBucketService.searchKeepBucketList(user.getUserId());
 		
 		for(Bucket keepBucket : keepBuckets) {
 			System.out.println(keepBucket.getTitle());
 		}
 		
 		ModelAndView modelAndView = new ModelAndView("main/bookmarkBucket");
-		// modelAndView.addObject("loginedUser", user.getUserId());
+		modelAndView.addObject("loginedUser", user.getUserId());
 		modelAndView.addObject("keepbuckets", keepBuckets);
 		return modelAndView;
 	}
 
 	@RequestMapping("/deleteKeepBucket")
 	public String removeKeepBucket(String bucketId, HttpSession session) {
-		/*String userId = (String) session.getAttribute("loginedUser");*/
-		KeepBucket keepBucket = new KeepBucket(bucketId, "seok");
+		User user = (User)session.getAttribute("loginedUser");
+		KeepBucket keepBucket = new KeepBucket(bucketId, user.getUserId());
 		keepBucketService.removeKeepBucket(keepBucket);
 		return "redirect:showKeepBucket";
 	}
