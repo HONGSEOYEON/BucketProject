@@ -216,7 +216,6 @@ public class BucketController {
 		User user = (User) session.getAttribute("loginedUser");*/
 		// 댓글 조회
 		List<Comment> comments= bucketService.searchBucketComment("1");
-		System.out.println("1");
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
 		modelAndView.addObject("comments", comments);
 //		modelAndView.addObject("loginedUser", user.getUserId());

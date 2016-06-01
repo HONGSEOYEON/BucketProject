@@ -10,6 +10,7 @@
 <style type="text/css">
 body {
 	padding: 50px;
+	background-image: url("resources/img/congruent_pentagon.png");
 }
 h1 {
 	font-weight:bold;
