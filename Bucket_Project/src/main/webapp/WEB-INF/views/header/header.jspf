@@ -4,7 +4,6 @@
 <c:set var="ctx">${pageContext.request.contextPath}</c:set>
 <div style="position: relative; right: 200px; top: 50px;">
 <c:choose>
-
 	<c:when test="${loginedUser eq null}">
 	<div style="text-align:right">
 		<a href="showPageLogin">로그인</a> | <a href="showPageJoin">회원가입</a>

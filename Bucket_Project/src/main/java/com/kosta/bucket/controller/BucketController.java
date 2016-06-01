@@ -250,10 +250,12 @@ public class BucketController {
 	}
 	@RequestMapping("/myBucket")
 	public ModelAndView showMyBucketList(HttpSession session){
-//		String userId = (String) session.getAttribute("userId");
-		List<Bucket> myBuckets = bucketService.searchMyBucket("hong");
+		User loginedUser = (User) session.getAttribute("loginedUser");
+		System.out.println(loginedUser.getUserId());
+		List<Bucket> myBuckets = bucketService.searchMyBucket(loginedUser.getUserId());
+		System.out.println(myBuckets.isEmpty());
 		ModelAndView mav = new ModelAndView("main/myBucket");
-		mav.addObject("myBucketList", myBuckets);
+		mav.addObject("myBuckets", myBuckets);
 		return mav;
 	}
 	
