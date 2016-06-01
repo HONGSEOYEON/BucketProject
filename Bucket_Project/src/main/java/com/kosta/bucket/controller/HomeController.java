@@ -28,8 +28,8 @@ public class HomeController {
 		ModelAndView modelAndView = new ModelAndView("main");
 		List<Bucket> List1 = bucketService.searchBucketBestRecom();
 		List<Bucket> List2 = bucketService.searchAllBucket();
-		modelAndView.addObject("view1", List1);
-		modelAndView.addObject("view2", List2);
+		modelAndView.addObject("bucket1", List1);
+		modelAndView.addObject("bucket2", List2);
 		return "main/main";
 	}
 }

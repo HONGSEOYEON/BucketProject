@@ -89,7 +89,7 @@
 
 	<select id="selectAllBucket" resultMap="resultBucket">
 		<include refid="selectBucket" />
-		ORDER BY ID desc
+		ORDER BY ID DESC
 	</select>
 
 	<select id="selectAccusedAllBucket" resultMap="resultBucket">
