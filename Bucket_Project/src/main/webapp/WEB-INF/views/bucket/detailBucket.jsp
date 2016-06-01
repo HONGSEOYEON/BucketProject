@@ -66,9 +66,9 @@ td {
 	
 	<!-- 테스트   -->
 
-	<div style="text-align: right;"><a href="#">추천수
+	<div style="text-align: right;">추천수
 				<span class="badge">${recomNum}</span>
-		</a></div>
+		</div>
 	
 	<hr>
 	<table id="musicDetail">
@@ -77,7 +77,7 @@ td {
 			<col width="*">
 		</colgroup>
 		<tr>
-			<td><img src="resources/img/${music.image}" width="180px"></td>
+			<td><img src="resources/img/${bucket.image}" width="180px" class="imgAlbum"></td>
 		</tr>
 		<tr>
 			<td>
@@ -87,8 +87,8 @@ td {
 						<col width="*">
 					</colgroup>
 					<tr>
-						<th>내용</th>
-						<td>${music.name}</td>
+						<th>후기</th>
+						<td>${bucket.contents}</td>
 					</tr>
 				</table>
 			</td>
@@ -102,7 +102,7 @@ td {
 		method="post">
 		<input type="hidden" name="bucketId" value="1"> <input
 			type="text" placeholder="입력" name="contents" id="commentContent"><input
-			type="submit" value="쓰기">
+			type="submit" value="쓰기" onclick="comment(); return false;">
 	</form>
 	<br>
 	<br>

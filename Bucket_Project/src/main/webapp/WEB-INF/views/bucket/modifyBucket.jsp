@@ -37,15 +37,14 @@
 	<div class="contents">
 		<form action="${ctx}/modifyBucket" method="post" id="modifyBucket"
 			enctype="multipart/form-data">
-				<input type="hidden" name="writerId" value="${bucket.writerId}"/>
-				<input type="hidden" name="bucketId" value="${bucket.bucketId}"/>
 			<table width="1000px" height="300px" border="1">
+				<input type="hidden" name="writerId" value="${bucket.writerId}"/>
 				<tr>
-					<td align="center">이미지 후기 <input type="file" id="image" name="file"/></td>
+					<td align="center">이미지 후기 <input type="file" id="image"/></td>
 				</tr>
 				<tr>
 					<td align="center">제목 <input type="text" id="title"
-						name="title" value="${bucket.title}"/></td>
+						name="title" />${bucket.title }</td>
 				</tr>
 				<tr>
 					<td align="center">후기<br>

@@ -185,7 +185,7 @@ public class BucketController {
 	public String registComment (Comment comment) {
 		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		comment.setRegistDate(today);
-		 
+		
 		 int registered = bucketService.registComment(comment);
 		 
 		 if(registered!=0) {
@@ -233,3 +233,11 @@ public class BucketController {
 	}
 	
 }
+
+		
+		
+		
+		
+		
+		
+		
