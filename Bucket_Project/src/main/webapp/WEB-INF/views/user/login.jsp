@@ -66,7 +66,7 @@ h4 {
             <h4>로그인</h4>
             <input type="text" id="userName" class="form-control input-sm chat-input" id="inputId" name="loginId" placeholder="아이디" />
             </br>
-            <input type="text" id="userPassword" class="form-control input-sm chat-input" id="inputPassword" name="password" placeholder="비밀번호" />
+            <input type="password" id="userPassword" class="form-control input-sm chat-input" id="inputPassword" name="password" placeholder="비밀번호" />
             </br>
             <div class="wrapper">
             <span class="group-btn">     
