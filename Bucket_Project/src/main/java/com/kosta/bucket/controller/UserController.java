@@ -71,11 +71,16 @@ public class UserController {
 	@RequestMapping("/drop")
 	public ModelAndView removeUser(String userId, HttpSession session) {
 
-		userService.removeUser(userId);
-
-		// session.invalidate();
-
-		return new ModelAndView("/main/main");
+		String managerId = (String) session.getAttribute("userId");
+		User manager = userService.searchUser(managerId);
+		if("Y".equals(manager.getIsManager())) {
+			userService.removeUser(userId);
+			return new ModelAndView("/user/managerPage");
+		} else {
+			userService.removeUser(userId);
+			session.invalidate();
+			return new ModelAndView("/main/main");
+		}
 	}
 
 	@RequestMapping("/modify")

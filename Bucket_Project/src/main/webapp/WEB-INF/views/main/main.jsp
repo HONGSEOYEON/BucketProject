@@ -101,6 +101,7 @@
 
 </head>
 <body>
+<%@include file="/WEB-INF/views/header/header.jspf" %>
 	<div class="container">
 	<div class="row">
         <div class="col-sm-6 col-sm-offset-3">
