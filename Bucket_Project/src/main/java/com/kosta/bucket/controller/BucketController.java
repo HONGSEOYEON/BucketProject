@@ -47,7 +47,9 @@ public class BucketController {
 			try {
 				byte[] bytes=file.getBytes();
 				// rootPath는 /Bucket_Project/src/main/webapp/WEB-INF/resources를 의미
-				String rootPath = new HttpServletRequestWrapper(req).getRealPath("/resources");
+				String rootPath = req.getSession().getServletContext().getRealPath("/");  
+			    String attachPath = "resources/img/";
+			    String filename = file.getOriginalFilename();
 				// 파일 이름을 받아온다.
 				String fileName = file.getOriginalFilename();
 				System.out.println(fileName);
@@ -55,14 +57,14 @@ public class BucketController {
 				bucket.setImage(fileName);
 				
 				//저장하고자 하는 경로 지정
-				File dir = new File(rootPath+"/imgs");
+				File dir = new File(rootPath+attachPath);
 				if(!dir.exists()){
 					//없으면 만든다.
 					dir.mkdirs();
 				}
 				
 				//파일의 절대경로 지정
-				File saveFile = new File(dir.getAbsolutePath() + File.separator + fileName + ".jpg");
+				File saveFile = new File(rootPath+attachPath+fileName);
 				
 				BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(saveFile));
 				//파일을 해당경로로 저장시작
@@ -104,7 +106,9 @@ public class BucketController {
 			try {
 				byte[] bytes=file.getBytes();
 				// rootPath는 /Bucket_Project/src/main/webapp/WEB-INF/resources를 의미
-				String rootPath = req.getSession().getServletContext().getRealPath("/resources");
+				String rootPath = req.getSession().getServletContext().getRealPath("/");  
+			    String attachPath = "resources/img/";
+			    String filename = file.getOriginalFilename();
 				// 파일 이름을 받아온다.
 				String fileName = file.getOriginalFilename();
 				System.out.println(fileName);
@@ -112,14 +116,14 @@ public class BucketController {
 				bucket.setImage(fileName);
 				
 				//저장하고자 하는 경로 지정
-				File dir = new File(rootPath+"/imgs");
+				File dir = new File(rootPath+attachPath);
 				if(!dir.exists()){
 					//없으면 만든다.
 					dir.mkdirs();
 				}
 				
 				//파일의 절대경로 지정
-				File saveFile = new File(dir.getAbsolutePath() + File.separator + fileName + ".jpg");
+				File saveFile = new File(rootPath+attachPath+fileName);
 				
 				BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(saveFile));
 				//파일을 해당경로로 저장시작
@@ -221,17 +225,17 @@ public class BucketController {
 	
 	// 상세 페이지 
 	@RequestMapping(value="/detailBucket")
-	public ModelAndView showDetailBucket(/*String bucketId, HttpServletRequest req*/) {
+	public ModelAndView showDetailBucket(String bucketId/*, HttpServletRequest req*/) {
 		// 세션 아이디 가져오기
 		/*HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");*/
 		
 		// 댓글 조회
-		List<Comment> comments= bucketService.searchBucketComment("1");
+		List<Comment> comments= bucketService.searchBucketComment(bucketId);
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
 //		modelAndView.addObject("loginedUser", user.getUserId());
 		
-		Bucket bucket = bucketService.searchBucket("1");
+		Bucket bucket = bucketService.searchBucket(bucketId);
 		modelAndView.addObject("comments", comments);
 		modelAndView.addObject("bucket", bucket);
 		

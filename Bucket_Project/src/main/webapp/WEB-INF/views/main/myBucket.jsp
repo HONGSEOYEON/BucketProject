@@ -133,8 +133,10 @@
                 <div class="panel-footer">
                     <h4><a href="#" title="Nature Portfolio">${bucket.title}</a></h4>
                     <span class="pull-right">
+                    
                         <i id="like1" class="glyphicon glyphicon-thumbs-up"></i> <div id="like1-bs3"></div>
                         <i id="dislike1" class="glyphicon glyphicon-thumbs-down"></i> <div id="dislike1-bs3"></div>
+                        
                     </span>
                 </div>
             </div>

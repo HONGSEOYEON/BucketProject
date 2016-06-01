@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,7 +20,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/login")
+	@RequestMapping(value = "/login", method=RequestMethod.POST)
 	public ModelAndView loginUser(User user, HttpServletRequest req, HttpSession session) {
 
 		String id = (String) req.getParameter("loginId");
@@ -28,13 +29,15 @@ public class UserController {
 
 			User loginedUser = userService.searchUser(user.getUserId());
 
-			session.setAttribute("userId", loginedUser.getUserId());
-			session.setAttribute("password", loginedUser.getPassword());
+			session.setAttribute("loginedUser", loginedUser);
+			/*session.setAttribute("password", loginedUser.getPassword());
 			session.setAttribute("name", loginedUser.getUserName());
-			session.setAttribute("email", loginedUser.getEmail());
+			session.setAttribute("email", loginedUser.getEmail());*/
 //			session.setAttribute("isManager", loginedUser.getIsManager());
 
-			return new ModelAndView("/main/main").addObject("loginedUser", loginedUser);
+			ModelAndView model = new ModelAndView("/main/main");
+			model.addObject("loginedUser", loginedUser);
+			return model;
 		}
 		throw new RuntimeException("로그인 정보가 일치하지 않습니다.");
 	}
@@ -71,11 +74,16 @@ public class UserController {
 	@RequestMapping("/drop")
 	public ModelAndView removeUser(String userId, HttpSession session) {
 
-		userService.removeUser(userId);
-
-		// session.invalidate();
-
-		return new ModelAndView("/main/main");
+		String managerId = (String) session.getAttribute("userId");
+		User manager = userService.searchUser(managerId);
+		if("Y".equals(manager.getIsManager())) {
+			userService.removeUser(userId);
+			return new ModelAndView("/user/managerPage");
+		} else {
+			userService.removeUser(userId);
+			session.invalidate();
+			return new ModelAndView("/main/main");
+		}
 	}
 
 	@RequestMapping("/modify")
@@ -86,6 +94,11 @@ public class UserController {
 		user.setPassword(req.getParameter("password"));
 		user.setUserName(req.getParameter("name"));
 
+//		System.out.println(req.getParameter("userId"));
+//		System.out.println(req.getParameter("email"));
+//		System.out.println(req.getParameter("password"));
+//		System.out.println(req.getParameter("name"));
+		
 		userService.modifyUser(user);
 
 		User loginedUser = userService.searchUser(user.getUserId());
@@ -106,7 +119,7 @@ public class UserController {
 		// req.setAttribute("name", user.getUserName());
 		// req.setAttribute("email", user.getEmail());
 
-		return new ModelAndView("/user/modify").addObject("beforeUser", user);
+		return new ModelAndView("/user/modifyUser").addObject("beforeUser", user);
 	}
 
 	@RequestMapping("/login/showPage")

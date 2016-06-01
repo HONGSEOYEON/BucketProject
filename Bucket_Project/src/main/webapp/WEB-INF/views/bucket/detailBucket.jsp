@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>곡 소개</title>
+<title>버킷 상세페이지</title>
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -68,9 +68,10 @@ td {
 </style>
 </head>
 <body>
+	<%@include file="/WEB-INF/views/header/homeButton.jspf" %>
 	<h1>${bucket.title}</h1>
 	<div style="text-align: left;">
-		<a class="btn btn-xs btn-info"  href="${pageContext.request.contextPath}/registerKeepBucket?bucketId=1"   onclick="bookmarkTest(); return false;">담기</a>&nbsp;
+		<a class="btn btn-xs btn-info"  href="${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}"   onclick="bookmarkTest(); return false;">담기</a>&nbsp;
 		<a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand">추천</a>&nbsp; 
 		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="btn btn-xs btn-default" href="#">수정</a>&nbsp; <a

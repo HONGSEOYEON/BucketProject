@@ -101,6 +101,7 @@
 
 </head>
 <body>
+<%@include file="/WEB-INF/views/header/header.jspf" %>
 <form action="searchBucket" method="post">
 	<div class="container">
 	<div class="row">
@@ -143,9 +144,6 @@
 </c:forEach>
 </section>
 </div>
-
-
-
 <!-- Progress Bar -->
         	<div class="col-md-4">
                   <div class="col-md-11">
