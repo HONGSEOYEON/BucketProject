@@ -1,5 +1,10 @@
 package com.kosta.bucket.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
@@ -11,11 +16,11 @@ import com.kosta.bucket.entity.User;
 public class UserDaoImpl implements UserDao {
 
 	private SqlSessionFactory factory;
-	
-	public UserDaoImpl(){
+
+	public UserDaoImpl() {
 		factory = SqlSessionFactoryProvider.getSqlSessionFactory();
 	}
-	
+
 	@Override
 	public int createUser(User user) {
 		SqlSession session = factory.openSession();
@@ -36,7 +41,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User retrieveUser(String userId) {
 		SqlSession session = factory.openSession();
-		User user;
+		User user = new User();
 		try {
 			user = session.selectOne("retrieveUser", userId);
 		} finally {
@@ -75,5 +80,18 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 
-
+	@Override
+	public boolean checkId(String id) {
+		SqlSession session = factory.openSession();
+		User user = new User();
+		try {
+			user = session.selectOne("retrieveUser", id);
+			if(user!=null){
+				return true;
+			}
+		} finally {
+			session.close();
+		}
+		return false;
+	}
 }

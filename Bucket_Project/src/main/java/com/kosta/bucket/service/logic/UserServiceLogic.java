@@ -33,4 +33,8 @@ public class UserServiceLogic implements UserService {
 		return userDao.deleteUser(userId);
 	}
 
+	@Override
+	public boolean checkId(String id) {
+		return userDao.checkId(id);
+	}
 }

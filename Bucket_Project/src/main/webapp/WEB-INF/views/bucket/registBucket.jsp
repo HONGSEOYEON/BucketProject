@@ -37,14 +37,14 @@
 	<div class="contents">
 		<form action="${ctx}/registBucket" method="post" id="registBucket"
 			enctype="multipart/form-data">
+			<input type="hidden" name="writerId" value="${param.userId}"/>
 			<table width="1000px" height="300px" border="1">
-				<input type="hidden" name="writerId" value="${param.loginedUser}"/>
 				<tr>
-					<td align="center">이미지 후기 <input type="file" id="image"/></td>
+					<td align="center">이미지 후기 <input type="file" id="image" name="file"/></td>
 				</tr>
 				<tr>
 					<td align="center">제목 <input type="text" id="title"
-						name="title" /></td>
+						name="title"/></td>
 				</tr>
 				<tr>
 					<td align="center">후기<br>
