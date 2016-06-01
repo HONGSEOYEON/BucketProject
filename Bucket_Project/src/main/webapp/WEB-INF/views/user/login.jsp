@@ -10,81 +10,77 @@
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/bootswatch.min.css" rel="stylesheet">
     <style type="text/css">
-        body {
-            padding-top: 100px;
-            padding-bottom: 40px;
-            background-color: #ecf0f1;
-        }
-        .login-header {
-            max-width: 400px;
-            padding: 15px 29px 25px;
-            margin: 0 auto;
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            -webkit-border-radius: 15px 15px 0px 0px;
-            -moz-border-radius: 15px 15px 0px 0px;
-            border-radius: 15px 15px 0px 0px;
-            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-            box-shadow: 0 1px 2px rgba(0,0,0,.05);
-        }
-        .login-footer {
-            max-width: 400px;
-            margin: 0 auto 20px;
-            padding-left: 10px;
-        }
-        .form-signin {
-            max-width: 400px;
-            padding: 29px;
-            margin: 0 auto 20px;
-            background-color: #fff;
-            -webkit-border-radius: 0px 0px 15px 15px;
-            -moz-border-radius: 0px 0px 15px 15px;
-            border-radius: 0px 0px 15px 15px;
-            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-            box-shadow: 0 1px 2px rgba(0,0,0,.05);
-        }
-        .form-signin .form-signin-heading,
-        .form-signin .checkbox {
-            margin-bottom: 15px;
-        }
-        .form-signin input[type="text"],
-        .form-signin input[type="password"] {
-            font-size: 16px;
-            height: auto;
-            margin-bottom: 15px;
-            padding: 7px 9px;
-        }
-        .form-btn {
-            text-align: center;
-            padding-top: 20px;
-        }
+      @import url(http://fonts.googleapis.com/css?family=Roboto:400);
+body {
+  background-color:#fff;
+  -webkit-font-smoothing: antialiased;
+  font: normal 14px Roboto,arial,sans-serif;
+}
+
+.container {
+    padding: 25px;
+    position: fixed;
+}
+
+.form-login {
+    background-color: #EDEDED;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+}
+
+h4 { 
+ border:0 solid #fff; 
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
 
     </style>
 </head>
 <body>
+
+<!--Pulling Awesome Font -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<form class="form-signin" action="login" method="POST">
+
 <div class="container">
-
-    <!-- header -->
-    <div class="login-header">
-        <h2 class="form-signin-heading">로그인</h2>
-    </div>
-
-	
-    <!-- form -->
-    <form class="form-signin" action="login" method="POST">
-        <input type="text" class="form-control" id="inputId" name="loginId" placeholder="아이디">
-        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="비밀번호">
-        <div class="row form-btn">
-            <button class="btn btn-large btn-warning" type="submit">로그인</button>
-            <button class="btn btn-large btn-default" onclick="location.href='javascript:history.back()'">취소</button>
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <div class="form-login">
+            <h4>로그인</h4>
+            <input type="text" id="userName" class="form-control input-sm chat-input" id="inputId" name="loginId" placeholder="아이디" />
+            </br>
+            <input type="password" id="userPassword" class="form-control input-sm chat-input" id="inputPassword" name="password" placeholder="비밀번호" />
+            </br>
+            <div class="wrapper">
+            <span class="group-btn">     
+                <button class="btn btn-primary btn-md" type="submit">login <i class="fa fa-sign-in"></i></button>
+                <button class="btn btn-primary btn-md" onclick="location.href='javascript:history.back()'">cancel</button>
+            </span>
+            </div>
+            </div>
+        
         </div>
-    </form>
-   
-
 </div>
+</div>
+
+</form>
 
 </body>
 </html>

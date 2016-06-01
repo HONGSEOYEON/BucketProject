@@ -9,6 +9,7 @@
 	<result property="password" column="PASSWORD"/>
 	<result property="userName" column="NAME"/>
 	<result property="email" column="EMAIL"/>
+	<result property="isManager" column="MANAGER"/>
 </resultMap>
 
 <sql id="selectUser">
@@ -17,8 +18,8 @@ FROM bucket_user
 </sql>
 
 <insert id="insertUser" parameterType="User">
-INSERT INTO bucket_user (ID, PASSWORD, NAME, EMAIL)
-VALUES (#{userId}, #{password}, #{userName}, #{email})
+INSERT INTO bucket_user (ID, PASSWORD, NAME, EMAIL, MANAGER)
+VALUES (#{userId}, #{password}, #{userName}, #{email}, #{isManager})
 </insert>
 
 <select id="retrieveUser" parameterType="string" resultMap="resultUser">

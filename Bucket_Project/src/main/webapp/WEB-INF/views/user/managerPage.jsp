@@ -79,8 +79,8 @@ tbody tr {
 						varStatus="vs">
 
 						<tr class="info">
-							<td>${accuseBucket.bucketId}</td>
-							<td><a href="#">${accuseBucket.title}</a></td>
+							<td>${accuseBucket.writerId}</td>
+							<td><a href="detailBucket?bucketId=${accuseBucket.bucketId}">${accuseBucket.title}</a></td>
 							<td>
 								<div style="text-align: center;">
 									<span class="badge">${accuseBucket.accuseNum}</span>

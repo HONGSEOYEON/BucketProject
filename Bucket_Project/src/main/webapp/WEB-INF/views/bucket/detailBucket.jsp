@@ -11,40 +11,52 @@
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet">
-<script src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js">
+	
+</script>
 <script type="text/javascript">
-// 댓글 유효성 검사
+	// 댓글 유효성 검사
 	var comment = function() {
 		if (document.getElementById("commentContent").value == "") {
 			alert("댓글을 입력하세요");
 			document.getElementById("commentContent").focus();
 			return false;
-		}
-		else {
-		return true;
+		} else {
+			return true;
 		}
 	};
-	
+
 	var registComment = function() {
 		if (comment()) {
 			document.getElementById("commentForm").submit();
 		}
 	};
-	
-	var bookmark = function() {
-			alert("버킷을 담았습니다!");
+
+	// 담기 테스트 
+	/* var bookmark = function() {
+		alert("버킷을 담았습니다!");
+		
 		return true;
-	};
+	}; */
 	
-	function bookmarkTest(){
-	    if(bookmark()){
-	        location.href = "${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}";
-	        return true;
-	    } else {
-	        return false;
-	    }
+	/* $(function(){
+		$("#bookmark").click(function(){
+			alert("버킷을 담았습니다!");
+			$("#bookmark").Attr("disabled", "disabled");
+		});
+	}); */
+
+	function bookmarkTest() {
+		if (bookmark()) {
+			location.href = "${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}";
+			return false;
+		} else {
+			location.href = "${pageContext.request.contextPath}/detailBucket?bucketId=${bucket.bucketId}";
+			return false;
+		}
 	}
-</script>	
+</script>
 <style>
 body {
 	padding: 10% 30%;
@@ -63,31 +75,27 @@ td {
 	width: 600px;
 	height: 600px;
 }
-
-
 </style>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/header/homeButton.jspf" %>
+	<%-- <%@include file="/WEB-INF/views/header/homeButton.jspf" %> --%>
 	<h1>${bucket.title}</h1>
 	<div style="text-align: left;">
-		<a class="btn btn-xs btn-info"  href="${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}"   onclick="bookmarkTest(); return false;">담기</a>&nbsp;
-		<a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand">추천</a>&nbsp; 
-		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a class="btn btn-xs btn-info" id="bookmark"
+			onclick="location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}'">담기</a>
+		&nbsp; <a id="recommand" class="btn btn-xs btn-default"
+			href="${pageContext.request.contextPath}/recommand">추천</a>&nbsp; <a
+			class="btn btn-xs btn-default"
+			href="${pageContext.request.contextPath}/accuse">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="btn btn-xs btn-default" href="#">수정</a>&nbsp; <a
 			class="btn btn-xs btn-default" href="#">삭제</a>&nbsp;
 	</div>
 
-	<!-- 테스트   -->
-	
-	
-	
-	<!-- 테스트   -->
 
-	<div style="text-align: right;">추천수
-				<span class="badge">${recomNum}</span>
-		</div>
-	
+	<div style="text-align: right;">
+		추천수 <span class="badge">${recomNum}</span>
+	</div>
+
 	<hr>
 	<table id="musicDetail">
 		<colgroup>
@@ -95,7 +103,8 @@ td {
 			<col width="*">
 		</colgroup>
 		<tr>
-			<td><img src="resources/img/${bucket.image}" width="180px" class="imgAlbum"></td>
+			<td><img src="resources/img/${bucket.image}" width="180px"
+				class="imgAlbum"></td>
 		</tr>
 		<tr>
 			<td>
@@ -115,25 +124,25 @@ td {
 	</table>
 	<br>
 	<h5>댓글</h5>
-	<form action="${pageContext.request.contextPath}/commentRegist" method="post" id="commentForm">
-		<input type="hidden" name="writerId" value="seok">
+	<form action="${pageContext.request.contextPath}/commentRegist"
+		method="post" id="commentForm">
+		<input type="hidden" name="writerId" value=${loginedUser}> 
 		<input type="hidden" name="bucketId" value=${bucket.bucketId} > 
 		<input type="text" placeholder="입력" name="contents" id="commentContent">
-			<input type="submit" value="쓰기" onclick="registComment(); return false;">
+		<input type="submit" value="쓰기" onclick="registComment(); return false;">
 	</form>
 	<br>
 	<br>
-
-	<%-- </c:if> --%>
+	
+	<table>
 	<c:forEach items="${comments}" var="comment" varStatus="sts">
-	${comment.writerId} 님의 댓글 :  ${comment.contents} 
-	<%-- <c:if test="${loginedUser != null}"> --%>
-		<a class="btn btn-xs btn-default"
-			href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a>
-		<br>
-		<br>
-		<%-- </c:if> --%>
+	<tr>
+		${comment.writerId} 님의 댓글 :  ${comment.contents} 
+		<c:if test="${loginedUser != null && comment.writerId == loginedUser}">
+		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a>
+		</c:if>
+	</tr><br>
 	</c:forEach>
-
+	</table>
 </body>
 </html>

@@ -66,7 +66,7 @@ h1 {
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<h1> <>님이 담은 버킷 리스트</h1>
+				<h1> ${loginedUser}님이 담은 버킷 리스트</h1>
 				<table class="table table-hover table-condensed">
 					<colgroup>
 						<col width="80" align="center">
@@ -78,7 +78,9 @@ h1 {
 						</tr>
 					</thead>
 					<tbody>
+					
 						<c:forEach items="${keepbuckets}" var="keepbucket" varStatus="sts">
+						<c:if test="${keepbuckets  != null}">
 							<table class="section">
 								<tr>
 								<td>
@@ -89,7 +91,11 @@ h1 {
 								</td>
 								</tr>
 								</table>
+								</c:if>
                        	</c:forEach>
+                       <%-- 	<c:if test="${keepbuckets == null }">
+                       		<h1>아직 담은 버킷이 없습니다!</h1>
+                       	</c:if> --%>
 					</tbody>
 				</table>
 			</div>
