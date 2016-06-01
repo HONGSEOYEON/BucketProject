@@ -12,5 +12,5 @@ public interface KeepBucketDao {
 	//담아둔 이미지 후기 목록 불러오기
 	public List<Bucket> retrieveKeepBucketList(String userId);
 	//담아둔 후기 삭제하기
-	public int deleteKeepBucket(String bucketId);
+	public int deleteKeepBucket(KeepBucket keepBucket);
 }

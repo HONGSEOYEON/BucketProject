@@ -62,10 +62,8 @@ td {
 	<!-- 테스트   -->
 
 	<div style="text-align: right;"><a href="#">추천수
-				<span class="badge">42</span>
+				<span class="badge">${recomNum}</span>
 		</a></div>
-	<h2>${music.name}</h2>
-	<div style="text-align: right;">추천수 &nbsp;<h4>${recomNum}</h4></div>
 	
 	<hr>
 	<table id="musicDetail">
