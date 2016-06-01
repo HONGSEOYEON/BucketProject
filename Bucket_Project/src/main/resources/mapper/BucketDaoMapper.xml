@@ -105,4 +105,8 @@
 		WHERE recommend > 0
 		ORDER BY recommend DESC
 	</select>
+	<select id="selectMyBuckets" parameterType="string" resultMap="resultBucket">
+		<include refid="selectBucket" />
+		WHERE writer_id = #{writerId}
+	</select>
 </mapper>

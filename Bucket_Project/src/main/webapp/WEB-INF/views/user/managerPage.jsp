@@ -14,14 +14,14 @@
 
 <style type="text/css">
 body {
-	padding-top : 100px;
-	padding-left : 330px;
-	background-image: url("resources/img/congruent_pentagon.png");
+	padding-top: 100px;
+	padding-left: 330px;
+	background-color: #fff;
 }
 
 h1 {
 	font-weight: bold;
-	color:  #5bc0de;
+	color: #5bc0de;
 }
 
 thead th {
@@ -29,34 +29,7 @@ thead th {
 	border-radius: 4px;
 }
 
-
-/* .ranking {
-	text-align: center;
-	font-size: 28pt;
-}
-
-.spanTitle {
-	font-size: 18pt;
-	font-weight: bold;
-	margin-right: 10px;
-}
-
-.pAlbum {
-	color: gray;
-	margin-left: 5px;
-}
-
-.imgAlbum {
-	width: 80px;
-	height: 80px;
-	margin-right: 10px;
-}
-
-.btnPlay {
-	margin-top: 40%
-} */
- 
- div.wrap {
+div.wrap {
 	position: relative;
 	padding-top: 30px;
 	width: 850px;
@@ -68,15 +41,21 @@ div.wrap>div {
 	height: 300px;
 	overflow: auto;
 }
- 
+
 table {
-	width: 800px
+	width: 800px;
 }
- tbody td {
+
+thead th {
+	text-align: center;
+}
+
+tbody td {
 	width: 200px;
 	text-align: center;
 	background-color: window;
 }
+
 tbody tr {
 	height: auto;
 }
@@ -90,9 +69,9 @@ tbody tr {
 				<thead>
 					<tr>
 						<th class="active">ID</th>
-						<th class="success">이미지후기 제목</th>
-						<th class="warning">신고수</th>
-						<th class="danger">탈퇴</th>
+						<th class="active">이미지후기 제목</th>
+						<th class="active">신고수</th>
+						<th class="active">탈퇴</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -101,51 +80,17 @@ tbody tr {
 
 						<tr class="info">
 							<td>${accuseBucket.bucketId}</td>
-
-							<td>${accuseBucket.title}</td>
-							<td>${accuseBucket.accuseNum}</td>
-							<td><button type="submit" class="btn btn-danger">탈퇴</button></td>
+							<td><a href="#">${accuseBucket.title}</a></td>
+							<td>
+								<div style="text-align: center;">
+									<span class="badge">${accuseBucket.accuseNum}</span>
+								</div>
+							</td>
+							<td><button type="submit" class="btn btn-default">탈퇴</button></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			<%-- <table>
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>이미지후기 제목</th>
-						<th>신고수</th>
-						<th>탈퇴</th>
-
-
-						<!-- 테스트  -->
-
-
-
-
-
-						<!-- 테스트  -->
-
-					</tr>
-				</thead>
-				<tbody>
-
-					<c:forEach items="${accusedBucketList}" var="accuseBucket"
-						varStatus="vs">
-
-						<tr>
-							<td>${accuseBucket.bucketId}</td>
-
-							<td>${accuseBucket.title}</td>
-							<td>${accuseBucket.accuseNum}</td>
-							<td><button type="submit" class="btn btn-xs btn-default">탈퇴</button></td>
-						</tr>
-					</c:forEach>
-
-
-
-				</tbody>
-			</table> --%>
 		</div>
 	</div>
 </body>

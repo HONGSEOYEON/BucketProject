@@ -204,7 +204,6 @@ public class BucketController {
 		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		comment.setRegistDate(today);
 		 int registered = bucketService.registComment(comment);
-		 
 		 if(registered!=0) {
 			 return "redirect:detailBucket";
 		 }
@@ -245,11 +244,13 @@ public class BucketController {
 		modelAndView.addObject("recomNum", bucket.getRecomNum());
 		return modelAndView;
 	}
-	
+	@RequestMapping("/myBucket")
 	public ModelAndView showMyBucketList(HttpSession session){
-		String userId = (String) session.getAttribute("userId");
-		List<Bucket> list = bucketService.searchMyBucket(userId);
-		return null;
+//		String userId = (String) session.getAttribute("userId");
+		List<Bucket> myBuckets = bucketService.searchMyBucket("hong");
+		ModelAndView mav = new ModelAndView("main/myBucket");
+		mav.addObject("myBucketList", myBuckets);
+		return mav;
 	}
 	
 }

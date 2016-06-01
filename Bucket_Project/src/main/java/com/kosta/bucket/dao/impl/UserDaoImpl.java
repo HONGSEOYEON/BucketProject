@@ -27,11 +27,15 @@ public class UserDaoImpl implements UserDao {
 		int result = 0;
 		try {
 			result = session.insert("insertUser", user);
-			session.commit();
-			return result;
+			if(result > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
 		} finally {
 			session.close();
 		}
+		return result;
 	}
 
 	@Override
@@ -52,11 +56,15 @@ public class UserDaoImpl implements UserDao {
 		int result = 0;
 		try {
 			result = session.update("updateUser", user);
-			session.commit();
-			return result;
+			if(result > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
 		} finally {
 			session.close();
 		}
+		return result;
 	}
 
 	@Override
@@ -66,10 +74,10 @@ public class UserDaoImpl implements UserDao {
 		try {
 			result = session.delete("deleteUser", userId);
 			session.commit();
-			return result;
 		} finally {
 			session.close();
 		}
+		return result;
 	}
 
 	@Override

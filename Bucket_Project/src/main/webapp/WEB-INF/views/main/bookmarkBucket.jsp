@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +8,15 @@
 <title>내가 담은 버킷 리스트</title>
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="resources/css/style.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+	
+	
+	
+	function bookmarkTest(){
+		return confirm("버킷을 삭제하시겠습니까?");
+	}
+</script>	
 <style type="text/css">
 body {
 	padding: 50px;
@@ -33,9 +43,8 @@ h1 {
 }
 
 .imgAlbum {
-	width: 100px;
-	height: 100px;
-	margin-right: 10px;
+	width: 300px;
+	height: 300px;
 }
 
 .btnPlay {
@@ -76,7 +85,7 @@ h1 {
 									<img class="imgAlbum" src="resources/img/${keepbucket.image}"><br>
 									제목 : <a href="detailBucket?bucketId=${keepbucket.bucketId}">${keepbucket.title}</a><br>
 									게시자 : ${keepbucket.writerId}<br><br>
-									<a class="btn btn-xs btn-default" href="deleteKeepBucket?bucketId=1 " id="deletebtn">삭제</a>
+									<a class="btn btn-xs btn-default" href="deleteKeepBucket?bucketId=${keepbucket.bucketId}" id="deletebtn" onclick="return bookmarkTest();">삭제</a>
 								</td>
 								</tr>
 								</table>
