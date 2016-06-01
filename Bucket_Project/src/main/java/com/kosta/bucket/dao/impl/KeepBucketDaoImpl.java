@@ -14,7 +14,7 @@ import com.kosta.bucket.entity.KeepBucket;
 @Repository
 public class KeepBucketDaoImpl implements KeepBucketDao {
 
-	@Autowired
+	
 	private SqlSessionFactory factory;
 	
 	public KeepBucketDaoImpl(){

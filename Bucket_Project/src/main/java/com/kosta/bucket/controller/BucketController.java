@@ -34,7 +34,7 @@ import com.kosta.bucket.entity.User;
 import com.kosta.bucket.service.BucketService;
 
 @Controller
-//@RequestMapping("/bucket")
+@RequestMapping("/bucket")
 public class BucketController {
 
 	@Autowired
