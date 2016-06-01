@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,13 @@ public class BucketController {
 	@Autowired
 	private BucketService bucketService;
 	
+	// 이미지 후기 등록페이지 출력
+	@RequestMapping(value = "/registBucket", method = RequestMethod.GET)
+	public ModelAndView showRegistBucket(){
+		
+		ModelAndView mv = new ModelAndView("bucket/registBucket");
+		return mv;
+	}
 	
 	//이미지 후기 등록
 	@RequestMapping(value = "/registBucket", method = RequestMethod.POST)
@@ -38,7 +46,7 @@ public class BucketController {
 			try {
 				byte[] bytes=file.getBytes();
 				// rootPath는 /Bucket_Project/src/main/webapp/WEB-INF/resources를 의미
-				String rootPath = req.getSession().getServletContext().getRealPath("/resources");
+				String rootPath = new HttpServletRequestWrapper(req).getRealPath("/resources");
 				// 파일 이름을 받아온다.
 				String fileName = file.getOriginalFilename();
 				System.out.println(fileName);
@@ -74,7 +82,7 @@ public class BucketController {
 		bucketService.registBucket(bucket);
 		
 		//등록이 끝난 후 메인 페이지로 이동
-		return "redirect:main/main";
+		return "redirect:/";
 	}
 	
 	// 이미지 후기 수정페이지 출력
@@ -235,3 +243,11 @@ public class BucketController {
 	}
 	
 }
+
+		
+		
+		
+		
+		
+		
+		

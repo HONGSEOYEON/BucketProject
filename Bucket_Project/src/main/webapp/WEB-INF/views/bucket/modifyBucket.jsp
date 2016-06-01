@@ -25,7 +25,7 @@
 		return true;
 	};
 
-	var join = function() {
+	var modify = function() {
 		if (validate()) {
 			document.getElementById("modifyBucket").submit();
 		}
@@ -37,14 +37,15 @@
 	<div class="contents">
 		<form action="${ctx}/modifyBucket" method="post" id="modifyBucket"
 			enctype="multipart/form-data">
-			<table width="1000px" height="300px" border="1">
 				<input type="hidden" name="writerId" value="${bucket.writerId}"/>
+				<input type="hidden" name="bucketId" value="${bucket.bucketId}"/>
+			<table width="1000px" height="300px" border="1">
 				<tr>
-					<td align="center">이미지 후기 <input type="file" id="image"/></td>
+					<td align="center">이미지 후기 <input type="file" id="image" name="file"/></td>
 				</tr>
 				<tr>
 					<td align="center">제목 <input type="text" id="title"
-						name="title" />${bucket.title }</td>
+						name="title" value="${bucket.title}"/></td>
 				</tr>
 				<tr>
 					<td align="center">후기<br>
@@ -55,7 +56,7 @@
 			<button type="button" class="btn" style="float: right"
 				onclick="javascript:history.back()">취소</button>
 			<button type="submit" class="btn" style="float: right"
-				onclick="join(); return false;">게시</button>
+				onclick="modify(); return false;">게시</button>
 				</td>
 				</tr>
 			</table>

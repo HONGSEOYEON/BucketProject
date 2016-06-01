@@ -12,4 +12,6 @@ public interface UserDao {
 	public int updateUser(User user);
 	//회원 탈퇴
 	public int deleteUser(String userId);
+	//ID 중복 검사
+	public boolean checkId(String id);
 }
