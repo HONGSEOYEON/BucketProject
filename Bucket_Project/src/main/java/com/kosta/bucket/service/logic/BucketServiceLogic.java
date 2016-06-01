@@ -33,32 +33,27 @@ public class BucketServiceLogic implements BucketService {
 
 	@Override
 	public List<Bucket> searchBucketByContents(String contents) {
-		// TODO Auto-generated method stub
-		return null;
+		return bucketDao.retrieveBucketByContents(contents);
 	}
 
 	@Override
 	public List<Bucket> searchBucketByTitle(String title) {
-		// TODO Auto-generated method stub
-		return null;
+		return bucketDao.retrieveBucketByTitle(title);
 	}
 
 	@Override
 	public List<Bucket> searchAllBucket() {
-		// TODO Auto-generated method stub
-		return null;
+		return bucketDao.retrieveAllBucket();
 	}
 
 	@Override
 	public int searchRecomNum(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return bucketDao.retrieveRecomNum(bucketId);
 	}
 
 	@Override
 	public List<Bucket> searchBucketBestRecom() {
-		// TODO Auto-generated method stub
-		return null;
+		return bucketDao.retrieveBucketBestRecom();
 	}
 
 	@Override
@@ -78,14 +73,12 @@ public class BucketServiceLogic implements BucketService {
 
 	@Override
 	public int registComment(Comment comment) {
-		int result = bucketDao.createComment(comment);
-		return result;
+		return bucketDao.createComment(comment);
 	}
 
 	@Override
 	public int removeComment(String commentId) {
-		 int result = bucketDao.deleteComment(commentId);
-		return result;
+		return bucketDao.deleteComment(commentId);
 	}
 
 	@Override
@@ -93,11 +86,6 @@ public class BucketServiceLogic implements BucketService {
 		return bucketDao.retrieveBucketComment(bucketId);
 	}
 
-	@Override
-	public int removeAccusedBucket(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public List<Bucket> searchAccusedAllBucket() {
@@ -106,8 +94,7 @@ public class BucketServiceLogic implements BucketService {
 
 	@Override
 	public List<Bucket> searchMyBucket(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return bucketDao.retrieveMyBucket(userId);
 	}
 
 }

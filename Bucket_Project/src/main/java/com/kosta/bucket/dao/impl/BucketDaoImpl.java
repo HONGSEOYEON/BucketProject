@@ -89,8 +89,12 @@ public class BucketDaoImpl implements BucketDao {
 
 	@Override
 	public List<Bucket> retrieveBucketBestRecom() {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = factory.openSession(true);
+		try {
+			return session.selectList("retrieveBucket");
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
