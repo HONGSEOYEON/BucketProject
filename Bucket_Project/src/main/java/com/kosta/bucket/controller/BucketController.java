@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -154,9 +155,18 @@ public class BucketController {
 	}
 	
 	
-	
-	public ModelAndView searchBucket(String word) {
-		return null;
+	@RequestMapping(value="/searchBucket", method = RequestMethod.POST)
+	public ModelAndView searchBucket(@Param("word") String word,@Param("sel") String sel) {
+		ModelAndView modelAndView = new ModelAndView("/main/main");
+		if("contents".equals(sel)){
+		List<Bucket> List1 = bucketService.searchBucketByContents(word);
+		modelAndView.addObject("bucket1", List1);
+		} else if("title".equals(sel)){
+		List<Bucket> List2 = bucketService.searchBucketByTitle(sel);
+		modelAndView.addObject("bucket2", List2);
+		} else if("".equals(word)){
+		}
+		return modelAndView;
 	}
 	
 	@RequestMapping("/accusedAllBucket")
