@@ -120,6 +120,6 @@
 	</select>
 	<select id="selectMyBuckets" parameterType="string" resultMap="resultBucket">
 		<include refid="selectBucket" />
-		WHERE writer_id = #{writerId}
+		WHERE writer_id = #{userId}
 	</select>
 </mapper>

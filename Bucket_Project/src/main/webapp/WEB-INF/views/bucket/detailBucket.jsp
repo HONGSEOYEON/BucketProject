@@ -81,14 +81,20 @@ td {
 	<%-- <%@include file="/WEB-INF/views/header/homeButton.jspf" %> --%>
 	<h1>${bucket.title}</h1>
 	<div style="text-align: left;">
-		<a class="btn btn-xs btn-info" id="bookmark"
-			onclick="location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}'">담기</a>
-		&nbsp; <a id="recommand" class="btn btn-xs btn-default"
-			href="${pageContext.request.contextPath}/recommand">추천</a>&nbsp; <a
-			class="btn btn-xs btn-default"
-			href="${pageContext.request.contextPath}/accuse">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		<a class="btn btn-xs btn-default" href="#">수정</a>&nbsp; <a
-			class="btn btn-xs btn-default" href="#">삭제</a>&nbsp;
+	    <c:if test="${loginedUser != null && loginedUser != 'hyeon'}">
+		<a class="btn btn-xs btn-info" id="bookmark" onclick="location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}'">담기</a>&nbsp; 
+		<a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand?bucketId=${bucket.bucketId}">추천</a>&nbsp; 
+		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse?bucketId=${bucket.bucketId}">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		</c:if>
+		<c:if test="${loginedUser != null && bucket.writerId == loginedUser}">
+		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/modifyBucket?bucketId=${bucket.bucketId}">수정</a>&nbsp; 
+		</c:if>
+		<c:if test="${loginedUser != null && bucket.writerId == loginedUser}">
+		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/removeBucket?bucketId=${bucket.bucketId}">삭제</a>&nbsp;
+		</c:if>
+		<c:if test="${loginedUser != null && loginedUser=='hyeon'}">
+		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/removeBucket?bucketId=${bucket.bucketId}">삭제</a>&nbsp;
+		</c:if>
 	</div>
 
 
@@ -124,6 +130,7 @@ td {
 	</table>
 	<br>
 	<h5>댓글</h5>
+	<c:if test="${loginedUser != null}">
 	<form action="${pageContext.request.contextPath}/commentRegist"
 		method="post" id="commentForm">
 		<input type="hidden" name="writerId" value=${loginedUser}> 
@@ -131,6 +138,7 @@ td {
 		<input type="text" placeholder="입력" name="contents" id="commentContent">
 		<input type="submit" value="쓰기" onclick="registComment(); return false;">
 	</form>
+	</c:if>
 	<br>
 	<br>
 	

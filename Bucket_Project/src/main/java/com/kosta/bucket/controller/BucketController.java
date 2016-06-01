@@ -181,7 +181,7 @@ public class BucketController {
 		}
 		User user = (User)session.getAttribute("loginedUser");
 		bucketService.registRecommand(bucketId);
-		return "redirect:detailBucket";
+		return "redirect:detailBucket?bucketId=" +bucketId ;
 	}
 	@RequestMapping("/accuse")
 	public String registAccuse(String bucketId, HttpServletRequest req) {
@@ -191,7 +191,7 @@ public class BucketController {
 		}
 		User user = (User)session.getAttribute("loginedUser");
 		bucketService.registAccuse(bucketId);
-		return "redirect:detailBucket";
+		return "redirect:detailBucket?bucketId=" + bucketId;
 	}
 	 
 	// 댓글 등록
@@ -227,6 +227,10 @@ public class BucketController {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");
 		
+		if(session == null || session.getAttribute("loginedUser") == null) {
+			return new ModelAndView("redirect:login");
+		}
+		
 		// 댓글 조회
 		List<Comment> comments= bucketService.searchBucketComment(bucketId);
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
@@ -242,10 +246,12 @@ public class BucketController {
 	}
 	@RequestMapping("/myBucket")
 	public ModelAndView showMyBucketList(HttpSession session){
-//		String userId = (String) session.getAttribute("userId");
-		List<Bucket> myBuckets = bucketService.searchMyBucket("hong");
+		User loginedUser = (User) session.getAttribute("loginedUser");
+		System.out.println(loginedUser.getUserId());
+		List<Bucket> myBuckets = bucketService.searchMyBucket(loginedUser.getUserId());
+		System.out.println(myBuckets.isEmpty());
 		ModelAndView mav = new ModelAndView("main/myBucket");
-		mav.addObject("myBucketList", myBuckets);
+		mav.addObject("myBuckets", myBuckets);
 		return mav;
 	}
 	

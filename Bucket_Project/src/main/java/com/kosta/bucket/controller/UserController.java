@@ -30,8 +30,6 @@ public class UserController {
 		if (loginedUser != null && loginedUser.getPassword().equals(req.getParameter("password"))) {
 			
 			session.setAttribute("loginedUser", loginedUser);
-
-			System.out.println(loginedUser.getIsManager());
 			
 			ModelAndView model = new ModelAndView("redirect:/");
 			return model;
@@ -99,9 +97,7 @@ public class UserController {
 
 		User user = (User) session.getAttribute("loginedUser");
 		
-		session.setAttribute("beforeUser", user);
-
-		return new ModelAndView("redirect:/modify");
+		return new ModelAndView("user/modifyUser").addObject("beforeUser", user);
 	}
 
 	@RequestMapping("showPageLogin")
