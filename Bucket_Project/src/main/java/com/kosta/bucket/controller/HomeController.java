@@ -33,13 +33,4 @@ public class HomeController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public ModelAndView home2() {
-		ModelAndView modelAndView = new ModelAndView("/main/main");
-		List<Bucket> List1 = bucketService.searchBucketBestRecom();
-		List<Bucket> List2 = bucketService.searchAllBucket();
-		modelAndView.addObject("bucket1", List1);
-		modelAndView.addObject("bucket2", List2);
-		return modelAndView;
-	}
 }

@@ -91,7 +91,7 @@
 .stylish-input-group .form-control{
 	border-right:0; 
 	box-shadow:0 0 0; 
-	border-color:#ccc;
+	border-color:#1abc9c;
 }
 .stylish-input-group button{
     border:0;
@@ -110,55 +110,68 @@
                     <span class="input-group-addon">
                         <button type="submit">
                             <span class="glyphicon glyphicon-search"></span>
-                        </button>  
+                        </button>
                     </span>
                 </div>
             </div>
         </div>
 	</div>
 </div>
+          
 <!-- Reference: https://github.com/ashleydw/lightbox/ -->
 <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
-
 <div class="container mt40">
     <section class="row">
+<c:forEach items="${bucket1 }" var="bucket">
         <article class="col-xs-12 col-sm-6 col-md-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="http://lorempixel.com/350/350/nature/4" title="Nature Portfolio" class="zoom" data-title="Amazing Nature" data-footer="The beauty of nature" data-type="image" data-toggle="lightbox">
-                        <img src="http://lorempixel.com/350/350/nature/4" alt="Nature Portfolio" />
+                    <a href="detailBucket?bucketId=${bucket.bucketId}" title="Nature Portfolio" class="zoom" data-title="Amazing Nature" data-footer="The beauty of nature" data-type="image" data-toggle="lightbox">
+                        <img src="${pageContext.request.contextPath}/resources/img/${bucket.image }" alt="Nature Portfolio" />
                         <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
                     </a>
                 </div>
                 <div class="panel-footer">
-                    <h4><a href="#" title="Nature Portfolio">Nature</a></h4>
+                    <h4><a href="detailBucket?bucketId=${bucket.bucketId}" title="Nature Portfolio">${bucket.title }</a></h4>
                     <span class="pull-right">
-                        <i id="like1" class="glyphicon glyphicon-thumbs-up"></i> <div id="like1-bs3"></div>
-                        <i id="dislike1" class="glyphicon glyphicon-thumbs-down"></i> <div id="dislike1-bs3"></div>
+                        <i id="like1" class="glyphicon glyphicon-thumbs-up"><h6>${bucket.recomNum }</h6></i> <div id="like1-bs3"></div>
                     </span>
                 </div>
             </div>
         </article>
+</c:forEach>
 </section>
 </div>
-	<%-- <c:forEach items="${bucket1 }" var="bucket">
-		<div>
-			<label><a href="detailBucket?bucketId=${bucket.bucketId}/">
-					<img
-					src="${pageContext.request.contextPath}/resources/img/${bucket.image }"
-					class="img-thumbnail">
-			</a></label>
-		</div>
-		<br>
-		<br>
-	</c:forEach> --%>
-	<!-- <div> -->
-		<%-- <c:forEach items="${bucket2 }" var="bucket">
-	<div>
-	<label><a href="detailBucket?bucketId=${bucket.bucketId}/">
-	<img src="${pageContext.request.contextPath}/resources/img/${bucket.image }" class="img-thumbnail">
-	</a></label>
-	</div><br><br>
-</c:forEach> --%>
+<!-- Progress Bar -->
+        	<div class="col-md-4">
+                  <div class="col-md-11">
+                    <div class="progress">
+                      <div data-percentage="0%" style="width: 80%;" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="10" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+
+<div class="container mt40">
+    <section class="row">
+<c:forEach items="${bucket2 }" var="bucket">
+        <article class="col-xs-12 col-sm-6 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="detailBucket?bucketId=${bucket.bucketId}" title="Nature Portfolio" class="zoom" data-title="Amazing Nature" data-footer="The beauty of nature" data-type="image" data-toggle="lightbox">
+                        <img src="${pageContext.request.contextPath}/resources/img/${bucket.image }" alt="Nature Portfolio" />
+                        <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
+                    </a>
+                </div>
+                <div class="panel-footer">
+                    <h4><a href="detailBucket?bucketId=${bucket.bucketId}" title="Nature Portfolio">${bucket.title }</a></h4>
+                    <span class="pull-right">
+                       <div id="like1-bs3"><h6>${bucket.registDate }</h6></i></div>
+                    </span>
+                </div>
+            </div>
+        </article>
+</c:forEach>
+</section>
+</div>
 		</body>
 </html>
