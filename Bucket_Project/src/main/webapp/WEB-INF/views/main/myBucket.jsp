@@ -106,12 +106,6 @@
         <div class="col-sm-6 col-sm-offset-3">
             <div id="imaginary_container"> 
                 <div class="input-group stylish-input-group">
-                    <input type="text" class="form-control"  placeholder="Search" >
-                    <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>  
-                    </span>
                 </div>
             </div>
         </div>
@@ -131,13 +125,13 @@
                     </a>
                 </div>
                 <div class="panel-footer">
+               
                     <h4><a href="#" title="Nature Portfolio">${bucket.title}</a></h4>
-                    <span class="pull-right">
-                    
-                        <i id="like1" class="glyphicon glyphicon-thumbs-up"></i> <div id="like1-bs3"></div>
-                        <i id="dislike1" class="glyphicon glyphicon-thumbs-down"></i> <div id="dislike1-bs3"></div>
-                        
+                    <span class="pull-right" >
+                        <i id="like1" class="glyphicon glyphicon-thumbs-up"><h6>${bucket.recomNum }</h6>
+                        <a class="btn btn-xs btn-default" href="#">삭제</a></i> <div id="like1-bs3"></div>
                     </span>
+                   
                 </div>
             </div>
         </article>

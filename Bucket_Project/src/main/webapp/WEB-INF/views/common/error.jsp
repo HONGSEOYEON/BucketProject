@@ -59,7 +59,7 @@
     
     <script type="text/javascript">
     	var goHome = function() {
-    		location.href="${pageContext.request.contextPath}/index.jsp";
+    		location.href="${pageContext.request.contextPath}/bucket";
     	};
     </script>
 </head>
