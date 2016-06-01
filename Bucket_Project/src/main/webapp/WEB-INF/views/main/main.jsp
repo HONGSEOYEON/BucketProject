@@ -35,17 +35,21 @@ div {
 				aria-describedby="inputGroupSuccess4Status">
 		</div>
 	</div>
-<c:forEach items=${bucket1 }" var="bucket" varStatus="vs" >
+<c:forEach items="${bucket1 }" var="bucket" >
 	<div>
-	<img src="..." alt="..." class="img-rounded">
-	<img src="..." alt="..." class="img-circle">
-	<img src="..." alt="..." class="img-thumbnail">
+	<label><a href="detailBucket?bucketId=${bucket.bucketId}/">
+	<img src="${pageContext.request.contextPath}/resources/img/${bucket.image }" class="img-thumbnail">
+	</a></label>
 	</div><br><br>
 </c:forEach>
 	<div>
-	<img src="..." alt="..." class="img-rounded">
-	<img src="..." alt="..." class="img-circle">
-	<img src="..." alt="..." class="img-thumbnail">
+	<%-- <c:forEach items="${bucket2 }" var="bucket">
+	<div>
+	<label><a href="detailBucket?bucketId=${bucket.bucketId}/">
+	<img src="${pageContext.request.contextPath}/resources/img/${bucket.image }" class="img-thumbnail">
+	</a></label>
+	</div><br><br>
+</c:forEach> --%>
 	</div>
 	
 

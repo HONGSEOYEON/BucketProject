@@ -148,6 +148,7 @@ public class BucketController {
 	
 	
 	public ModelAndView searchBucket(String word) {
+		
 		return null;
 	}
 	
