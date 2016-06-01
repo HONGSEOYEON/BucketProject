@@ -33,14 +33,26 @@ public class KeepBucketDaoImpl implements KeepBucketDao {
 
 	@Override
 	public List<Bucket> retrieveKeepBucketList(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = factory.openSession();
+		try {
+			List<Bucket> buckets = session.selectList("selectAllKeepBucket", userId);
+			return buckets;
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public int deleteKeepBucket(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession session = factory.openSession();
+		int result = 0;
+		try {
+			result = session.delete("deleteKeepBucket", bucketId);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 
 }

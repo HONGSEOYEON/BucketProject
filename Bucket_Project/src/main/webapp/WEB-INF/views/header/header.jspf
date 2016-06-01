@@ -4,9 +4,13 @@
 <c:set var="ctx">${pageContext.request.contextPath}</c:set>
 <c:choose>
 	<c:when test="${loginedUser eq null}">
-		<a href="${ctx}/login">로그인</a> | <a href="${ctx}/join">회원가입</a>
+		<a href="${ctx}/user/login">로그인</a> | <a href="${ctx}/user/join">회원가입</a>
 	</c:when>
-	<c:otherwise>
-		<b>${loginedUser.name}</b> 님!! 환영합니다. [<a href="${ctx}/logout">로그아웃</a>]
- 	</c:otherwise>
+	<c:when test="${loginedUser ne null}">
+		<b>${loginedUser.userId}</b> 님!! 환영합니다. [<a href="${ctx}/user/logout">로그아웃</a>] <br>
+		[<a href="${ctx}/main/keepBucketList">마이 이미지 후기</a>] [<a href="${ctx}/main/myBucketList">내가 담은 이미지 후기</a>] [<a href="${ctx}/main/registBucket">이미지 후기 등록</a>]
+ 	</c:when>
+	<c:when test="${loginedUser ne null and loginUser.isManager eq 'Y'}">
+		<b>${loginedUser.userId}</b> 님!! 환영합니다. [<a href="${ctx}/main/management">사용자 관리</a>] [<a href="${ctx}/user/logout">로그아웃</a>]
+ 	</c:when>
 </c:choose>

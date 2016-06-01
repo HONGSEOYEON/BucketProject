@@ -12,16 +12,16 @@
 </resultMap>
 
 <sql id="selectUser">
-SELECT id, password, name, email 
+SELECT id, password, name, email, manager
 FROM bucket_user
 </sql>
 
 <insert id="insertUser" parameterType="User">
-INSERT INTO bucket_user (ID, PASSWORD, NAME, EMAIL])
+INSERT INTO bucket_user (ID, PASSWORD, NAME, EMAIL)
 VALUES (#{userId}, #{password}, #{userName}, #{email})
 </insert>
 
-<select id="retrieveUser" parameterType="String">
+<select id="retrieveUser" parameterType="string" resultMap="resultUser">
 <include refid="selectUser" />
 WHERE id = #{userId}
 </select>
@@ -34,13 +34,9 @@ SET email = #{email}
 WHERE id = #{userId}
 </update>
 
-<delete id="deleteUser" parameterType="String">
+<delete id="deleteUser" parameterType="string">
 DELETE FROM bucket_user
 WHERE id = #{userId}
 </delete>
-
-<select id="retrieveAccuesedUser" parameterType="string">
-
-</select>
 
 </mapper>

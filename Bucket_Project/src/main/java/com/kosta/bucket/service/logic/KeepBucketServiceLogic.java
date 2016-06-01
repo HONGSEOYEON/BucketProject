@@ -7,30 +7,29 @@ import org.springframework.stereotype.Service;
 
 import com.kosta.bucket.dao.KeepBucketDao;
 import com.kosta.bucket.entity.Bucket;
+import com.kosta.bucket.entity.KeepBucket;
 import com.kosta.bucket.service.KeepBucketService;
 
 @Service
 public class KeepBucketServiceLogic implements KeepBucketService {
-	
+
 	@Autowired
 	private KeepBucketDao keepBucketDao;
 
 	@Override
-	public int registKeepBucket(Bucket bucket) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int registKeepBucket(KeepBucket keepBucket) {
+		int result = keepBucketDao.createKeepBucket(keepBucket);
+		return result;
 	}
 
 	@Override
 	public List<Bucket> searchKeepBucketList(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return keepBucketDao.retrieveKeepBucketList(userId);
 	}
 
 	@Override
 	public int removeKeepBucket(String bucketId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return keepBucketDao.deleteKeepBucket(bucketId);
 	}
 
 }
