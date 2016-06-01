@@ -14,5 +14,5 @@ public interface KeepBucketService {
 	public List<Bucket> searchKeepBucketList(String userId);
 
 	// 담아둔 후기 삭제하기
-	public int removeKeepBucket(String bucketId);
+	public int removeKeepBucket(KeepBucket keepBucket);
 }

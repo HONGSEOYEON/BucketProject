@@ -43,11 +43,11 @@ public class KeepBucketDaoImpl implements KeepBucketDao {
 	}
 
 	@Override
-	public int deleteKeepBucket(String bucketId) {
+	public int deleteKeepBucket(KeepBucket keepBucket) {
 		SqlSession session = factory.openSession();
 		int result = 0;
 		try {
-			result = session.delete("deleteKeepBucket", bucketId);
+			result = session.delete("deleteKeepBucket", keepBucket);
 			session.commit();
 			return result;
 		} finally {

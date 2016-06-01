@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="ctx">${pageContext.request.contextPath }</c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,13 +32,23 @@ h1 {
 }
 
 .imgAlbum {
-	width: 80px;
-	height: 80px;
+	width: 100px;
+	height: 100px;
 	margin-right: 10px;
 }
 
 .btnPlay {
 	margin-top:40%
+}
+
+.section {
+	border: 0.2px solid black;
+	padding: 15px;
+	margin: 15px;
+	float: left;
+	height: 300px;
+	width: 300px;
+	text-align: center;
 }
 </style>
 </head>
@@ -48,7 +56,7 @@ h1 {
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<h1> 님이 담은 이미지 후기 목록</h1>
+				<h1> <>님이 담은 이미지 후기 목록</h1>
 				<table class="table table-hover table-condensed">
 					<colgroup>
 						<col width="80" align="center">
@@ -61,13 +69,17 @@ h1 {
 					</thead>
 					<tbody>
 						<c:forEach items="${keepbuckets}" var="keepbucket" varStatus="sts">
-							<table class="table table-hover table-condensed">
+							<table class="section">
 								<tr>
-								<td><a href="detailBucket?bucketId=${keepbucket.bucketId}">${sts.count}</a><br>${keepbucket.title}<br>-${keepbucket.writerId}-
+								<td>
+									<img class="imgAlbum" src="resources/img/${keepbucket.image}"><br>
+									제목 : <a href="detailBucket?bucketId=${keepbucket.bucketId}">${keepbucket.title}</a><br>
+									게시자 : ${keepbucket.writerId}<br><br>
+									<a class="btn btn-xs btn-default" href="deleteKeepBucket?bucketId='1' " id="deletebtn">삭제</a>
 								</td>
 								</tr>
 								</table>
-                       		 </c:forEach>
+                       	</c:forEach>
 					</tbody>
 				</table>
 			</div>

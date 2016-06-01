@@ -91,7 +91,7 @@ public class BucketDaoImpl implements BucketDao {
 	public List<Bucket> retrieveBucketBestRecom() {
 		SqlSession session = factory.openSession(true);
 		try {
-			return session.selectOne("retrieveBucketBestRecom");
+			return session.selectList("retrieveBucketBestRecom");
 		} finally {
 			session.close();
 		}
