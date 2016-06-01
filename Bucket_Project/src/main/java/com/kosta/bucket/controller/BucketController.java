@@ -13,9 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.Bucket;
 import com.kosta.bucket.entity.Comment;
+import com.kosta.bucket.entity.User;
 import com.kosta.bucket.service.BucketService;
 
 @Controller
@@ -246,10 +245,12 @@ public class BucketController {
 	}
 	@RequestMapping("/myBucket")
 	public ModelAndView showMyBucketList(HttpSession session){
-//		String userId = (String) session.getAttribute("userId");
-		List<Bucket> myBuckets = bucketService.searchMyBucket("hong");
+		User loginedUser = (User) session.getAttribute("loginedUser");
+		System.out.println(loginedUser.getUserId());
+		List<Bucket> myBuckets = bucketService.searchMyBucket(loginedUser.getUserId());
+		System.out.println(myBuckets.isEmpty());
 		ModelAndView mav = new ModelAndView("main/myBucket");
-		mav.addObject("myBucketList", myBuckets);
+		mav.addObject("myBuckets", myBuckets);
 		return mav;
 	}
 	
