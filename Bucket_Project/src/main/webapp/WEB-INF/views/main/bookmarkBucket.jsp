@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>내가 담은 이미지 후기 목록</title>
+<title>내가 담은 버킷 리스트</title>
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="resources/css/style.css" rel="stylesheet">
 <style type="text/css">
 body {
 	padding: 50px;
-	background-image: url("resources/img/congruent_pentagon.png");
+	/* background-image: url("resources/img/congruent_pentagon.png"); */
 }
 h1 {
 	font-weight:bold;
@@ -43,7 +43,7 @@ h1 {
 }
 
 .section {
-	border: 0.2px solid black;
+	border: 0.2px solid gray;
 	padding: 15px;
 	margin: 15px;
 	float: left;
@@ -57,7 +57,7 @@ h1 {
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<h1> <>님이 담은 이미지 후기 목록</h1>
+				<h1> <>님이 담은 버킷 리스트</h1>
 				<table class="table table-hover table-condensed">
 					<colgroup>
 						<col width="80" align="center">
@@ -76,7 +76,7 @@ h1 {
 									<img class="imgAlbum" src="resources/img/${keepbucket.image}"><br>
 									제목 : <a href="detailBucket?bucketId=${keepbucket.bucketId}">${keepbucket.title}</a><br>
 									게시자 : ${keepbucket.writerId}<br><br>
-									<a class="btn btn-xs btn-default" href="deleteKeepBucket?bucketId='1' " id="deletebtn">삭제</a>
+									<a class="btn btn-xs btn-default" href="deleteKeepBucket?bucketId=1 " id="deletebtn">삭제</a>
 								</td>
 								</tr>
 								</table>

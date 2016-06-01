@@ -20,18 +20,35 @@
 			document.getElementById("commentContent").focus();
 			return false;
 		}
+		else {
 		return true;
+		}
+	};
+	
+	var registComment = function() {
+		if (comment()) {
+			document.getElementById("commentForm").submit();
+		}
 	};
 	
 	var bookmark = function() {
 			alert("버킷을 담았습니다!");
 		return true;
 	};
+	
+	function bookmarkTest(){
+	    if(bookmark()){
+	        location.href = "${pageContext.request.contextPath}/registerKeepBucket?bucketId=1";
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
 </script>	
 <style>
 body {
 	padding: 10% 30%;
-	background-image: url("resources/img/congruent_pentagon.png");
+	/* background-image: url("resources/img/back.png"); */
 }
 
 td {
@@ -51,9 +68,9 @@ td {
 </style>
 </head>
 <body>
-	<h1>이미지 후기 상세페이지</h1>
+	<h1>${bucket.title}</h1>
 	<div style="text-align: left;">
-		<a class="btn btn-xs btn-info"  onclick="bookmark(); return false;" href="${pageContext.request.contextPath}/registerKeepBucket?bucketId='1'  ">담기</a>&nbsp; 
+		<a class="btn btn-xs btn-info"  href="${pageContext.request.contextPath}/registerKeepBucket?bucketId=1"   onclick="bookmarkTest(); return false;">담기</a>&nbsp;
 		<a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand">추천</a>&nbsp; 
 		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="btn btn-xs btn-default" href="#">수정</a>&nbsp; <a
@@ -97,12 +114,11 @@ td {
 	</table>
 	<br>
 	<h5>댓글</h5>
-	<form
-		action="${pageContext.request.contextPath}/commentRegist?writerId='seok' "
-		method="post">
-		<input type="hidden" name="bucketId" value="1"> <input
-			type="text" placeholder="입력" name="contents" id="commentContent"><input
-			type="submit" value="쓰기" onclick="comment(); return false;">
+	<form action="${pageContext.request.contextPath}/commentRegist" method="post" id="commentForm">
+		<input type="hidden" name="writerId" value="seok">
+		<input type="hidden" name="bucketId" value="1"> 
+		<input type="text" placeholder="입력" name="contents" id="commentContent">
+			<input type="submit" value="쓰기" onclick="registComment(); return false;">
 	</form>
 	<br>
 	<br>

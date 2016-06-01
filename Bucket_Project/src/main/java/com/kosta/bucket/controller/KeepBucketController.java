@@ -27,22 +27,19 @@ public class KeepBucketController {
 
 	@RequestMapping("/registerKeepBucket")
 	public String registerKeepBucket(HttpSession session, @RequestParam("bucketId") String bucketId) {
-		String userId = (String) session.getAttribute("userId");
-		KeepBucket keepBucket = new KeepBucket(bucketId, userId);
+		/*String userId = (String) session.getAttribute("userId");*/
+		KeepBucket keepBucket = new KeepBucket(bucketId, "seok");
 		keepBucketService.registKeepBucket(keepBucket);
-		return "redirect:showKeepBucket";
+		return "redirect:detailBucket";
 	}
 
 	@RequestMapping("/showKeepBucket")
-	public ModelAndView showKeepBucketList(/*
-											 * String userId , HttpServletRequest
-											 * req
-											 */ ) {
+	public ModelAndView showKeepBucketList(/* * String userId , HttpServletRequest* req*/ ) {
 		/*
 		 * HttpSession session = req.getSession(); User user = (User)
 		 * session.getAttribute("loginedUser");
 		 */
-		List<Bucket> keepBuckets = keepBucketService.searchKeepBucketList("hong");
+		List<Bucket> keepBuckets = keepBucketService.searchKeepBucketList("seok");
 		ModelAndView modelAndView = new ModelAndView("/main/bookmarkBucket");
 		// modelAndView.addObject("loginedUser", user.getUserId());
 		modelAndView.addObject("keepbuckets", keepBuckets);
@@ -51,8 +48,8 @@ public class KeepBucketController {
 
 	@RequestMapping("/deleteKeepBucket")
 	public String removeKeepBucket(String bucketId, HttpSession session) {
-		String userId = (String) session.getAttribute("hong");
-		KeepBucket keepBucket = new KeepBucket("1", userId);
+		/*String userId = (String) session.getAttribute("loginedUser");*/
+		KeepBucket keepBucket = new KeepBucket("1", "seok");
 		keepBucketService.removeKeepBucket(keepBucket);
 		return "redirect:showKeepBucket";
 	}
