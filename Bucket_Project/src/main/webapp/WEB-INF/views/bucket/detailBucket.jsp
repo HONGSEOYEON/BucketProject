@@ -13,20 +13,19 @@
 	rel="stylesheet">
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
-	var check = function() {
+// 댓글 유효성 검사
+	var comment = function() {
 		if (document.getElementById("commentContent").value == "") {
 			alert("댓글을 입력하세요");
 			document.getElementById("commentContent").focus();
 			return false;
 		}
+		return true;
 	};
 	
-	var recommand = function() {
-		if (document.getElementById("recommand").value == "") {
-			alert("댓글을 입력하세요");
-			document.getElementById("commentContent").focus();
-			return false;
-		}
+	var bookmark = function() {
+			alert("버킷을 담았습니다!");
+		return true;
 	};
 </script>	
 <style>
@@ -43,13 +42,18 @@ td {
 	width: 100%;
 }
 
+.imgAlbum {
+	width: 600px;
+	height: 600px;
+}
+
 
 </style>
 </head>
 <body>
 	<h1>이미지 후기 상세페이지</h1>
 	<div style="text-align: left;">
-		<a class="btn btn-xs btn-info" href="${pageContext.request.contextPath}/registerKeepBucket?bucketId='1'  ">담기</a>&nbsp; 
+		<a class="btn btn-xs btn-info"  onclick="bookmark(); return false;" href="${pageContext.request.contextPath}/registerKeepBucket?bucketId='1'  ">담기</a>&nbsp; 
 		<a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand">추천</a>&nbsp; 
 		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="btn btn-xs btn-default" href="#">수정</a>&nbsp; <a
