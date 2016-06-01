@@ -18,8 +18,7 @@ public class KeepBucketServiceLogic implements KeepBucketService {
 
 	@Override
 	public int registKeepBucket(KeepBucket keepBucket) {
-		int result = keepBucketDao.createKeepBucket(keepBucket);
-		return result;
+		return keepBucketDao.createKeepBucket(keepBucket);
 	}
 
 	@Override

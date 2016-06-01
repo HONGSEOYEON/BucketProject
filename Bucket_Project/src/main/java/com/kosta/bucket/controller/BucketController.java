@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -146,7 +147,7 @@ public class BucketController {
 	
 	
 	
-	public ModelAndView searchBucket(String bucketId) {
+	public ModelAndView searchBucket(String word) {
 		return null;
 	}
 	
@@ -224,7 +225,9 @@ public class BucketController {
 		return modelAndView;
 	}
 	
-	public ModelAndView showMyBucketList(String userId){
+	public ModelAndView showMyBucketList(HttpSession session){
+		String userId = (String) session.getAttribute("userId");
+		List<Bucket> list = bucketService.searchMyBucket(userId);
 		return null;
 	}
 	

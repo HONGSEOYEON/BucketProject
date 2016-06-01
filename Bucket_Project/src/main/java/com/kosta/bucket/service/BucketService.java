@@ -41,8 +41,6 @@ public interface BucketService {
 		
 		
 		// 신고 관련
-		//신고된 후기 삭제
-		public int removeAccusedBucket(String bucketId);
 		//신고된 후기 전체 조회
 		public List<Bucket> searchAccusedAllBucket();
 		
