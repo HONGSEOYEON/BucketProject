@@ -74,10 +74,10 @@ public class UserDaoImpl implements UserDao {
 		try {
 			result = session.delete("deleteUser", userId);
 			session.commit();
-			return result;
 		} finally {
 			session.close();
 		}
+		return result;
 	}
 
 	@Override
