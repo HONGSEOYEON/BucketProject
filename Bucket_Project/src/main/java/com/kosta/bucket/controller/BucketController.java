@@ -226,17 +226,17 @@ public class BucketController {
 	
 	// 상세 페이지 
 	@RequestMapping(value="/detailBucket")
-	public ModelAndView showDetailBucket(/*String bucketId, HttpServletRequest req*/) {
+	public ModelAndView showDetailBucket(String bucketId/*, HttpServletRequest req*/) {
 		// 세션 아이디 가져오기
 		/*HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("loginedUser");*/
 		
 		// 댓글 조회
-		List<Comment> comments= bucketService.searchBucketComment("1");
+		List<Comment> comments= bucketService.searchBucketComment(bucketId);
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
 //		modelAndView.addObject("loginedUser", user.getUserId());
 		
-		Bucket bucket = bucketService.searchBucket("1");
+		Bucket bucket = bucketService.searchBucket(bucketId);
 		modelAndView.addObject("comments", comments);
 		modelAndView.addObject("bucket", bucket);
 		
