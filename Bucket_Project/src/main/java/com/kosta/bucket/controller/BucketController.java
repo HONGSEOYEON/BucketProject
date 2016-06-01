@@ -160,16 +160,11 @@ public class BucketController {
 	
 	
 	@RequestMapping(value="/searchBucket", method = RequestMethod.POST)
-	public ModelAndView searchBucket(@Param("word") String word,@Param("sel") String sel) {
+	public ModelAndView searchBucket(@Param("word") String word) {
 		ModelAndView modelAndView = new ModelAndView("/main/main");
-		if("contents".equals(sel)){
 		List<Bucket> List1 = bucketService.searchBucketByContents(word);
+		List1.addAll(bucketService.searchBucketByTitle(word));
 		modelAndView.addObject("bucket1", List1);
-		} else if("title".equals(sel)){
-		List<Bucket> List2 = bucketService.searchBucketByTitle(sel);
-		modelAndView.addObject("bucket2", List2);
-		} else if("".equals(word)){
-		}
 		return modelAndView;
 	}
 	
