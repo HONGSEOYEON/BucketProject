@@ -4,21 +4,21 @@
 <c:set var="ctx">${pageContext.request.contextPath}</c:set>
 <div style="position: relative; right: 200px;">
 <c:choose>
-	<c:when test="${loginedUser eq null}">
+	<c:when test="${loginedUser ne null}">
+	<c:if test="${loginedUser.isManager eq Y}">
 	<div style="text-align:right">
-		<a href="${ctx}/user/login/showPage">로그인</a> | <a href="${ctx}/user/join/showPage">회원가입</a>
+	<b>${loginedUser.userId}</b> 님!! 환영합니다. [<a href="${ctx}/main/management">사용자 관리</a>] [<a href="${ctx}/user/logout">로그아웃</a>]
 	</div>
-	</c:when>
-	<c:when test="${loginedUser ne null and loginedUser.isManager eq 'N'}">
+	</c:if>
 		<div style="text-align:right">
-		<a href="${ctx}/user/modify/showPage"><b>${loginedUser.userId}</b></a> 님!! 환영합니다. [<a href="${ctx}/user/logout">로그아웃</a>] <br>
+		<a href="showPageModify"><b>${loginedUser.userId}</b></a> 님!! 환영합니다. [<a href="logout">로그아웃</a>] <br>
 		[<a href="${ctx}/main/keepBucketList">마이 이미지 후기</a>] [<a href="${ctx}/main/myBucketList">내가 담은 이미지 후기</a>] [<a href="${ctx}/main/registBucket">이미지 후기 등록</a>]
 		</div>
  	</c:when>
-	<c:when test="${loginedUser.isManager eq 'Y'}">
+ 	<c:otherwise>
 	<div style="text-align:right">
-		<b>${loginedUser.userId}</b> 님!! 환영합니다. [<a href="${ctx}/main/management">사용자 관리</a>] [<a href="${ctx}/user/logout">로그아웃</a>]
+		<a href="showPageLogin">로그인</a> | <a href="showPageJoin">회원가입</a>
 	</div>
- 	</c:when>
+	</c:otherwise>
 </c:choose>
 </div>

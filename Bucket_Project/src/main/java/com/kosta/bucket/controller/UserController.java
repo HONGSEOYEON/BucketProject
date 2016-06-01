@@ -1,5 +1,7 @@
 package com.kosta.bucket.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,35 +12,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kosta.bucket.entity.Bucket;
 import com.kosta.bucket.entity.User;
+import com.kosta.bucket.service.BucketService;
 import com.kosta.bucket.service.UserService;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private BucketService bucketService;
 
-	@RequestMapping(value = "/login", method=RequestMethod.POST)
-	public ModelAndView loginUser(User user, HttpServletRequest req, HttpSession session) {
+	@RequestMapping("/login")
+	public ModelAndView loginUser(HttpServletRequest req, HttpSession session) {
 
 		String id = (String) req.getParameter("loginId");
-		user = userService.searchUser(id);
-		if (user != null && user.getPassword().equals(req.getParameter("password"))) {
-
-			User loginedUser = userService.searchUser(user.getUserId());
-
+		User loginedUser = userService.searchUser(id);
+		
+		if (loginedUser != null && loginedUser.getPassword().equals(req.getParameter("password"))) {
+			
 			session.setAttribute("loginedUser", loginedUser);
-			/*session.setAttribute("password", loginedUser.getPassword());
-			session.setAttribute("name", loginedUser.getUserName());
-			session.setAttribute("email", loginedUser.getEmail());*/
-//			session.setAttribute("isManager", loginedUser.getIsManager());
-
-			ModelAndView model = new ModelAndView("/main/main");
-			model.addObject("loginedUser", loginedUser);
-			return model;
+			ModelAndView modelAndView = new ModelAndView("/main/main");
+			List<Bucket> List1 = bucketService.searchBucketBestRecom();
+			List<Bucket> List2 = bucketService.searchAllBucket();
+			modelAndView.addObject("bucket1", List1);
+			modelAndView.addObject("bucket2", List2);
+			return modelAndView;
 		}
+		
 		throw new RuntimeException("로그인 정보가 일치하지 않습니다.");
 	}
 
@@ -108,7 +111,7 @@ public class UserController {
 		return new ModelAndView("/main/main").addObject("loginedUser", loginedUser);
 	}
 
-	@RequestMapping("/modify/showPage")
+	@RequestMapping("showPageModify")
 	public ModelAndView showModifyPage(
 			HttpSession session/* , HttpServletRequest req */) {
 
@@ -122,13 +125,13 @@ public class UserController {
 		return new ModelAndView("/user/modifyUser").addObject("beforeUser", user);
 	}
 
-	@RequestMapping("/login/showPage")
+	@RequestMapping("showPageLogin")
 	public ModelAndView showLoginPage() {
 
 		return new ModelAndView("/user/login");
 	}
 
-	@RequestMapping("/join/showPage")
+	@RequestMapping("/showPageJoin")
 	public ModelAndView showJoinPage() {
 
 		return new ModelAndView("/user/join");

@@ -63,11 +63,6 @@
         }
 
     </style>
-    <script type="text/javascript">
-    var goJoin = function() {
-    	location.href="${pageContext.request.contextPath}/user/join";
-    }
-    </script>
 </head>
 <body>
 <div class="container">
@@ -79,20 +74,16 @@
 
 	
     <!-- form -->
-    <form class="form-signin" action="${pageContext.request.contextPath}/user/login" method="POST">
+    <form class="form-signin" action="login" method="POST">
         <input type="text" class="form-control" id="inputId" name="loginId" placeholder="아이디">
         <input type="password" class="form-control" id="inputPassword" name="password" placeholder="비밀번호">
         <div class="row form-btn">
             <button class="btn btn-large btn-warning" type="submit">로그인</button>
-            <button class="btn btn-large btn-default" onclick="location:href='${pageContext.request.contextPath}/main/main'">취소</button>
+            <button class="btn btn-large btn-default" onclick="location.href='javascript:history.back()'">취소</button>
         </div>
     </form>
    
 
-    <!-- footer -->
-    <div class="login-footer">
-        <p>© NamooSori 2016.</p>
-    </div>
 </div>
 
 </body>
