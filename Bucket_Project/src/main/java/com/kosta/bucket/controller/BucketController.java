@@ -13,9 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,13 +22,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.Bucket;
 import com.kosta.bucket.entity.Comment;
+import com.kosta.bucket.entity.KeepBucket;
 import com.kosta.bucket.service.BucketService;
+import com.kosta.bucket.service.KeepBucketService;
 
 @Controller
 public class BucketController {
 
 	@Autowired
 	private BucketService bucketService;
+	
 	
 	// 이미지 후기 등록페이지 출력
 	@RequestMapping(value = "/registBucket", method = RequestMethod.GET)
