@@ -28,11 +28,6 @@ public class BucketController {
 	@Autowired
 	private BucketService bucketService;
 	
-	@RequestMapping("/")
-	public ModelAndView main() {
-		ModelAndView mv = new ModelAndView("main/main");
-		return mv;
-	}
 	
 	//이미지 후기 등록
 	@RequestMapping(value = "/registBucket", method = RequestMethod.POST)
