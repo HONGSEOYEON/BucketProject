@@ -20,8 +20,10 @@ public class HomeController {
 	@Autowired
 	private BucketService bucketService;
 	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		bucketService.searchBucketBestRecom();
 		return "main/main";
 	}
 }
