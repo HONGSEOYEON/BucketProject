@@ -48,7 +48,7 @@
 				</tr>
 				<tr>
 					<td align="center">후기<br>
-					<textarea name="contents" cols="100" rows="20"/></td>
+					<textarea name="contents" cols="100" rows="20"></textarea></td>
 				</tr>
 				<tr>
 				<td>
