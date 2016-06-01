@@ -227,8 +227,10 @@ public class BucketController {
 	
 	public ModelAndView showMyBucketList(HttpSession session){
 		String userId = (String) session.getAttribute("userId");
-		List<Bucket> list = bucketService.searchMyBucket(userId);
-		return null;
+		List<Bucket> myBuckets = bucketService.searchMyBucket(userId);
+		ModelAndView mav = new ModelAndView("bucket/myBucket");
+		mav.addObject("myBucketList", myBuckets);
+		return mav;
 	}
 	
 }
