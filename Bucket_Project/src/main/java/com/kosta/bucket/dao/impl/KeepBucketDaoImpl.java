@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kosta.bucket.dao.KeepBucketDao;
@@ -14,7 +13,6 @@ import com.kosta.bucket.entity.KeepBucket;
 @Repository
 public class KeepBucketDaoImpl implements KeepBucketDao {
 
-	
 	private SqlSessionFactory factory;
 	
 	public KeepBucketDaoImpl(){

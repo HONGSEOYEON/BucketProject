@@ -12,7 +12,7 @@ import com.kosta.bucket.service.KeepBucketService;
 
 @Service
 public class KeepBucketServiceLogic implements KeepBucketService {
-	
+
 	@Autowired
 	private KeepBucketDao keepBucketDao;
 
