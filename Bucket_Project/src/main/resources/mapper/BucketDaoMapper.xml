@@ -59,9 +59,8 @@
 	</select>
 
 	<insert id="insertBucket" parameterType="Bucket">
-		INSERT INTO bucket (ID, TITLE, IMAGE, CONTENTS, WRITER_ID, REG_DATE, ADDRESS)
-		VALUES (BUCKET_SEQ.nextval, #{title}, #{image}, #{contents}, #{writerId},
-		#{registDate}, #{address})
+		INSERT INTO bucket (ID, TITLE, IMAGE, CONTENTS, WRITER_ID, ADDRESS, REG_DATE)
+		VALUES (BUCKET_SEQ.nextval, #{title}, #{image}, #{contents}, #{writerId},#{address},#{registDate} )
 	</insert>
 
 	<update id="updateRecommand" parameterType="string">
