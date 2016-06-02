@@ -43,7 +43,7 @@ public class KeepBucketController {
 		}
 		
 		ModelAndView modelAndView = new ModelAndView("main/bookmarkBucket");
-		modelAndView.addObject("loginedUser", user.getUserId());
+		modelAndView.addObject("user", user);
 		modelAndView.addObject("keepbuckets", keepBuckets);
 		return modelAndView;
 	}
