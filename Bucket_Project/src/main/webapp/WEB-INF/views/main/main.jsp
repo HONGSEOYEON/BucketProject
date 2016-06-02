@@ -100,6 +100,9 @@
     border:0;
     background:transparent;
 }
+#rank {
+	margin-left : 80px;
+}
 
 </style>
 
@@ -128,8 +131,11 @@
     </form>
 <!-- Reference: https://github.com/ashleydw/lightbox/ -->
 <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
+<br>
+<b id="rank">추천순 버킷</b>
 <div class="container mt40">
-    <section class="row">
+  <section class="row">
+    
 <c:forEach items="${bucket1 }" var="bucket">
         <article class="col-xs-12 col-sm-6 col-md-3">
             <div class="panel panel-default">
@@ -158,7 +164,7 @@
 <hr style="height: 15px;  border-color: #13C7A3 ;"/>    
                 
                 
-                
+  <b id="rank">최신순 버킷</b>              
 <c:if test="${bucket2 ne null }">
 <div class="container mt40">
     <section class="row">
