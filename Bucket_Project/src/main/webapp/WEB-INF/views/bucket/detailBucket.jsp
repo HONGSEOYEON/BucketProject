@@ -37,7 +37,7 @@
         var size_y = 40; // 마커로 사용할 이미지의 세로 크기
      
         // 마커로 사용할 이미지 주소
-        var image = new google.maps.MarkerImage( '주소 여기에 기입!',
+        var image = new google.maps.MarkerImage( '${bucket.address}',
                                                     new google.maps.Size(size_x, size_y),
                                                     '',
                                                     '',
@@ -377,7 +377,7 @@ text-align : center;
 							</div>
 						</div>
 			<!--  -->
-						<div id="map-canvas" style="width: 100%; height: 340px" title="코스타"></div>
+						<div id="map-canvas" style="width: 100%; height: 340px" title="${bucket.address}"></div>
 
 			<!--  -->
 					</div>
