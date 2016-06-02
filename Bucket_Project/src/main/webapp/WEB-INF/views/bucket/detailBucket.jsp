@@ -228,7 +228,7 @@ body {
 </style>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/header/homeButton.jspf" %>
+	<%@include file="/WEB-INF/views/header/header.jspf" %>
 	<div class="container">
 
 		<div id="quicknav">
