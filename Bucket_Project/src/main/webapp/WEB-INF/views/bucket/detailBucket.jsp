@@ -228,14 +228,19 @@ body {
 </style>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/header/homeButton.jspf" %>
+	<%@include file="/WEB-INF/views/header/header.jspf" %>
 	<div class="container">
 
 		<div id="quicknav">
 		<br><br>
 			<ul>
-				<c:if test="${loginedUser != null && loginedUser != 'hyeon'}">
+				<c:if test="${loginedUser != null && loginedUser != 'hyeon' && loginedUser == bucket.writerId}">
+					<b>본인 게시물 입니다</b><br>
+				</c:if>
+				<c:if test="${loginedUser != null && loginedUser != 'hyeon' && loginedUser != bucket.writerId}">
 					<li><a style="background-color: #3498db" class="btn btn-xs btn-default" id="bookmark" onclick="location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}' ">담기</a></li>
+				</c:if>
+				<c:if test="${loginedUser != null && loginedUser != 'hyeon'}">
 					<li><a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand?bucketId=${bucket.bucketId}">추천</a></li>
 					<li><a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse?bucketId=${bucket.bucketId}">신고</a></li>
 				</c:if>
