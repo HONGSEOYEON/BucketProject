@@ -149,7 +149,7 @@ public class BucketController {
 		int removed = bucketService.removeBucket(bucketId);
 		//삭제가 제대로 이루어졌을 경우 나의 이미지 목록으로 이동
 		if(removed!=0) {
-			return "redirect:main/myBucket";
+			return "redirect:main/main";
 		}
 		// 그렇지 않을 경우 메인 페이지로 이동
 		return "redirect:main/main";
@@ -228,7 +228,7 @@ public class BucketController {
 		User user = (User) session.getAttribute("loginedUser");
 		
 		if(session == null || session.getAttribute("loginedUser") == null) {
-			return new ModelAndView("redirect:login");
+			return new ModelAndView("redirect:showPageLogin");
 		}
 		
 		// 댓글 조회
@@ -247,9 +247,7 @@ public class BucketController {
 	@RequestMapping("/myBucket")
 	public ModelAndView showMyBucketList(HttpSession session){
 		User loginedUser = (User) session.getAttribute("loginedUser");
-		System.out.println(loginedUser.getUserId());
 		List<Bucket> myBuckets = bucketService.searchMyBucket(loginedUser.getUserId());
-		System.out.println(myBuckets.isEmpty());
 		ModelAndView mav = new ModelAndView("main/myBucket");
 		mav.addObject("myBuckets", myBuckets);
 		return mav;

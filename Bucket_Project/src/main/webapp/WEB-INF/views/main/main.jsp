@@ -101,8 +101,8 @@
 
 </head>
 <body>
-<form action="searchBucket" method="post">
 <%@include file="/WEB-INF/views/header/header.jspf" %>
+<form action="searchBucket" method="post">
 	<div class="container">
 	<div class="row">
         <div class="col-sm-6 col-sm-offset-3">
@@ -128,13 +128,13 @@
         <article class="col-xs-12 col-sm-6 col-md-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="detailBucket?bucketId=${bucket.bucketId}" title="Nature Portfolio" class="zoom" data-title="Amazing Nature" data-footer="The beauty of nature" data-type="image" data-toggle="lightbox">
-                        <img src="${pageContext.request.contextPath}/resources/img/${bucket.image }" alt="Nature Portfolio" />
+                    <a href="detailBucket?bucketId=${bucket.bucketId}" title="${bucket.title }" class="zoom" data-title="${bucket.title }" data-footer="${bucket.title }" data-type="image" data-toggle="lightbox">
+                        <img src="${pageContext.request.contextPath}/resources/img/${bucket.image }" alt="${bucket.title }" />
                         <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
                     </a>
                 </div>
                 <div class="panel-footer">
-                    <h4><a href="detailBucket?bucketId=${bucket.bucketId}" title="Nature Portfolio">${bucket.title }</a></h4>
+                    <h4><a href="detailBucket?bucketId=${bucket.bucketId}" title="${bucket.title }">${bucket.title }</a></h4>
                     <span class="pull-right">
                         <i id="like1" class="glyphicon glyphicon-thumbs-up"></i><h6>${bucket.recomNum }</h6> 
                     </span>
@@ -145,13 +145,9 @@
 </section>
 </div>
 <!-- Progress Bar -->
-        	<div class="col-md-4">
-                  <div class="col-md-11">
                     <div class="progress">
-                      <div data-percentage="0%" style="width: 80%;" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="10" aria-valuemax="100"></div>
+                      <div  data-percentage="10%" style="width: 80%;" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="10" aria-valuemax="100"></div>
                     </div>
-                  </div>
-                </div>
                 
                 
                 
