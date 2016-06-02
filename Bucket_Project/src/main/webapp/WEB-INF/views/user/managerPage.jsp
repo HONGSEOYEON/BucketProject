@@ -13,16 +13,13 @@
 
 
 <style type="text/css">
-body {
+/* body {
 	padding-top: 100px;
 	padding-left: 330px;
 	background-color: #fff;
 }
 
-h1 {
-	font-weight: bold;
-	color: #5bc0de;
-}
+
 
 thead th {
 	width: 200px;
@@ -58,12 +55,68 @@ tbody td {
 
 tbody tr {
 	height: auto;
+*/
+h1 {
+	padding-left:400px;
+	font-weight: bold;
+	color: #5bc0de;
+}
+thead th {
+	text-align: center;
+	background-color: #fff;
+}
+tbody td {
+	text-align: center;
+}
+.custab {
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 5% 0;
+	box-shadow: 3px 3px 2px #ccc;
+	transition: 0.5s;
+}
+
+.custab:hover {
+	box-shadow: 3px 3px 0px transparent;
+	transition: 0.5s;
+}
 }
 </style>
 </head>
 <body>
 	<h1>신고된 게시물 목록</h1>
-	<div class="wrap">
+	<div class="container">
+		<div class="row col-md-6 col-md-offset-2 custyle">
+			<table class="table table-striped custab">
+				<thead>
+					<tr>
+						<th class="active">ID</th>
+						<th class="active">이미지후기 제목</th>
+						<th class="active">신고수</th>
+						<th class="active">탈퇴</th>
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach items="${accusedBucketList}" var="accuseBucket" varStatus="vs">
+				
+				<tr class="info">
+					<td>${accuseBucket.writerId}</td>
+					<td><a href="detailBucket?bucketId=${accuseBucket.bucketId}">${accuseBucket.title}</a></td>
+					<td>
+						<div style="text-align: center;">
+						<span class="badge">${accuseBucket.accuseNum}</span>
+						</div>
+					</td>
+					<td class="text-center"> <a id="deleteButton" onclick="return deleteButton();" href="drop?userId=${accuseBucket.writerId}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> 탈퇴</a></td>
+				</tr>
+				
+				</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<%-- <div class="wrap">
 		<div>
 			<table class="table table-condensed">
 				<thead>
@@ -92,13 +145,11 @@ tbody tr {
 				</tbody>
 			</table>
 		</div>
-	</div>
+	</div> --%>
 </body>
 <script type="text/javascript">
-
-function deleteButton() {
+	function deleteButton() {
 		return confirm("회원을 정말 탈퇴 하시겠습니까?");
-}
-
+	}
 </script>
 </html>

@@ -60,12 +60,11 @@
 <style>
 /* body {
 	padding: 10% 30%;
-	/* background-image: url("resources/img/back.png"); 
-}*/
+	/* background-image: url("resources/img/back.png"); */
+}
 td {
 	padding: 10px;
 }
-
 
 #musicDetail {
 	width: 100%;
@@ -77,7 +76,7 @@ td {
 }
 
 h5 {
-	text-align : center;
+	text-align: center;
 }
 
 * /
@@ -168,7 +167,6 @@ sup {
 	padding-right: 5px;
 }
 
-
 .disclosure {
 	padding-top: 15px;
 	font-size: 11px;
@@ -228,34 +226,47 @@ body {
 </style>
 </head>
 <body>
-	<%-- <%@include file="/WEB-INF/views/header/header.jspf" %> --%>
+	<%@include file="/WEB-INF/views/header/header.jspf"%>
 	<div class="container">
 
 		<div id="quicknav">
-		<br><br>
+			<br>
+			<br><br><br>
 			<ul>
-				<c:if test="${loginedUser != null && loginedUser != 'hyeon' && loginedUser == bucket.writerId}">
-					<b>본인 게시물 입니다</b><br>
+				<c:if
+					test="${user.userId != null && user.isManager != 'Y' && user.userId == bucket.writerId}">
+					<b>본인 게시물 입니다</b>
+					<br>
 				</c:if>
-				<c:if test="${loginedUser != null && loginedUser != 'hyeon' && loginedUser != bucket.writerId}">
-					<li><a style="background-color: #3498db" class="btn btn-xs btn-default" id="bookmark" onclick="location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}' ">담기</a></li>
+				<c:if
+					test="${user.userId != null && user.isManager != 'Y' && user.userId != bucket.writerId}">
+					<li><a style="background-color: #3498db"
+						class="btn btn-xs btn-default" id="bookmark"
+						onclick="location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}' ">담기</a></li>
 				</c:if>
-				<c:if test="${loginedUser != null && loginedUser != 'hyeon'}">
-					<li><a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand?bucketId=${bucket.bucketId}">추천</a></li>
-					<li><a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse?bucketId=${bucket.bucketId}">신고</a></li>
+				<c:if test="${user.userId != null && user.isManager != 'Y'}">
+					<li><a id="recommand" class="btn btn-xs btn-default"
+						href="${pageContext.request.contextPath}/recommand?bucketId=${bucket.bucketId}">추천</a></li>
+					<li><a class="btn btn-xs btn-default"
+						href="${pageContext.request.contextPath}/accuse?bucketId=${bucket.bucketId}">신고</a></li>
 				</c:if>
-				<c:if test="${loginedUser != null && bucket.writerId == loginedUser}">
-					<li><a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/modifyBucket?bucketId=${bucket.bucketId}">수정</a></li>
+				<c:if
+					test="${user.userId != null && bucket.writerId == user.userId}">
+					<li><a class="btn btn-xs btn-default"
+						href="${pageContext.request.contextPath}/modifyBucket?bucketId=${bucket.bucketId}">수정</a></li>
 				</c:if>
-				<c:if test="${loginedUser != null && bucket.writerId == loginedUser}">	
-					<li><a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/removeBucket?bucketId=${bucket.bucketId}">삭제</a></li>
+				<c:if
+					test="${user.userId != null && bucket.writerId == user.userId}">
+					<li><a class="btn btn-xs btn-default"
+						href="${pageContext.request.contextPath}/removeBucket?bucketId=${bucket.bucketId}">삭제</a></li>
 				</c:if>
-				<c:if test="${loginedUser != null && loginedUser=='hyeon'}">	
-					<li><a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/removeBucket?bucketId=${bucket.bucketId}">삭제</a></li>
+				<c:if test="${user.userId != null && user.isManager != 'N'}">
+					<li><a class="btn btn-xs btn-default"
+						href="${pageContext.request.contextPath}/removeBucket?bucketId=${bucket.bucketId}">삭제</a></li>
 				</c:if>
 			</ul>
 		</div>
-		
+
 
 		<div class="row" id="green">
 			<div class="col-md-6 col-md-offset-3">
@@ -270,55 +281,59 @@ body {
 						<img src="resources/img/${bucket.image}"
 							class="coupon-img img-rounded">
 						<div class="col-md-9">
-						<div class="offer text-success">
-						작성자 : <b>${bucket.writerId} 님</b> 
-						</div>
+							<div class="offer text-success">
+								작성자 : <b>${bucket.writerId} 님</b>
+							</div>
 							<ul class="items">
 								<li style="list-style-type: none">${bucket.contents}</li>
 							</ul>
 						</div>
 						<div class="col-md-3">
-						
+
 							<div class="offer text-success">
 								추천수 <span style="background-color: #18bc9c" class="badge">${bucket.recomNum}</span>
 							</div>
 						</div>
 					</div>
+					<div class="panel-footer"></div>
+
+
+
 					<div class="panel-footer">
-	</div>
-	
-	
-				
-				<div class="panel-footer">
-				<c:if test="${loginedUser != null}">
-						<form action="${pageContext.request.contextPath}/commentRegist" method="post" id="commentForm">
-							<div class="row form-group">
-								<div class="input-group">
-								<span class="input-group-addon primary">
-										<input type="submit" value="쓰기" onclick="registComment(); return false;" >
-								</span>
-									<input type="hidden" name="bucketId" value=${bucket.bucketId}>
-									<input type="hidden" name="writerId" value=${loginedUser}>
-									<input type="text" class="form-control" name="contents" id="commentContent"> 
+						<c:if test="${user.userId != null}">
+							<form action="${pageContext.request.contextPath}/commentRegist"
+								method="post" id="commentForm">
+								<div class="row form-group">
+									<div class="input-group">
+										<span class="input-group-addon primary"> <input
+											type="submit" value="쓰기"
+											onclick="registComment(); return false;">
+										</span> 
+										<input type="hidden" name="bucketId" value=${bucket.bucketId}>
+										<input type="hidden" name="writerId" value=${user.userId}>
+										<input type="text" class="form-control" name="contents"
+											id="commentContent">
+									</div>
 								</div>
-							</div>
 							</form>
-				</c:if>
-				</div>
-	
-	<br>
-	<br>
+						</c:if>
+					</div>
 
-	<table>
-	<c:forEach items="${comments}" var="comment" varStatus="sts">
+					<br> <br>
 
-	<tr>
-		<b>${comment.writerId} 님</b> :  ${comment.contents} &nbsp;
-		<c:if test="${loginedUser != null && comment.writerId == loginedUser}">
-		<b><a  href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a></b>
-		</c:if>
-	</tr><br>
-	</c:forEach>
-	</table>
+					<table>
+						<c:forEach items="${comments}" var="comment" varStatus="sts">
+
+							<tr>
+								<b>${comment.writerId} 님</b> : ${comment.contents} &nbsp;
+								<c:if
+									test="${user.userId != null && comment.writerId == user.userId}">
+									<b><a
+										href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a></b>
+								</c:if>
+							</tr>
+							<br>
+						</c:forEach>
+					</table>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>이미지 후기 등록</title>
+<title>이미지 후기 수정</title>
 <link href="${ctx}/resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="${ctx}/resources/css/style.css" rel="stylesheet">
 <script src="${ctx}/resources/js/jquery-2.2.4.min.js"></script>
