@@ -213,7 +213,7 @@ span {
 					<div class="panel panel-success coupon">
 						<div class="panel-heading" id="head">
 							<div class="panel-title">
-								<span class="hidden-xs">이미지 후기 등록</span> <input type="hidden" name="writerId" value="${bucket.writerId}"/>
+								<span class="hidden-xs">이미지 후기 수정</span> <input type="hidden" name="writerId" value="${bucket.writerId}"/>
 									<input type="hidden" name="bucketId" value="${bucket.bucketId}"/>
 							</div>
 						</div>
@@ -228,12 +228,12 @@ span {
 							<div class="row form-group">
 								<div class="input-group">
 									<span class="input-group-addon primary">제목</span> <input
-										type="text" class="form-control" name="title" id="title">
+										type="text" class="form-control" name="title" id="title" value="${bucket.title}">
 								</div>
 							</div>
 						</div>
 						<span>후기</span><br>
-						<textarea class="form-control" name="contents"></textarea>
+						<textarea class="form-control" name="contents" >${bucket.contents}</textarea>
 						<br>
 						<table>
 							<tr>
