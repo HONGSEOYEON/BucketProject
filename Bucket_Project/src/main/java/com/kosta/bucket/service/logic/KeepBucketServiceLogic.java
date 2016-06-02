@@ -31,4 +31,11 @@ public class KeepBucketServiceLogic implements KeepBucketService {
 		return keepBucketDao.deleteKeepBucket(keepBucket);
 	}
 
+	@Override
+	public Bucket searchKeepBucket(KeepBucket keepBucket) {
+		return keepBucketDao.retrieveKeepBucket(keepBucket);
+	}
+	
+	
+
 }

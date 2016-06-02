@@ -15,4 +15,7 @@ public interface KeepBucketService {
 
 	// 담아둔 후기 삭제하기
 	public int removeKeepBucket(KeepBucket keepBucket);
+	
+	// 담아둔 특정 이미지 후기 불러오기
+	public Bucket searchKeepBucket(KeepBucket keepBucket);
 }

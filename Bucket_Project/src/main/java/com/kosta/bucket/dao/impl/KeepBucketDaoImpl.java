@@ -54,5 +54,19 @@ public class KeepBucketDaoImpl implements KeepBucketDao {
 			session.close();
 		}
 	}
+	
+	@Override
+	public Bucket retrieveKeepBucket(KeepBucket keepBucket) {
+		SqlSession session = factory.openSession();
+		try {
+			Bucket buckets = session.selectOne("selectSomeKeepBucket", keepBucket);
+			return buckets;
+		} finally {
+			session.close();
+		}
+	
+	}
+	
+	
 
 }
