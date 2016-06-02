@@ -32,13 +32,25 @@
 			document.getElementById("commentForm").submit();
 		}
 	};
+	
+	var accuse = function() {
+		alert("게시물을 신고했습니다!");
+		location.href="${pageContext.request.contextPath}/accuse?bucketId=${bucket.bucketId}";
+		return true;
+	}
+	
+	var recommand = function() {
+		alert("게시물을 추천했습니다!");
+		location.href="${pageContext.request.contextPath}/recommand?bucketId=${bucket.bucketId}" ;
+		return true;
+	}
 
 	// 담기 테스트 
-	/* var bookmark = function() {
+	var bookmark = function() {
 		alert("버킷을 담았습니다!");
-		
+		location.href="${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}";
 		return true;
-	}; */
+	}; 
 
 	/* $(function(){
 		$("#bookmark").click(function(){
@@ -47,7 +59,7 @@
 		});
 	}); */
 
-	function bookmarkTest() {
+/* 	function bookmarkTest() {
 		if (bookmark()) {
 			location.href = "${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}";
 			return false;
@@ -55,7 +67,7 @@
 			location.href = "${pageContext.request.contextPath}/detailBucket?bucketId=${bucket.bucketId}";
 			return false;
 		}
-	}
+	} */
 </script>
 <style>
 /* body {
@@ -238,17 +250,22 @@ body {
 					<b>본인 게시물 입니다</b>
 					<br>
 				</c:if>
+				<c:if test="${user.userId != null && user.isManager != 'Y' && user.userId != bucket.writerId && keep != null}">
+				<b>담겨진 게시물 입니다</b><br>
+				</c:if>
 				<c:if
-					test="${user.userId != null && user.isManager != 'Y' && user.userId != bucket.writerId}">
-					<li><a style="background-color: #3498db"
-						class="btn btn-xs btn-default" id="bookmark"
-						onclick="location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}' ">담기</a></li>
+					test="${user.userId != null && user.isManager != 'Y' && user.userId != bucket.writerId && keep == null}">
+					<li>
+					<a style="background-color: #3498db" class="btn btn-xs btn-default" id="bookmark" onclick="bookmark(); return false; location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}' ">담기</a>
+					</li>
+				</c:if>
+				<c:if test="${user.userId != null && user.isManager != 'Y' && user.userId != bucket.writerId}">
+					<li><a id="recommand" class="btn btn-xs btn-default"
+						href="${pageContext.request.contextPath}/recommand?bucketId=${bucket.bucketId}"  onclick="recommand(); return false;">추천</a></li>
 				</c:if>
 				<c:if test="${user.userId != null && user.isManager != 'Y'}">
-					<li><a id="recommand" class="btn btn-xs btn-default"
-						href="${pageContext.request.contextPath}/recommand?bucketId=${bucket.bucketId}">추천</a></li>
 					<li><a class="btn btn-xs btn-default"
-						href="${pageContext.request.contextPath}/accuse?bucketId=${bucket.bucketId}">신고</a></li>
+						href="${pageContext.request.contextPath}/accuse?bucketId=${bucket.bucketId}" onclick="accuse(); return false;">신고</a></li>
 				</c:if>
 				<c:if
 					test="${user.userId != null && bucket.writerId == user.userId}">

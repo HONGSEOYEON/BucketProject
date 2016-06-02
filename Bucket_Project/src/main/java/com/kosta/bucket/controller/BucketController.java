@@ -22,14 +22,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.Bucket;
 import com.kosta.bucket.entity.Comment;
+import com.kosta.bucket.entity.KeepBucket;
 import com.kosta.bucket.entity.User;
 import com.kosta.bucket.service.BucketService;
+import com.kosta.bucket.service.KeepBucketService;
 
 @Controller
 public class BucketController {
 
 	@Autowired
 	private BucketService bucketService;
+	
+	@Autowired
+	private KeepBucketService keepbucketService;
 	
 	
 	// 이미지 후기 등록페이지 출력
@@ -223,6 +228,11 @@ public class BucketController {
 			return new ModelAndView("redirect:showPageLogin");
 		}
 		
+		
+		//담은 것인지 확인
+		KeepBucket keepbucket = new KeepBucket(bucketId, user.getUserId());
+		 Bucket keep = keepbucketService.searchKeepBucket(keepbucket);
+		
 		// 댓글 조회
 		List<Comment> comments= bucketService.searchBucketComment(bucketId);
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
@@ -231,6 +241,7 @@ public class BucketController {
 		Bucket bucket = bucketService.searchBucket(bucketId);
 		modelAndView.addObject("comments", comments);
 		modelAndView.addObject("bucket", bucket);
+		modelAndView.addObject("keep", keep);
 		
 		//추천수
 		modelAndView.addObject("recomNum", bucket.getRecomNum());
