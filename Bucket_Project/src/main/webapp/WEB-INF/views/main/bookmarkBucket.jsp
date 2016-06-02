@@ -95,11 +95,13 @@ h1 {
   <div class="row">
   <br><br><br>
     <h1>${user.userId}님이 담은 버킷 리스트</h1>
+     <c:if test="${empty keepbuckets}">
+               <h3>아직 담은 버킷이 없습니다!</h3>
+     </c:if>
     <hr>
+   
     <section id="pinBoot">
-    <c:if test="${keepbuckets eq null }">
-                       		<h1>아직 담은 버킷이 없습니다!</h1>
-                       	</c:if>
+    
 		<c:forEach items="${keepbuckets}" var="bucket">
 		      <article class="white-panel">
 		      <a href="detailBucket?bucketId=${bucket.bucketId}" title="${bucket.title }"  data-type="image">

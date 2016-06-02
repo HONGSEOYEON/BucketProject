@@ -136,7 +136,7 @@
 <div class="container mt40">
   <section class="row">
     
-<c:forEach items="${bucket1 }" var="bucket">
+<c:forEach items="${bucket1}" var="bucket">
         <article class="col-xs-12 col-sm-6 col-md-3">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -161,11 +161,12 @@
                       <div  data-percentage="10%" style="width: 80%;" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="10" aria-valuemax="100"></div>
                     </div> -->
                     
+             
+<c:if test="${bucket2 ne null }">
 <hr style="height: 15px;  border-color: #13C7A3 ;"/>    
                 
                 
-  <b id="rank">최신순 버킷</b>              
-<c:if test="${bucket2 ne null }">
+  <b id="rank">최신순 버킷</b> 
 <div class="container mt40">
     <section class="row">
 <c:forEach items="${bucket2 }" var="bucket">
