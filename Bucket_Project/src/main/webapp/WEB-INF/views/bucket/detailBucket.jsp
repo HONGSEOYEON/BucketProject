@@ -286,48 +286,15 @@ body {
 		</c:if>
 	</div>
 
-						<form action="${pageContext.request.contextPath}/commentRegist"
-							method="post" id="commentForm">
-
-							<div class="row form-group">
-								<div class="input-group">
-									<span class="input-group-addon primary">
-										<span class="glyphicon glyphicon-star"></span>
-									</span> 
-									<input type="text" class="form-control">
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-
 	</div>
-	<%-- <h1>${bucket.title}</h1>
-	<div style="text-align: left;">
-	    <c:if test="${loginedUser != null && loginedUser != 'hyeon'}">
-		<a class="btn btn-xs btn-info" id="bookmark" onclick="location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}'">담기</a>&nbsp; 
-		<a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand?bucketId=${bucket.bucketId}">추천</a>&nbsp; 
-		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse?bucketId=${bucket.bucketId}">신고</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		</c:if>
-		<c:if test="${loginedUser != null && bucket.writerId == loginedUser}">
-		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/modifyBucket?bucketId=${bucket.bucketId}">수정</a>&nbsp; 
-		</c:if>
-		<c:if test="${loginedUser != null && bucket.writerId == loginedUser}">
-		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/removeBucket?bucketId=${bucket.bucketId}">삭제</a>&nbsp;
-		</c:if>
-		<c:if test="${loginedUser != null && loginedUser=='hyeon'}">
-		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/removeBucket?bucketId=${bucket.bucketId}">삭제</a>&nbsp;
-		</c:if>
-	</div>
+	
 
 
 	<div style="text-align: right;">
 		추천수 <span class="badge">${recomNum}</span>
 	</div>
 
-	<hr>
+	
 	<table id="musicDetail">
 		<colgroup>
 			<col width="200px">
@@ -367,25 +334,9 @@ body {
 	<br>
 	<br>
 
-	</c:if>
-	
-	<table>
-	
 	<table>
 	<c:forEach items="${comments}" var="comment" varStatus="sts">
-	${comment.writerId} 님의 댓글 :  ${comment.contents} 
-	<c:if test="${loginedUser != null}">
-		<a class="btn btn-xs btn-default"
-			href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a>
-		<br>
-		<br>
-		</c:if>
-	<tr>
-		${comment.writerId} 님의 댓글 :  ${comment.contents} 
-		<c:if test="${loginedUser != null && comment.writerId == loginedUser}">
-		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a>
-		</c:if>
-	</tr><br>
+
 	<tr>
 		${comment.writerId} 님의 댓글 :  ${comment.contents} 
 		<c:if test="${loginedUser != null && comment.writerId == loginedUser}">

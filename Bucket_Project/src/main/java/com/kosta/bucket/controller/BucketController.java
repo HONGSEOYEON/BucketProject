@@ -22,9 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.Bucket;
 import com.kosta.bucket.entity.Comment;
-import com.kosta.bucket.entity.KeepBucket;
+import com.kosta.bucket.entity.User;
 import com.kosta.bucket.service.BucketService;
-import com.kosta.bucket.service.KeepBucketService;
 
 @Controller
 public class BucketController {
@@ -102,7 +101,7 @@ public class BucketController {
 	
 	// 이미지 후기 수정
 	@RequestMapping(value = "/modifyBucket" , method = RequestMethod.POST)
-	public ModelAndView modifyBucket (Bucket bucket, HttpServletRequest req, @RequestParam("file")MultipartFile file){
+	public String modifyBucket (Bucket bucket, HttpServletRequest req, @RequestParam("file")MultipartFile file){
 
 		if (!file.isEmpty()){
 			try {
@@ -140,11 +139,7 @@ public class BucketController {
 		//수정 시각은 저장하지 않는다.
 		//이미지 후기 수정
 		bucketService.modifyBucket(bucket);
-		ModelAndView mv = new ModelAndView("bucket/detailBucket");
-//		mv.addObject("loginedUser", bucket.getBucketId());
-		//수정된 이미지 후기를 다시 받아와 뷰에 저장
-		mv.addObject("bucket", bucketService.searchBucket(bucket.getBucketId()));
-		return mv;
+		return "redirect:detailBucket?bucketId=" + bucket.getBucketId();
 	}
 	
 	// 이미지 후기 삭제
@@ -180,23 +175,23 @@ public class BucketController {
 	
 	@RequestMapping("/recommand")
 	public String registRecommand(String bucketId, HttpServletRequest req) {
-		/*HttpSession session = req.getSession();
+		HttpSession session = req.getSession();
 		if(session == null || session.getAttribute("loginedUser") == null) {
 			return "redirect:login";
-		}*/
-		/*User user = (User)session.getAttribute("loginedUser");*/
-		bucketService.registRecommand("1");
-		return "redirect:detailBucket";
+		}
+		User user = (User)session.getAttribute("loginedUser");
+		bucketService.registRecommand(bucketId);
+		return "redirect:detailBucket?bucketId=" +bucketId ;
 	}
 	@RequestMapping("/accuse")
 	public String registAccuse(String bucketId, HttpServletRequest req) {
-	/*	HttpSession session = req.getSession();
+	HttpSession session = req.getSession();
 		if(session == null || session.getAttribute("loginedUser") == null) {
 			return "redirect:login";
-		}*/
-		/*User user = (User)session.getAttribute("loginedUser");*/
-		bucketService.registAccuse("1");
-		return "redirect:detailBucket";
+		}
+		User user = (User)session.getAttribute("loginedUser");
+		bucketService.registAccuse(bucketId);
+		return "redirect:detailBucket?bucketId=" + bucketId;
 	}
 	 
 	// 댓글 등록
@@ -227,15 +222,19 @@ public class BucketController {
 	
 	// 상세 페이지 
 	@RequestMapping(value="/detailBucket")
-	public ModelAndView showDetailBucket(String bucketId/*, HttpServletRequest req*/) {
+	public ModelAndView showDetailBucket(String bucketId, HttpServletRequest req) {
 		// 세션 아이디 가져오기
-		/*HttpSession session = req.getSession();
-		User user = (User) session.getAttribute("loginedUser");*/
+		HttpSession session = req.getSession();
+		User user = (User) session.getAttribute("loginedUser");
+		
+		if(session == null || session.getAttribute("loginedUser") == null) {
+			return new ModelAndView("redirect:login");
+		}
 		
 		// 댓글 조회
 		List<Comment> comments= bucketService.searchBucketComment(bucketId);
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
-//		modelAndView.addObject("loginedUser", user.getUserId());
+		modelAndView.addObject("loginedUser", user.getUserId());
 		
 		Bucket bucket = bucketService.searchBucket(bucketId);
 		modelAndView.addObject("comments", comments);
@@ -247,10 +246,12 @@ public class BucketController {
 	}
 	@RequestMapping("/myBucket")
 	public ModelAndView showMyBucketList(HttpSession session){
-//		String userId = (String) session.getAttribute("userId");
-		List<Bucket> myBuckets = bucketService.searchMyBucket("hong");
+		User loginedUser = (User) session.getAttribute("loginedUser");
+		System.out.println(loginedUser.getUserId());
+		List<Bucket> myBuckets = bucketService.searchMyBucket(loginedUser.getUserId());
+		System.out.println(myBuckets.isEmpty());
 		ModelAndView mav = new ModelAndView("main/myBucket");
-		mav.addObject("myBucketList", myBuckets);
+		mav.addObject("myBuckets", myBuckets);
 		return mav;
 	}
 	

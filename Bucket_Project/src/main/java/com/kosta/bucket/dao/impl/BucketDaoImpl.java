@@ -174,8 +174,7 @@ public class BucketDaoImpl implements BucketDao {
 	public List<Bucket> retrieveMyBucket(String userId) {
 		SqlSession session = factory.openSession();
 		try {
-			List<Bucket> buckets = session.selectList("selectMyBuckets", userId);
-			return buckets;
+			return session.selectList("selectMyBuckets", userId);
 		} finally {
 			session.close();
 		}
