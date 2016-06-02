@@ -31,6 +31,10 @@
 	};
 </script>
 <style>
+span {
+	font-variant: 700;
+}
+
 td {
 	padding: 10px;
 }
@@ -85,7 +89,7 @@ h5 {
 	}
 }
 
-.coupon #title span {
+.coupon #title {
 	margin-top: 5px;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -192,12 +196,16 @@ body {
 	margin-bottom: 40px;
 }
 
-table tr {
+table tr td {
 	text-align: right;
 }
 
-span {
+.hidden-xs {
 	padding: 10px;
+}
+
+span {
+	font-weight: bold;
 }
 </style>
 
@@ -237,10 +245,13 @@ span {
 						<br>
 						<table>
 							<tr>
-								<td><button type="button" style="float: right"
-										onclick="javascript:history.back()">취소</button>
+								<td></td>
+								<td>
+									<button type="button" style="float: right"
+										onclick="javascript:history.back()" class="btn btn-default">취소</button>
 									<button type="submit" style="float: right"
-										onclick="regist(); return false;">게시</button></td>
+										onclick="regist(); return false;" class="btn btn-default">게시</button>
+								</td>
 							</tr>
 						</table>
 					</div>

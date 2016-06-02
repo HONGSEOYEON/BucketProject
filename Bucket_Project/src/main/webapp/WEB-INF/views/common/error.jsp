@@ -58,9 +58,9 @@
     </style>
     
     <script type="text/javascript">
-    	var goHome = function() {
-    		location.href="${pageContext.request.contextPath}/bucket";
-    	};
+    var goLogin = function() {
+		location.href="showPageLogin";
+	}
     </script>
 </head>
 <body>
@@ -77,18 +77,15 @@
         <h3>${pageContext.errorData.requestURI}</h3>
         <p>
         	STATUS CODE : ${pageContext.errorData.statusCode} <BR>
-        	${pageContext.exception.message} <br>
         </p>
+        <p>${message }</p>
 
         <div class="row error-btn">
-            <button class="btn btn-large btn-default" onclick="goHome();">홈으로 이동</button>
+            <button class="btn btn-large btn-default" type="button"  onclick="javascript:goLogin();">로그인</button>
         </div>
     </div>
 
     <!-- footer -->
-    <div class="error-footer">
-        <p>© NamooSori 2016.</p>
-    </div>
 </div>
 
 </body>

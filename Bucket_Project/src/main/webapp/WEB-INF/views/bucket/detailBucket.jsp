@@ -234,6 +234,14 @@ body {
 .btn-default {
 	margin-bottom: 40px;
 }
+
+#commentTable {
+ margin:0 auto; 
+}
+
+#commentTag {
+text-align : center;
+}
 /*-------------------------------------------------------------*/
 </style>
 </head>
@@ -337,20 +345,21 @@ body {
 					</div>
 
 					<br> <br>
-
-					<table>
+						
+					
+					
+						
 						<c:forEach items="${comments}" var="comment" varStatus="sts">
-
-							<tr>
+							<p id="commentTag">
 								<b>${comment.writerId} 님</b> : ${comment.contents} &nbsp;
 								<c:if
 									test="${user.userId != null && comment.writerId == user.userId}">
 									<b><a
 										href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a></b>
 								</c:if>
-							</tr>
+							</p>
 							<br>
 						</c:forEach>
-					</table>
+					
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.kosta.bucket.service;
 
 import com.kosta.bucket.entity.User;
+import com.kosta.bucket.util.BucketException;
 
 public interface UserService {
 
@@ -8,7 +9,7 @@ public interface UserService {
 	public int registUser(User user);
 
 	// 회원 조회
-	public User searchUser(String userId);
+	public User searchUser(String userId, String password) throws BucketException;
 
 	// 회원 정보 수정
 	public int modifyUser(User user);

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -57,8 +58,12 @@ public class BucketController {
 			    String attachPath = "resources/img/";
 				// 파일 이름을 받아온다.
 				String fileName = file.getOriginalFilename();
-				// 받아온 파일 이름을 버킷 객체에 저장
-				bucket.setImage(fileName);
+				// 회원들의 중복이름의 파일 업로드 문제를 방지하기 위해 파일 이름 변환
+                String originalFileExtension = fileName.substring(fileName.lastIndexOf("."));
+                String storedFileName = UUID.randomUUID().toString().replaceAll("-", "") + originalFileExtension;
+				
+				// 변환한 파일 이름을 버킷 객체에 저장
+				bucket.setImage(storedFileName);
 				
 				//저장하고자 하는 경로 지정
 				File dir = new File(rootPath+attachPath);
@@ -68,7 +73,7 @@ public class BucketController {
 				}
 				
 				//파일의 절대경로 지정
-				File saveFile = new File(rootPath+attachPath+fileName);
+				File saveFile = new File(rootPath+attachPath+storedFileName);
 				
 				BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(saveFile));
 				//파일을 해당경로로 저장시작
@@ -114,9 +119,12 @@ public class BucketController {
 			    String attachPath = "resources/img/";
 				// 파일 이름을 받아온다.
 				String fileName = file.getOriginalFilename();
-				System.out.println(fileName);
-				// 받아온 파일 이름을 버킷 객체에 저장
-				bucket.setImage(fileName);
+				// 회원들의 중복이름의 파일 업로드 문제를 방지하기 위해 파일 이름 변환
+                String originalFileExtension = fileName.substring(fileName.lastIndexOf("."));
+                String storedFileName = UUID.randomUUID().toString().replaceAll("-", "") + originalFileExtension;
+                
+                // 변환한 파일 이름을 버킷 객체에 저장
+				bucket.setImage(storedFileName);
 				
 				//저장하고자 하는 경로 지정
 				File dir = new File(rootPath+attachPath);

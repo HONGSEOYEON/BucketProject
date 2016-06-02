@@ -9,6 +9,14 @@
 <title>버킷</title>
 
 <style type="text/css">
+
+.container {
+  position:absolute;
+  top:35%;
+  left:50%;
+  transform:translate(-50%, -50%)
+}
+
 /* Credit to bootsnipp.com for the css for the color graph */
 .colorgraph {
   height: 5px;
@@ -78,7 +86,7 @@
 	};
 
 	var goHome = function() {
-		location.href="javascript:history.back()";
+		location.href="${pageContext.request.contextPath}/";
 	};
 	
 </script>
