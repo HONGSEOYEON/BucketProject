@@ -15,6 +15,63 @@
 	src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js">
 	
 </script>
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+
+
+
+<!-- GoogoleMap Asynchronously Loading the API ********************************************* -->
+<script type="text/javascript">
+    function initialize() {
+     
+        var mapOptions = {
+                            zoom: 18, // 지도를 띄웠을 때의 줌 크기
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
+         
+         
+        var map = new google.maps.Map(document.getElementById("map-canvas"), // div의 id과 값이 같아야 함. "map-canvas"
+                                    mapOptions);
+         
+        var size_x = 40; // 마커로 사용할 이미지의 가로 크기
+        var size_y = 40; // 마커로 사용할 이미지의 세로 크기
+     
+        // 마커로 사용할 이미지 주소
+        var image = new google.maps.MarkerImage( '주소 여기에 기입!',
+                                                    new google.maps.Size(size_x, size_y),
+                                                    '',
+                                                    '',
+                                                    new google.maps.Size(size_x, size_y));
+         
+        // Geocoding *****************************************************
+        var address = '서울 특별시 금천구 가산동 371-47'; // DB에서 주소 가져와서 검색하거나 왼쪽과 같이 주소를 바로 코딩.
+        var marker = null;
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode( { 'address': address}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                marker = new google.maps.Marker({
+                                map: map,
+                                icon: image, // 마커로 사용할 이미지(변수)
+                                title: '코스타', // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
+                                position: results[0].geometry.location
+                            });
+ 
+                var content = "코스타<br/><br/>Tel: 070-5039-5815"; // 말풍선 안에 들어갈 내용
+             
+                // 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
+                var infowindow = new google.maps.InfoWindow({ content: content});
+                google.maps.event.addListener(marker, "click", function() {infowindow.open(map,marker);});
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+        // Geocoding // *****************************************************
+         
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
 <script type="text/javascript">
 	// 댓글 유효성 검사
 	var comment = function() {
@@ -282,11 +339,11 @@ text-align : center;
 				</c:if>
 				<c:if
 					test="${user.userId != null && bucket.writerId == user.userId}">
-					<li><a class="btn btn-xs btn-default"
+					<li><a id="deleteButton" onclick="return deleteButton();" class="btn btn-xs btn-default"
 						href="${pageContext.request.contextPath}/removeBucket?bucketId=${bucket.bucketId}">삭제</a></li>
 				</c:if>
 				<c:if test="${user.userId != null && user.isManager != 'N'}">
-					<li><a class="btn btn-xs btn-default"
+					<li><a id="deleteButton" onclick="return deleteButton();" class="btn btn-xs btn-default"
 						href="${pageContext.request.contextPath}/removeBucket?bucketId=${bucket.bucketId}">삭제</a></li>
 				</c:if>
 			</ul>
@@ -319,6 +376,10 @@ text-align : center;
 								추천수 <span style="background-color: #18bc9c" class="badge">${bucket.recomNum}</span>
 							</div>
 						</div>
+			<!--  -->
+						<div id="map-canvas" style="width: 100%; height: 340px" title="코스타"></div>
+
+			<!--  -->
 					</div>
 					<div class="panel-footer"></div>
 
@@ -361,5 +422,10 @@ text-align : center;
 							<br>
 						</c:forEach>
 					
+<script type="text/javascript">
+	function deleteButton() {
+		return confirm("게시물을 정말 삭제하시겠습니까?");
+	}
+</script>
 </body>
 </html>
