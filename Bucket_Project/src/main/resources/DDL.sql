@@ -1,4 +1,4 @@
-﻿drop table COMMENTS cascade constraints;
+﻿drop table COMMENTS;
 drop table BUCKET_USER cascade constraints;
 drop table BUCKET cascade constraints;
 drop table BOOKMARK cascade constraints;
