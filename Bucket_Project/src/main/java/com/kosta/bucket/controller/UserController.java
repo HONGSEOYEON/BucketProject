@@ -62,13 +62,13 @@ public class UserController {
 
 	@RequestMapping("/drop")
 	public ModelAndView removeUser(String userId, HttpSession session) {
-
-		String managerId = (String) session.getAttribute("userId");
-		User manager = userService.searchUser(managerId);
+		
+		User manager = (User) session.getAttribute("loginedUser");
 		if("Y".equals(manager.getIsManager())) {
 			userService.removeUser(userId);
-			return new ModelAndView("redirect:/accusedAllBucket");
+			return new ModelAndView("redirect:accusedAllBucket");
 		} else {
+		
 			userService.removeUser(userId);
 			session.invalidate();
 			return new ModelAndView("redirect:/");

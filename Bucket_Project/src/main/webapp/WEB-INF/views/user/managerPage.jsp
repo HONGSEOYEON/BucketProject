@@ -86,7 +86,7 @@ tbody tr {
 									<span class="badge">${accuseBucket.accuseNum}</span>
 								</div>
 							</td>
-							<td><button type="button" class="btn btn-default" onclick="location.href='drop?userId=${accuseBucket.bucketId}'">탈퇴</button></td>
+							<td><a id="deleteButton" type="button" class="btn btn-xs btn-default" onclick="return deleteButton();" href="drop?userId=${accuseBucket.writerId}">탈퇴</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -94,4 +94,11 @@ tbody tr {
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+
+function deleteButton() {
+		return confirm("회원을 정말 탈퇴 하시겠습니까?");
+}
+
+</script>
 </html>
