@@ -231,7 +231,7 @@ span {
 						<div class="panel-heading" id="head">
 							<div class="panel-title">
 								<span class="hidden-xs">이미지 후기 등록</span> <input type="hidden"
-									name="writerId" value="${loginedUser.userId}">
+									name="writerId" id="writerId"value="${loginedUser.userId}">
 							</div>
 						</div>
 						<div class="panel-body">
