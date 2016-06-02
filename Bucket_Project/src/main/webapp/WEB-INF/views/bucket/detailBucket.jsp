@@ -234,6 +234,14 @@ body {
 .btn-default {
 	margin-bottom: 40px;
 }
+
+#commentTable {
+ margin:0 auto; 
+}
+
+#commentTag {
+text-align : center;
+}
 /*-------------------------------------------------------------*/
 </style>
 </head>
@@ -337,20 +345,20 @@ body {
 					</div>
 
 					<br> <br>
-
-					<table>
+						
+						<c:if test="${comments != null}">
+						<p id="commentTag"><b>댓글이 없습니다. 작성해주세요</b></p>
+						</c:if>
 						<c:forEach items="${comments}" var="comment" varStatus="sts">
-
-							<tr>
+							<p id="commentTag">
 								<b>${comment.writerId} 님</b> : ${comment.contents} &nbsp;
 								<c:if
 									test="${user.userId != null && comment.writerId == user.userId}">
 									<b><a
 										href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a></b>
 								</c:if>
-							</tr>
+							</p>
 							<br>
 						</c:forEach>
-					</table>
 </body>
 </html>
