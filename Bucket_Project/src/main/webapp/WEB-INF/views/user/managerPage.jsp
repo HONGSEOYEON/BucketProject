@@ -86,7 +86,7 @@ tbody tr {
 									<span class="badge">${accuseBucket.accuseNum}</span>
 								</div>
 							</td>
-							<td><button type="submit" class="btn btn-default">탈퇴</button></td>
+							<td><button type="button" class="btn btn-default" onclick="location.href='drop?userId=${accuseBucket.bucketId}'">탈퇴</button></td>
 						</tr>
 					</c:forEach>
 				</tbody>

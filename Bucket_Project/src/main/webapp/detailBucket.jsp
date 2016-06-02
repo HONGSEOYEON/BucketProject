@@ -75,10 +75,6 @@ td {
 	height: 600px;
 }
 
-h5 {
-	text-align : center;
-}
-
 * /
 
 .coupon {
@@ -167,7 +163,6 @@ sup {
 	padding-right: 5px;
 }
 
-
 .disclosure {
 	padding-top: 15px;
 	font-size: 11px;
@@ -231,10 +226,9 @@ body {
 	<div class="container">
 
 		<div id="quicknav">
-		<br><br>
 			<ul>
 				<c:if test="${loginedUser != null && loginedUser != 'hyeon'}">
-					<li><a style="background-color: #3498db" class="btn btn-xs btn-default" id="bookmark" onclick="location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}' ">담기</a></li>
+					<li><a style="background-color: #3498db" class="btn btn-xs btn-default" id="bookmark" onclick="location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}''">담기</a></li>
 					<li><a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand?bucketId=${bucket.bucketId}">추천</a></li>
 					<li><a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse?bucketId=${bucket.bucketId}">신고</a></li>
 				</c:if>
@@ -270,7 +264,7 @@ body {
 						</div>
 						<div class="col-md-3">
 							<div class="offer text-success">
-								추천수 <span style="background-color: #18bc9c" class="badge">${bucket.recomNum}</span>
+								추천수 <span style="background-color: #18bc9c" class="badge">${recomNum}</span>
 							</div>
 						</div>
 					</div>
@@ -278,24 +272,17 @@ body {
 	</div>
 	
 	
-				
-				<div class="panel-footer">
-				<c:if test="${loginedUser != null}">
-						<form action="${pageContext.request.contextPath}/commentRegist" method="post" id="commentForm">
-							<div class="row form-group">
-								<div class="input-group">
-								<span class="input-group-addon primary">
-										<input type="submit" value="쓰기" onclick="registComment(); return false;" >
-								</span>
-									<input type="hidden" name="bucketId" value=${bucket.bucketId}>
-									<input type="hidden" name="writerId" value=${loginedUser}>
-									<input type="text" class="form-control" name="contents" id="commentContent"> 
-								</div>
-							</div>
-							</form>
-				</c:if>
-				</div>
-	
+	<br>
+	<h5>댓글</h5>
+	<c:if test="${loginedUser != null}">
+	<form action="${pageContext.request.contextPath}/commentRegist"
+		method="post" id="commentForm">
+		<input type="hidden" name="writerId" value=${loginedUser}> 
+		<input type="hidden" name="bucketId" value=${bucket.bucketId} > 
+		<input type="text" placeholder="입력" name="contents" id="commentContent">
+		<input type="submit" value="쓰기" onclick="registComment(); return false;">
+	</form>
+	</c:if>
 	<br>
 	<br>
 
@@ -303,9 +290,9 @@ body {
 	<c:forEach items="${comments}" var="comment" varStatus="sts">
 
 	<tr>
-		<b>${comment.writerId} 님</b> :  ${comment.contents} &nbsp;
+		${comment.writerId} 님의 댓글 :  ${comment.contents} 
 		<c:if test="${loginedUser != null && comment.writerId == loginedUser}">
-		<b><a  href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a></b>
+		<a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/commentRemove?commentId=${comment.commentId}&bucketId=${bucket.bucketId}">삭제</a>
 		</c:if>
 	</tr><br>
 	</c:forEach>

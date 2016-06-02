@@ -149,7 +149,7 @@ public class BucketController {
 		int removed = bucketService.removeBucket(bucketId);
 		//삭제가 제대로 이루어졌을 경우 나의 이미지 목록으로 이동
 		if(removed!=0) {
-			return "redirect:main/myBucket";
+			return "redirect:main/main";
 		}
 		// 그렇지 않을 경우 메인 페이지로 이동
 		return "redirect:main/main";
