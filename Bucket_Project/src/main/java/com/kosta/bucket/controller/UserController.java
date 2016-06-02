@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.User;
 import com.kosta.bucket.service.UserService;
+import com.kosta.bucket.util.BucketException;
 
 @Controller
 public class UserController {
@@ -22,19 +23,18 @@ public class UserController {
 	public ModelAndView loginUser(HttpServletRequest req, HttpSession session) {
 
 		String id = (String) req.getParameter("loginId");
-		User loginedUser = userService.searchUser(id);
-		
-		if (loginedUser != null && loginedUser.getPassword().equals(req.getParameter("password"))) {
-			
-			session.setAttribute("loginedUser", loginedUser);
-			
+		try{
+			User loginedUser = userService.searchUser(id,req.getParameter("password"));
 			ModelAndView model = new ModelAndView("redirect:/");
+			session.setAttribute("loginedUser", loginedUser);
 			return model;
+		} catch (Exception e) {
+			ModelAndView modelAndView = new ModelAndView("common/error");
+			modelAndView.addObject("message", e.getMessage());
+			return modelAndView;
 		}
-		
-		throw new RuntimeException("로그인 정보가 일치하지 않습니다.");
 	}
-
+	
 	@RequestMapping("/logout")
 	public ModelAndView logoutUser(User user, HttpSession session) {
 
@@ -79,12 +79,17 @@ public class UserController {
 		user.setEmail(req.getParameter("email"));
 		user.setPassword(req.getParameter("password"));
 		user.setUserName(req.getParameter("name"));
-
+		
 		userService.modifyUser(user);
 
-		User loginedUser = userService.searchUser(user.getUserId());
+		User loginedUser;
+		try {
+			loginedUser = userService.searchUser(user.getUserId(), user.getPassword());
+			session.setAttribute("loginedUser", loginedUser);
+		} catch (BucketException e) {
+			e.printStackTrace();
+		}
 
-		session.setAttribute("loginedUser", loginedUser);
 
 		return new ModelAndView("redirect:/");
 	}
