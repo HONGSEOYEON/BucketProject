@@ -247,9 +247,7 @@ public class BucketController {
 	@RequestMapping("/myBucket")
 	public ModelAndView showMyBucketList(HttpSession session){
 		User loginedUser = (User) session.getAttribute("loginedUser");
-		System.out.println(loginedUser.getUserId());
 		List<Bucket> myBuckets = bucketService.searchMyBucket(loginedUser.getUserId());
-		System.out.println(myBuckets.isEmpty());
 		ModelAndView mav = new ModelAndView("main/myBucket");
 		mav.addObject("myBuckets", myBuckets);
 		return mav;
