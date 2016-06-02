@@ -60,10 +60,10 @@ public class BucketDaoImpl implements BucketDao {
 
 	
 	@Override
-	public List<Bucket> retrieveBucketByContents(String contents) {
+	public List<Bucket> retrieveBucketByContents(String word) {
 		SqlSession session = factory.openSession(true);
 		try {
-			return session.selectList("retrieveBucketByContents", contents);
+			return session.selectList("retrieveBucketByWord", word);
 		} finally {
 			session.close();
 		}

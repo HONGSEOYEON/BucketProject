@@ -79,7 +79,7 @@ h1 {
 
 </head>
 <body>
-
+<%@include file="/WEB-INF/views/header/header.jspf" %>
 <div class="container">
   <div class="row">
     <h1>마이 버킷 리스트</h1>

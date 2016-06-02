@@ -37,6 +37,7 @@
             });                                        
         }); 
 
+        
     </script>
 <style>
 @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
@@ -105,6 +106,8 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/header.jspf" %>
+
+
 <form action="searchBucket" method="post">
 	<div class="container">
 	<div class="row">
@@ -116,12 +119,6 @@
                         <button type="submit">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
-                        <div class="checkbox checkbox-success">
-                        <input id="check5" class="styled" type="checkbox" checked>
-                        <label for="check5">
-                            Style 5
-                        </label>
-                    </div>
                     </span>
                 </div>
             </div>
