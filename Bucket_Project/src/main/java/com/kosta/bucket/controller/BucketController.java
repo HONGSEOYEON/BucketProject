@@ -235,6 +235,7 @@ public class BucketController {
 		List<Comment> comments= bucketService.searchBucketComment(bucketId);
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
 		modelAndView.addObject("loginedUser", user.getUserId());
+		modelAndView.addObject("user", user);
 		
 		Bucket bucket = bucketService.searchBucket(bucketId);
 		modelAndView.addObject("comments", comments);
