@@ -64,22 +64,16 @@ h5 {
 * /
 
 .coupon {
-	border: 3px dashed #bcbcbc;
-	border-radius: 10px;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
 		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 300;
 }
 
 .coupon #head {
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
 	min-height: 56px;
 }
 
 .coupon #footer {
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
 }
 
 #title .visible-xs {
@@ -171,51 +165,26 @@ sup {
 }
 
 /*------------------dont copy these lines----------------------*/
-body {
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
-		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	font-weight: 300;
-}
 
-.row {
-	margin: 30px 0;
-}
 
 #quicknav {
 	height: 200px;
 	margin: 0;
 	padding: 0;
-	list-style-type: none;
 	text-align: center;
 }
 
-/* #quicknav ul li {
-	display: inline;
-}
-
-#quicknav ul li a {
-	text-decoration: none;
-	padding: .2em 1em;
-} */
-.btn-danger, .btn-success, .btn-info, .btn-warning, .btn-primary {
-	width: 105px;
-}
 
 .btn-default {
 	margin-bottom: 40px;
 }
 
-table tr td {
-	text-align: right;
+.vertical-center {
+
+  display: flex;
+  align-items: center;
 }
 
-.hidden-xs {
-	padding: 10px;
-}
-
-span {
-	font-weight: bold;
-}
 </style>
 
 </head>
@@ -226,12 +195,13 @@ span {
 		<form action="${ctx}/registBucket" method="post" id="registBucket"
 			enctype="multipart/form-data">
 			<div class="row" id="green">
+			<div class="row vertical-center">
 				<div class="col-md-6 col-md-offset-3">
 					<div class="panel panel-success coupon">
 						<div class="panel-heading" id="head">
 							<div class="panel-title">
 								<span class="hidden-xs">이미지 후기 등록</span> <input type="hidden"
-									name="writerId" value="${loginedUser.userId}">
+									name="writerId" id="writerId" value="${loginedUser.userId}">
 							</div>
 						</div>
 						<div class="panel-body">
@@ -244,32 +214,28 @@ span {
 						<div class="panel-footer">
 							<div class="row form-group">
 								<div class="input-group">
-									<span class="input-group-addon primary">제목</span> <input
-										type="text" class="form-control" name="title" id="title">
+									<span class="input-group-addon primary">제목</span> 
+									<input type="text" class="form-control" name="title" id="title">
 								</div>
-							</div>
+							
 							<div class="input-group">
-								<span>주소</span>
-								<input type="text" name="address" id="address"></div>
-						</div>
-						<span>후기</span><br>
-						<textarea class="form-control" name="contents"></textarea>
-						<br>
-						<table>
-							<tr>
-								<td></td>
-								<td>
-									<button type="button" style="float: right"
-										onclick="javascript:history.back()" class="btn btn-default">취소</button>
-									<button type="submit" style="float: right"
-										onclick="regist(); return false;" class="btn btn-default">게시</button>
-								</td>
-							</tr>
-						</table>
+								<span class="input-group-addon primary">주소</span>
+								<input type="text"  class="form-control" name="address" id="address"></div>
+								</div>
+								<br>
+									<span><h2><b>후기</b></h2></span><br>
+									<textarea class="form-control" name="contents"></textarea>
+							</div>
 					</div>
+																<div class="col-xs-3 col-md-3"><button type="submit" 
+																		onclick="regist(); return false;" class="btn btn-success btn-block btn-lg">게시</button></div>
+																<div class="col-xs-3 col-md-3"><button type="button" 
+																		onclick="javascript:history.back()" class="btn btn-success btn-block btn-lg">취소</button></div>
 				</div>
+			</div>
 			</div>
 		</form>
 	</div>
+		
 </body>
 </html>
