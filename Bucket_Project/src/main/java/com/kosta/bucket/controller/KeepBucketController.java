@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kosta.bucket.entity.Bucket;
 import com.kosta.bucket.entity.KeepBucket;
 import com.kosta.bucket.entity.User;
-import com.kosta.bucket.service.BucketService;
 import com.kosta.bucket.service.KeepBucketService;
 
 @Controller
@@ -22,9 +21,6 @@ public class KeepBucketController {
 
 	@Autowired
 	private KeepBucketService keepBucketService;
-
-	@Autowired
-	private BucketService bucketService;
 
 	@RequestMapping("/registerKeepBucket")
 	public String registerKeepBucket(HttpSession session, @RequestParam("bucketId") String bucketId) {
