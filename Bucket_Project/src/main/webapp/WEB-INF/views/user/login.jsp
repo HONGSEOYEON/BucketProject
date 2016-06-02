@@ -54,7 +54,7 @@ h4 {
     </style>
     <script type="text/javascript">
     var goHome = function() {
-		location.href="javascript:history.back()";
+		location.href="/bucket";
 	};
 	</script>
 </head>
