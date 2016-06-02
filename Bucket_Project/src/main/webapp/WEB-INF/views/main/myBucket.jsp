@@ -79,9 +79,16 @@ h1 {
 
 </head>
 <body>
+<%@include file="/WEB-INF/views/header/header.jspf" %>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <div class="container">
   <div class="row">
+  <br><br><br>
     <h1>마이 버킷 리스트</h1>
 
    <!--  <p>Best viewed <a href="http://bootsnipp.com/iframe/Zkk0O" target="_blank">full screen</a>

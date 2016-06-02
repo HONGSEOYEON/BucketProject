@@ -50,10 +50,8 @@ public class BucketController {
 				// rootPath는 /Bucket_Project/src/main/webapp/WEB-INF/resources를 의미
 				String rootPath = req.getSession().getServletContext().getRealPath("/");  
 			    String attachPath = "resources/img/";
-			    String filename = file.getOriginalFilename();
 				// 파일 이름을 받아온다.
 				String fileName = file.getOriginalFilename();
-				System.out.println(fileName);
 				// 받아온 파일 이름을 버킷 객체에 저장
 				bucket.setImage(fileName);
 				
@@ -109,7 +107,6 @@ public class BucketController {
 				// rootPath는 /Bucket_Project/src/main/webapp/WEB-INF/resources를 의미
 				String rootPath = req.getSession().getServletContext().getRealPath("/");  
 			    String attachPath = "resources/img/";
-			    String filename = file.getOriginalFilename();
 				// 파일 이름을 받아온다.
 				String fileName = file.getOriginalFilename();
 				System.out.println(fileName);
@@ -146,13 +143,9 @@ public class BucketController {
 	@RequestMapping("/removeBucket")
 	public String removeBucket(String bucketId) {
 		//버킷 아이디를 받아와 삭제 작업 실행
-		int removed = bucketService.removeBucket(bucketId);
-		//삭제가 제대로 이루어졌을 경우 나의 이미지 목록으로 이동
-		if(removed!=0) {
-			return "redirect:main/main";
-		}
-		// 그렇지 않을 경우 메인 페이지로 이동
-		return "redirect:main/main";
+		bucketService.removeBucket(bucketId);
+		//수행 후 메인 페이지로 이동
+		return "redirect:/";
 	}
 	
 	
@@ -160,7 +153,6 @@ public class BucketController {
 	public ModelAndView searchBucket(@Param("word") String word) {
 		ModelAndView modelAndView = new ModelAndView("/main/main");
 		List<Bucket> List1 = bucketService.searchBucketByContents(word);
-		List1.addAll(bucketService.searchBucketByTitle(word));
 		modelAndView.addObject("bucket1", List1);
 		return modelAndView;
 	}
@@ -234,7 +226,6 @@ public class BucketController {
 		// 댓글 조회
 		List<Comment> comments= bucketService.searchBucketComment(bucketId);
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
-		/*modelAndView.addObject("loginedUser", user.getUserId());*/
 		modelAndView.addObject("user", user);
 		
 		Bucket bucket = bucketService.searchBucket(bucketId);

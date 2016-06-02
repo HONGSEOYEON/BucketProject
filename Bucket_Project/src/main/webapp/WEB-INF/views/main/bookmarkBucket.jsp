@@ -85,10 +85,16 @@ h1 {
     
 </head>
 <body>
-
+<%@include file="/WEB-INF/views/header/header.jspf" %>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="container">
   <div class="row">
-    <h1>${loginedUser}님이 담은 버킷 리스트</h1>
+  <br><br><br>
+    <h1>${user.userId}님이 담은 버킷 리스트</h1>
     <hr>
     <section id="pinBoot">
     <c:if test="${keepbuckets eq null }">

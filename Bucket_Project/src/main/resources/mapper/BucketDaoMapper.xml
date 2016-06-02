@@ -104,11 +104,12 @@
 		WHERE recommend > 0
 		ORDER BY recommend DESC
 	</select>
-	<select id="retrieveBucketByContents" resultMap="resultBucket" parameterType="string">
+	<select id="retrieveBucketByWord" resultMap="resultBucket" parameterType="string">
 		SELECT id, title,
 		image, contents, writer_id, reg_date, recommend, accuesed
 		FROM bucket
-		WHERE contents = #{contents}
+		WHERE title LIKE '%'||#{word}||'%'
+		OR contents LIKE '%'||#{word}||'%'
 		ORDER BY id DESC
 	</select>
 		<select id="retrieveBucketByTitle" resultMap="resultBucket" parameterType="string">
