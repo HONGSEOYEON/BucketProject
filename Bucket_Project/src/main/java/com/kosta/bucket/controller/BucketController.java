@@ -73,7 +73,7 @@ public class BucketController {
 				}
 				
 				//파일의 절대경로 지정
-				File saveFile = new File(rootPath+attachPath+fileName);
+				File saveFile = new File(rootPath+attachPath+storedFileName);
 				
 				BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(saveFile));
 				//파일을 해당경로로 저장시작
@@ -134,7 +134,7 @@ public class BucketController {
 				}
 				
 				//파일의 절대경로 지정
-				File saveFile = new File(rootPath+attachPath+fileName);
+				File saveFile = new File(rootPath+attachPath+storedFileName);
 				
 				BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(saveFile));
 				//파일을 해당경로로 저장시작
