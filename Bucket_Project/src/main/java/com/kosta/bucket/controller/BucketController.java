@@ -228,7 +228,7 @@ public class BucketController {
 		User user = (User) session.getAttribute("loginedUser");
 		
 		if(session == null || session.getAttribute("loginedUser") == null) {
-			return new ModelAndView("redirect:login");
+			return new ModelAndView("redirect:showPageLogin");
 		}
 		
 		// 댓글 조회
