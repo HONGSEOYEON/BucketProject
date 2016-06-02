@@ -166,7 +166,7 @@ public class BucketController {
 	public ModelAndView searchBucket(@Param("word") String word) {
 		ModelAndView modelAndView = new ModelAndView("/main/main");
 		List<Bucket> List1 = bucketService.searchBucketByContents(word);
-		modelAndView.addObject("bucket1", List1);
+		modelAndView.addObject("bucket2", List1);
 		return modelAndView;
 	}
 	

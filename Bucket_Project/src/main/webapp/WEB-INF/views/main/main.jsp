@@ -8,18 +8,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>버킷</title>
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/checkbox.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
-	
+<script type="text/javascript">
     
-        window.alert = function(){};
-        var defaultCSS = document.getElementById('bootstrap-css');
-        function changeCSS(css){
-            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />'); 
-            else $('head > link').filter(':first').replaceWith(defaultCSS); 
-        }
         $( document ).ready(function() {
           var iframe_height = parseInt($('html').height()); 
           window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
@@ -111,15 +103,15 @@
 <%@include file="/WEB-INF/views/header/header.jspf" %>
 
 
-<form action="searchBucket" method="post" id="commentForm">
+<form action="searchBucket" method="post" id="searchForm">
 	<div class="container">
 	<div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <div id="imaginary_container"> 
                 <div class="input-group stylish-input-group">
-                    <input type="text"  id="commentContent" class="form-control"  placeholder="검색어를 입력하세요"  name="word">
+                    <input type="text"  id="searchContent" class="form-control"  placeholder="검색어를 입력하세요"  name="word">
                     <span class="input-group-addon">
-                        <button type="submit"  onclick="registComment(); return false;">
+                        <button type="button" onclick="startSearch(); return false;">
                          <span class="glyphicon glyphicon-search" ></span>
                          </button>
                     </span>
@@ -132,7 +124,9 @@
 <!-- Reference: https://github.com/ashleydw/lightbox/ -->
 <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
 <br>
-<b id="rank">추천순 버킷</b>
+<c:if test="${bucket1 ne null }">
+<b id="rank">추천순</b>
+</c:if>
 <div class="container mt40">
   <section class="row">
     
@@ -166,7 +160,7 @@
 <hr style="height: 15px;  border-color: #13C7A3 ;"/>    
                 
                 
-  <b id="rank">최신순 버킷</b> 
+  <b id="rank">최신순</b> 
 <div class="container mt40">
     <section class="row">
 <c:forEach items="${bucket2 }" var="bucket">
@@ -190,20 +184,21 @@
 </c:if>
 <script type="text/javascript">
 //검색 유효성 검사
-var comment = function() {
-	if (document.getElementById("commentContent").value == "") {
-		alert("검색어를 입력하세요");
-		document.getElementById("commentContent").focus();
-		return false;
-	} else {
-		return true;
-	} 
-};
-var registComment = function() {
-	if (comment()) {
-		document.getElementById("commentForm").submit();
-	}
-}; 
+var search = function() {
+		if (document.getElementById("searchContent").value == "") {
+					alert("검색어를 입력하세요");
+					document.getElementById("searchContent").focus(); 
+			return false;
+		} else {
+			return true;
+		}
+	};
+
+	var startSearch = function() {
+		if (search()) {
+			document.getElementById("searchForm").submit();
+		}
+	};
 </script>
 		</body>
 </html>
