@@ -271,7 +271,7 @@ text-align : center;
 					<li><a id="recommand" class="btn btn-xs btn-default"
 						href="${pageContext.request.contextPath}/recommand?bucketId=${bucket.bucketId}"  onclick="recommand(); return false;">추천</a></li>
 				</c:if>
-				<c:if test="${user.userId != null && user.isManager != 'Y'}">
+				<c:if test="${user.userId != null && user.isManager != 'Y' && user.userId != bucket.writerId}">
 					<li><a class="btn btn-xs btn-default"
 						href="${pageContext.request.contextPath}/accuse?bucketId=${bucket.bucketId}" onclick="accuse(); return false;">신고</a></li>
 				</c:if>
