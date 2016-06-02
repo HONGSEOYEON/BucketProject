@@ -37,10 +37,20 @@ body {
   transform:translate(-50%, -50%)
 }
 
+.vertical-center {
+
+  display: flex;
+  align-items: center;
+}
+
+
     </style>
     <script type="text/javascript">
     var goHome = function() {
 		location.href="${pageContext.request.contextPath}/";
+	};
+    var goJoin = function() {
+		location.href="showPageJoin";
 	};
 	</script>
 </head>
@@ -64,9 +74,10 @@ body {
 						<input type="password" name="password" id="iptPassword" class="form-control input-lg" placeholder="비밀번호" tabindex="5">
 					</div>
 			<hr class="colorgraph">
-			<div class="row">
+			<div class="row vertical-center">
 				<div class="col-xs-12 col-md-6"><button type="submit" class="btn btn-primary btn-block btn-lg" tabindex="7">로그인</button></div>
-				<div class="col-xs-12 col-md-6"><button onclick="goHome(); return false;" class="btn btn-success btn-block btn-lg">홈으로</button></div>
+				<div class="col-xs-12 col-md-6"><button type="button" onclick="goHome();" class="btn btn-success btn-block btn-lg">홈으로</button></div>
+				<div class="col-xs-12 col-md-6"><button type="button" onclick="goJoin();" class="btn btn-success btn-block btn-lg">회원가입</button></div>
 			</div>
 		</form>
 	</div>
