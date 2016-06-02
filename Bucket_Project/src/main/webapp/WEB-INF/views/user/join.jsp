@@ -39,6 +39,13 @@
 
 <script type="text/javascript">
 	var validate = function() {
+		
+		if ($("#iptLoginId").val().length < 5) {
+			alert("아이디를 5자 이상 입력하세요");
+			document.getElementById("iptLoginId").focus();
+			return false;
+		}
+		
 		if (document.getElementById("iptLoginId").value == "") {
 			alert("아이디를 입력하세요");
 			document.getElementById("iptLoginId").focus();

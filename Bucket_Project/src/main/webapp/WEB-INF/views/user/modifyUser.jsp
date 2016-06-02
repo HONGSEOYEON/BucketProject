@@ -7,12 +7,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>버킷</title>
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <style type="text/css">
 
 .container {
   position:absolute;
-  top:35%;
+  top:45%;
   left:50%;
   transform:translate(-50%, -50%)
 }
@@ -88,6 +91,10 @@
 	var goHome = function() {
 		location.href="${pageContext.request.contextPath}/";
 	};
+	
+	function deleteButton() {
+		return confirm("회원을 정말 탈퇴 하시겠습니까?");
+	}
 	
 </script>
 </head>
@@ -176,7 +183,7 @@
 						action="modify"
 						method="POST">
 		
-			<h2>회원 수정 <small>회원 정보를 기입해주세요.</small></h2>
+			<h2>회원 수정 <small>회원 정보를 기입해주세요.</small><a style="float: right" id="deleteButton" onclick="return deleteButton();" href="drop?userId=${beforeUser.userId}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> 탈퇴</a></h2> 
 			<hr class="colorgraph">
 			<div class="row">
 			</div>
