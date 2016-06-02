@@ -21,6 +21,11 @@
 			document.getElementById("title").focus();
 			return false;
 		}
+		if (document.getElementById("address").value == "") {
+			alert("현재 주소를 입력해주세요");
+			document.getElementById("address").focus();
+			return false;
+		}
 		return true;
 	};
 
