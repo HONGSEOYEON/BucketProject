@@ -60,8 +60,8 @@
 <style>
 /* body {
 	padding: 10% 30%;
-	/* background-image: url("resources/img/back.png"); */
-}
+	/* background-image: url("resources/img/back.png"); 
+}*/
 td {
 	padding: 10px;
 }
@@ -228,7 +228,7 @@ body {
 </style>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/header/header.jspf" %>
+	<%-- <%@include file="/WEB-INF/views/header/header.jspf" %> --%>
 	<div class="container">
 
 		<div id="quicknav">

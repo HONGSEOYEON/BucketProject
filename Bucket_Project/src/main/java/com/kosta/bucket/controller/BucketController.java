@@ -53,7 +53,6 @@ public class BucketController {
 			    String filename = file.getOriginalFilename();
 				// 파일 이름을 받아온다.
 				String fileName = file.getOriginalFilename();
-				System.out.println(fileName);
 				// 받아온 파일 이름을 버킷 객체에 저장
 				bucket.setImage(fileName);
 				
@@ -146,13 +145,9 @@ public class BucketController {
 	@RequestMapping("/removeBucket")
 	public String removeBucket(String bucketId) {
 		//버킷 아이디를 받아와 삭제 작업 실행
-		int removed = bucketService.removeBucket(bucketId);
-		//삭제가 제대로 이루어졌을 경우 나의 이미지 목록으로 이동
-		if(removed!=0) {
-			return "redirect:main/main";
-		}
-		// 그렇지 않을 경우 메인 페이지로 이동
-		return "redirect:main/main";
+		bucketService.removeBucket(bucketId);
+		//수행 후 메인 페이지로 이동
+		return "redirect:/";
 	}
 	
 	
