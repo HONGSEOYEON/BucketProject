@@ -25,6 +25,15 @@ SELECT bucket_id, user_id
 FROM bookmark
 </sql>
 
+<select id="selectSomeKeepBucket" parameterType="keepBucket" resultMap="resultBucket">
+SELECT A.ID, A.TITLE, A.IMAGE, A.CONTENTS, A.WRITER_ID, A.REG_DATE, A.RECOMMEND, A.ACCUESED
+FROM BUCKET A
+JOIN BOOKMARK B
+ON A.ID = B.BUCKET_ID
+WHERE B.USER_ID=#{userId}
+AND B.BUCKET_ID=#{bucketId}
+</select>
+
 <select id="selectAllKeepBucket" parameterType="string" resultMap="resultBucket">
 SELECT A.ID, A.TITLE, A.IMAGE, A.CONTENTS, A.WRITER_ID, A.REG_DATE, A.RECOMMEND, A.ACCUESED
 FROM BUCKET A
