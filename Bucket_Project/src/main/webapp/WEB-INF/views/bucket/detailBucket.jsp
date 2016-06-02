@@ -44,7 +44,7 @@
                                                     new google.maps.Size(size_x, size_y));
          
         // Geocoding *****************************************************
-        var address = '서울 특별시 금천구 가산동 371-47'; // DB에서 주소 가져와서 검색하거나 왼쪽과 같이 주소를 바로 코딩.
+        var address = '${bucket.address}'; // DB에서 주소 가져와서 검색하거나 왼쪽과 같이 주소를 바로 코딩.
         var marker = null;
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode( { 'address': address}, function(results, status) {
@@ -53,11 +53,11 @@
                 marker = new google.maps.Marker({
                                 map: map,
                                 icon: image, // 마커로 사용할 이미지(변수)
-                                title: '코스타', // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
+                                title: '${bucket.address}', // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
                                 position: results[0].geometry.location
                             });
  
-                var content = "코스타<br/><br/>Tel: 070-5039-5815"; // 말풍선 안에 들어갈 내용
+                var content = "${bucket.address}<br/><br/>입니다!"; // 말풍선 안에 들어갈 내용
              
                 // 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
                 var infowindow = new google.maps.InfoWindow({ content: content});
