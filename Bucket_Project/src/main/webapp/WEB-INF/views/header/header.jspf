@@ -73,7 +73,7 @@ color: #11B896;
 						<li><a href="registBucket" ><span class=""></span> 이미지 후기 등록</a></li>
 				 	</c:when>
 					<c:when test="${loginedUser ne null and loginedUser.isManager eq 'Y'}">
-				<li><span class="glyphicon glyphicon-user"></span> <b color: white;> ${loginedUser.userId}</b></li>
+				<li><a href="showPageModify" color: white;><span class="glyphicon glyphicon-user"></span> <b> ${loginedUser.userId}</b></a></li>
 				<li><a href="logout" ><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
 				<li><a href="accusedAllBucket" ><span class=""></span> 사용자 관리</a></li>
 				 	</c:when>
