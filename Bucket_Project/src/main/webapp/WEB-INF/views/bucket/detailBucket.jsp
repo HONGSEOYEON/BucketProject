@@ -282,11 +282,11 @@ text-align : center;
 				</c:if>
 				<c:if
 					test="${user.userId != null && bucket.writerId == user.userId}">
-					<li><a class="btn btn-xs btn-default"
+					<li><a id="deleteButton" onclick="return deleteButton();" class="btn btn-xs btn-default"
 						href="${pageContext.request.contextPath}/removeBucket?bucketId=${bucket.bucketId}">삭제</a></li>
 				</c:if>
 				<c:if test="${user.userId != null && user.isManager != 'N'}">
-					<li><a class="btn btn-xs btn-default"
+					<li><a id="deleteButton" onclick="return deleteButton();" class="btn btn-xs btn-default"
 						href="${pageContext.request.contextPath}/removeBucket?bucketId=${bucket.bucketId}">삭제</a></li>
 				</c:if>
 			</ul>
@@ -361,5 +361,10 @@ text-align : center;
 							<br>
 						</c:forEach>
 					
+<script type="text/javascript">
+	function deleteButton() {
+		return confirm("게시물을 정말 삭제하시겠습니까?");
+	}
+</script>
 </body>
 </html>
