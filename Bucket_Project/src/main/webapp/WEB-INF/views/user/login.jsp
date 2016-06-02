@@ -20,7 +20,7 @@ body {
 .container {
     padding: 25px;
     /* position: fixed; */
-    display: height: auto; margin: 0 220px;
+    margin:0 auto;
 }
 
 .form-login {
@@ -52,36 +52,40 @@ h4 {
 
 
     </style>
+    <script type="text/javascript">
+    var goHome = function() {
+		location.href="javascript:history.back()";
+	};
+	</script>
 </head>
 <body>
 
-<!--Pulling Awesome Font -->
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-<form class="form-signin" action="login" method="POST">
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-offset-5 col-md-3">
-            <div class="form-login">
-            <h4>로그인</h4>
-            <input type="text" id="userName" class="form-control input-sm chat-input" id="inputId" name="loginId" placeholder="아이디" />
-            </br>
-            <input type="password" id="userPassword" class="form-control input-sm chat-input" id="inputPassword" name="password" placeholder="비밀번호" />
-            </br>
-            <div class="wrapper">
-            <span class="group-btn">     
-                <button class="btn btn-primary btn-md" type="submit">login <i class="fa fa-sign-in"></i></button>
-                <button class="btn btn-primary btn-md" onclick="location.href='javascript:history.back()'">cancel</button>
-            </span>
-            </div>
-            </div>
-        
-        </div>
-</div>
-</div>
 
-</form>
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    
+		<form class="form-horizontal" id="formJoin" action="login" method="POST">
+		
+			<h2>로그인 <small>로그인 정보를 기입해주세요.</small></h2>
+			<hr class="colorgraph">
+			<div class="row">
+			</div>
+			<div class="form-group">
+				<input type="text" name="loginId" id="iptLoginId" class="form-control input-lg" placeholder="아이디" tabindex="3">
+			</div>
+					<div class="form-group">
+						<input type="password" name="password" id="iptPassword" class="form-control input-lg" placeholder="비밀번호" tabindex="5">
+					</div>
+			<hr class="colorgraph">
+			<div class="row">
+				<div class="col-xs-12 col-md-6"><button type="submit" class="btn btn-primary btn-block btn-lg" tabindex="7">로그인</button></div>
+				<div class="col-xs-12 col-md-6"><button onclick="goHome(); return false;" class="btn btn-success btn-block btn-lg">홈으로</button></div>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
 
 </body>
 </html>

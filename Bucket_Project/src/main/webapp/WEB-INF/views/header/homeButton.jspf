@@ -3,5 +3,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx">${pageContext.request.contextPath}</c:set>
 <div style="position: relative; right: 200px; text-align:right">
-<img src="${ctx}/resources/img/home.png" onclick="location.href='/main/main'">
+<img src="${ctx}/resources/img/home.png" onclick="location.href='/'">
 </div>

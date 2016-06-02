@@ -78,7 +78,7 @@
 	};
 
 	var goHome = function() {
-		location.href="/bucket";
+		location.href="javascript:history.back()";
 	};
 	
 </script>
