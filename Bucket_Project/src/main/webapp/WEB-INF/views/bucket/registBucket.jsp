@@ -68,6 +68,7 @@ td {
 <img alt="" src="resources/img/home.png" id="imgAlbum"/>
 	<form action="${ctx}/registBucket" method="post" id="registBucket"
 			enctype="multipart/form-data">
+			<input type="hidden" name="writerId" value="${loginedUser.userId }">
 	<table id="registBucket">
 		<tr class="imgAlbum">
 			<td align="center">이미지 후기 <br>
