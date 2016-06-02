@@ -89,7 +89,7 @@ public class BucketController {
 		//작성일시 가져오기
 		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		bucket.setRegistDate(today);
-		
+		System.out.println(bucket.getAddress());
 		//이미지 후기 등록
 		bucketService.registBucket(bucket);
 		
