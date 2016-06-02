@@ -8,7 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>버킷</title>
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/checkbox.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+
     <script type="text/javascript">
         window.alert = function(){};
         var defaultCSS = document.getElementById('bootstrap-css');
@@ -97,6 +99,7 @@
     border:0;
     background:transparent;
 }
+
 </style>
 
 </head>
@@ -113,6 +116,12 @@
                         <button type="submit">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
+                        <div class="checkbox checkbox-success">
+                        <input id="check5" class="styled" type="checkbox" checked>
+                        <label for="check5">
+                            Style 5
+                        </label>
+                    </div>
                     </span>
                 </div>
             </div>
