@@ -66,6 +66,7 @@ td {
 	padding: 10px;
 }
 
+
 #musicDetail {
 	width: 100%;
 }
@@ -227,7 +228,7 @@ body {
 </style>
 </head>
 <body>
-	<%-- <%@include file="/WEB-INF/views/header/homeButton.jspf" %> --%>
+	<%@include file="/WEB-INF/views/header/homeButton.jspf" %>
 	<div class="container">
 
 		<div id="quicknav">
@@ -264,11 +265,15 @@ body {
 						<img src="resources/img/${bucket.image}"
 							class="coupon-img img-rounded">
 						<div class="col-md-9">
+						<div class="offer text-success">
+						작성자 : <b>${bucket.writerId} 님</b> 
+						</div>
 							<ul class="items">
 								<li style="list-style-type: none">${bucket.contents}</li>
 							</ul>
 						</div>
 						<div class="col-md-3">
+						
 							<div class="offer text-success">
 								추천수 <span style="background-color: #18bc9c" class="badge">${bucket.recomNum}</span>
 							</div>
