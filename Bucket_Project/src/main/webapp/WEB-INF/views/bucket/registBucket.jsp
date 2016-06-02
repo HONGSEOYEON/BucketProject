@@ -12,6 +12,10 @@
 <script src="${ctx}/resources/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
 	var validate = function() {
+		if (document.getElementById("writerId").value == "") {
+			alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+			return false;
+		}
 		if (document.getElementById("image").value == "") {
 			alert("이미지를 등록해주세요");
 			return false;
