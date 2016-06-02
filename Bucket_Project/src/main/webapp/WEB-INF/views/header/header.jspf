@@ -6,8 +6,8 @@
 <style type="text/css">
 .menu
 {
-background-color: #00547E;
-border-bottom: 4px solid #04A3ED;
+background-color: #13C7A3;
+border-bottom: 4px solid #13C7A3;
 width:100%;
 height: auto;
 padding: 0 10px;
@@ -19,7 +19,7 @@ opacity: 0.9;
 
 .menu  .navbar-nav > .active > a
 {
-background-color : #04A3ED;
+background-color : #11B896;
 color: white;
 font-weight: bold;
 }
@@ -33,7 +33,7 @@ padding: 10px 35px;
 }
 .menu  .navbar-nav >  li >  a:hover
 {
-background-color: #04A3ED;
+background-color: #11B896;
 }
 
 .navbar-header > a
@@ -49,41 +49,37 @@ padding: 5px 30px;
 .navbar-header > a:hover
 {
 text-decoration: none;
-color: #04A3ED;
+color: #11B896;
 }
 </style>
 
-<div style="position: relative; right: 200px; top: 50px;">
-<c:choose>
-	<c:when test="${loginedUser eq null}">
-	<div style="text-align:right">
-		<a href="showPageLogin">로그인</a> | <a href="showPageJoin">회원가입</a>
-	</div>
-	</c:when>
-	<c:when test="${loginedUser ne null and loginedUser.isManager eq 'N'}">
-		<div style="text-align:right">
-		<a href="showPageModify"><b>${loginedUser.userId}</b></a> 님!! 환영합니다. [<a href="logout">로그아웃</a>] <br>
-		[<a href="myBucket">마이 이미지 후기</a>] [<a href="showKeepBucket">내가 담은 이미지 후기</a>] [<a href="registBucket">이미지 후기 등록</a>]
-		</div>
- 	</c:when>
-	<c:when test="${loginedUser ne null and loginedUser.isManager eq 'Y'}">
-	<div style="text-align:right">
-		<b>${loginedUser.userId}</b> 님!! 환영합니다. [<a href="accusedAllBucket">사용자 관리</a>] [<a href="logout">로그아웃</a>]
-	</div>
- 	</c:when>
-</c:choose>
-</div>
-
-<!-- <div class="menu">
+<div class="menu">
     <div class="container-fluid">
 		<div class="navbar-header">
-			<a href="#">Bootsnipp</a>
+			<a href="/bucket">Bucket</a>
 		</div>
 		<div>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" ><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<c:choose>
+					<c:when test="${loginedUser eq null}">
+						<li><a href="showPageLogin"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
+						<li><a href="showPageJoin" ><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+					</c:when>
+					<c:when test="${loginedUser ne null and loginedUser.isManager eq 'N'}">
+						<li><a href="showPageModify" ><span class="glyphicon glyphicon-user" color: white;></span><b> ${loginedUser.userId}</b></a></li>
+						<li><a href="logout" ><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
+						<li><a href="myBucket" ><span class=""></span> 마이 이미지 후기</a></li>
+						<li><a href="showKeepBucket" ><span class=""></span> 내가 담은 이미지 후기</a></li>
+						<li><a href="registBucket" ><span class=""></span> 이미지 후기 등록</a></li>
+				 	</c:when>
+					<c:when test="${loginedUser ne null and loginedUser.isManager eq 'Y'}">
+				<li><span class="glyphicon glyphicon-user"></span> <b color: white;> ${loginedUser.userId}</b></li>
+				<li><a href="logout" ><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
+				<li><a href="accusedAllBucket" ><span class=""></span> 사용자 관리</a></li>
+				 	</c:when>
+				</c:choose>
+			
 			</ul>
 		</div>
 	</div>
-</div> -->
+</div>

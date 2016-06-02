@@ -80,7 +80,7 @@
 	};
 
 	var goHome = function() {
-		location.href="/bucket";
+		location.href="javascript:history.back()";
 	};
 	
 </script>
@@ -93,7 +93,7 @@
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
     
 		<form class="form-horizontal" id="formJoin"
-						action="${pageContext.request.contextPath}/user/join"
+						action="join"
 						method="POST">
 		
 			<h2>회원 가입 <small>회원 정보를 기입해주세요.</small></h2>
@@ -122,6 +122,7 @@
 					</div>
 				</div>
 			</div>			
+						<input type="hidden" name="isManager" value="N">
 			<hr class="colorgraph">
 			<div class="row">
 				<div class="col-xs-12 col-md-6"><button type="submit" onclick="join(); return false;" class="btn btn-primary btn-block btn-lg" tabindex="7">가입하기</button></div>
@@ -129,6 +130,7 @@
 			</div>
 		</form>
 	</div>
+</div>
 </div>
 
 <!--
