@@ -12,10 +12,10 @@ VALUES ('kim', '1234', 'kimsangmin', 'kim@naver.com', 'N');
 
 
 -- bucket data insert
-INSERT INTO BUCKET (ID, TITLE, IMAGE, CONTENTS, WRITER_ID, REG_DATE, RECOMMEND, ACCUESED) 
-VALUES (BUCKET_SEQ.nextVal, 'seoul', 'seoul.jpg', '서울은 끝내준다', 'kim', SYSDATE, 5, 15);
-INSERT INTO BUCKET (ID, TITLE, IMAGE, CONTENTS, WRITER_ID, REG_DATE, RECOMMEND, ACCUESED) 
-VALUES (BUCKET_SEQ.nextVal, 'PARIS', 'PARIS.JPG', '파리다 파리', 'hong', SYSDATE, 10, 2);
+INSERT INTO BUCKET (ID, TITLE, IMAGE, CONTENTS, WRITER_ID, REG_DATE, RECOMMEND, ACCUESED, ADDRESS) 
+VALUES (BUCKET_SEQ.nextVal, 'seoul', 'seoul.jpg', '서울은 끝내준다', 'kim', SYSDATE, 5, 15, '서울시 남산');
+INSERT INTO BUCKET (ID, TITLE, IMAGE, CONTENTS, WRITER_ID, REG_DATE, RECOMMEND, ACCUESED, ADDRESS) 
+VALUES (BUCKET_SEQ.nextVal, 'PARIS', 'PARIS.JPG', '파리다 파리', 'hong', SYSDATE, 10, 2,'파리 에펠탑');
 
 
 -- comment data insert
