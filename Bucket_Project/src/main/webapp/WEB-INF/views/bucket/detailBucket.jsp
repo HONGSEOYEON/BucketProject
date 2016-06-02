@@ -346,9 +346,9 @@ text-align : center;
 
 					<br> <br>
 						
-						<c:if test="${comments != null}">
-						<p id="commentTag"><b>댓글이 없습니다. 작성해주세요</b></p>
-						</c:if>
+					
+					
+						
 						<c:forEach items="${comments}" var="comment" varStatus="sts">
 							<p id="commentTag">
 								<b>${comment.writerId} 님</b> : ${comment.contents} &nbsp;
@@ -360,5 +360,6 @@ text-align : center;
 							</p>
 							<br>
 						</c:forEach>
+					
 </body>
 </html>
