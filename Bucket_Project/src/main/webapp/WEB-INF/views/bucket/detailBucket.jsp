@@ -231,7 +231,7 @@ body {
 
 		<div id="quicknav">
 			<br>
-			<br>
+			<br><br><br>
 			<ul>
 				<c:if
 					test="${user.userId != null && user.isManager != 'Y' && user.userId == bucket.writerId}">

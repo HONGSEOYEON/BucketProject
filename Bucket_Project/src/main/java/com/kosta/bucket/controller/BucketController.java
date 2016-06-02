@@ -234,7 +234,6 @@ public class BucketController {
 		// 댓글 조회
 		List<Comment> comments= bucketService.searchBucketComment(bucketId);
 		ModelAndView modelAndView = new ModelAndView("bucket/detailBucket");
-		/*modelAndView.addObject("loginedUser", user.getUserId());*/
 		modelAndView.addObject("user", user);
 		
 		Bucket bucket = bucketService.searchBucket(bucketId);
