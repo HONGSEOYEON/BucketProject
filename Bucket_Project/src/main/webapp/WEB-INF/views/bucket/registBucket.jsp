@@ -239,6 +239,9 @@ span {
 										type="text" class="form-control" name="title" id="title">
 								</div>
 							</div>
+							<div class="input-group">
+								<span>주소</span>
+								<input type="text" name="address" id="address"></div>
 						</div>
 						<span>후기</span><br>
 						<textarea class="form-control" name="contents"></textarea>

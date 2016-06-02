@@ -9,7 +9,7 @@ public class Bucket {
 	private String contents;
 	private String writerId;
 	private Date registDate;
-	
+	private String address;
 	private int recomNum;
 	private int accuseNum;
 	private Comment comment;
@@ -31,12 +31,13 @@ public class Bucket {
 	}
 
 	public Bucket(String bucketId, String title, String image, String contents, String writerId, Date registDate,
-			int recomNum, int accuseNum, Comment comment) {
+			int recomNum, int accuseNum, String address, Comment comment) {
 		this(title, image, contents, writerId, registDate);
 		this.bucketId = bucketId;
 		this.recomNum = recomNum;
 		this.accuseNum = accuseNum;
 		this.comment = comment;
+		this.address = address;
 	}
 
 	public String getBucketId() {
@@ -92,6 +93,14 @@ public class Bucket {
 	}
 	public void setComment(Comment comment) {
 		this.comment = comment;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	

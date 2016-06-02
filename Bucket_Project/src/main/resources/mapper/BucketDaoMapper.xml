@@ -13,6 +13,7 @@
 		<result property="registDate" column="REG_DATE" />
 		<result property="recomNum" column="RECOMMEND" />
 		<result property="accuseNum" column="ACCUESED" />
+		<result property="address" column="ADDRESS" />
 	</resultMap>
 
 	<resultMap type="Comment" id="resultComment">
@@ -25,7 +26,7 @@
 
 	<sql id="selectBucket">
 		SELECT id, title, image, contents, writer_id, reg_date,
-		recommend, accuesed
+		recommend, accuesed, address
 		FROM bucket
 	</sql>
 
@@ -58,9 +59,9 @@
 	</select>
 
 	<insert id="insertBucket" parameterType="Bucket">
-		INSERT INTO bucket (ID, TITLE, IMAGE, CONTENTS, WRITER_ID, REG_DATE)
+		INSERT INTO bucket (ID, TITLE, IMAGE, CONTENTS, WRITER_ID, REG_DATE, ADDRESS)
 		VALUES (BUCKET_SEQ.nextval, #{title}, #{image}, #{contents}, #{writerId},
-		#{registDate})
+		#{registDate}, #{address})
 	</insert>
 
 	<update id="updateRecommand" parameterType="string">
@@ -76,7 +77,7 @@
 	<update id="updateBucket" parameterType="Bucket">
 		UPDATE bucket
 		SET TITLE =
-		#{title}, IMAGE = #{image}, CONTENTS = #{contents}
+		#{title}, IMAGE = #{image}, CONTENTS = #{contents}, ADDRESS = #{address}
 		WHERE ID = #{bucketId}
 	</update>
 
