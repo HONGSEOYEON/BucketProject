@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.kosta.bucket.dao.UserDao;
 import com.kosta.bucket.entity.User;
 import com.kosta.bucket.service.UserService;
+import com.kosta.bucket.util.BucketException;
+
 
 @Service
 public class UserServiceLogic implements UserService {
@@ -19,8 +21,14 @@ public class UserServiceLogic implements UserService {
 	}
 
 	@Override
-	public User searchUser(String userId) {
-		return userDao.retrieveUser(userId);
+	public User searchUser(String userId, String password) throws BucketException {
+		User loginedUser = userDao.retrieveUser(userId);
+		if(loginedUser == null || !loginedUser.getPassword().equals(password)){
+			throw new BucketException("로그인 정보 불일치");
+		} else{
+		return loginedUser;
+		}
+		
 	}
 
 	@Override
