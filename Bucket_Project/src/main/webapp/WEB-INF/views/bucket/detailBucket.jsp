@@ -234,7 +234,7 @@ body {
 		<br><br>
 			<ul>
 				<c:if test="${loginedUser != null && loginedUser != 'hyeon'}">
-					<li><a style="background-color: #3498db" class="btn btn-xs btn-default" id="bookmark" onclick="location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}''">담기</a></li>
+					<li><a style="background-color: #3498db" class="btn btn-xs btn-default" id="bookmark" onclick="location.href='${pageContext.request.contextPath}/registerKeepBucket?bucketId=${bucket.bucketId}' ">담기</a></li>
 					<li><a id="recommand" class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/recommand?bucketId=${bucket.bucketId}">추천</a></li>
 					<li><a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/accuse?bucketId=${bucket.bucketId}">신고</a></li>
 				</c:if>
