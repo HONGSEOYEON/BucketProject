@@ -63,7 +63,7 @@
                 var infowindow = new google.maps.InfoWindow({ content: content});
                 google.maps.event.addListener(marker, "click", function() {infowindow.open(map,marker);});
             } else {
-                alert("Geocode was not successful for the following reason: " + status);
+                alert("지도 정보를 불러올 수 없습니다: " + status);
             }
         });
         // Geocoding // *****************************************************
