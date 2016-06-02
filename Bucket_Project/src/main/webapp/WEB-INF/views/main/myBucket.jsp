@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<br><br><br>
 <title>마이 버킷 리스트</title>
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
