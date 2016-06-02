@@ -1,6 +1,10 @@
 package com.kosta.bucket.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +26,7 @@ public class UserController {
 	private BucketService bucketService;
 
 	@RequestMapping("/login")
-	public ModelAndView loginUser(HttpServletRequest req, HttpSession session) {
+	public ModelAndView loginUser(HttpServletRequest req, HttpServletResponse resp, HttpSession session, PrintWriter out) {
 
 		String id = (String) req.getParameter("loginId");
 		User loginedUser = userService.searchUser(id);
@@ -34,8 +38,18 @@ public class UserController {
 			ModelAndView model = new ModelAndView("redirect:/");
 			return model;
 		}
-		
-		throw new RuntimeException("로그인 정보가 일치하지 않습니다.");
+		// 로그인 실패 alert 작업 중
+		resp.setContentType("text/html;charset=utf-8");
+		try {
+			out = resp.getWriter();
+			out.println("<script>alert();</script>");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			out.flush();
+		}
+		return new ModelAndView("showPageLogin");
 	}
 
 	@RequestMapping("/logout")
