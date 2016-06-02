@@ -50,7 +50,6 @@ public class BucketController {
 				// rootPath는 /Bucket_Project/src/main/webapp/WEB-INF/resources를 의미
 				String rootPath = req.getSession().getServletContext().getRealPath("/");  
 			    String attachPath = "resources/img/";
-			    String filename = file.getOriginalFilename();
 				// 파일 이름을 받아온다.
 				String fileName = file.getOriginalFilename();
 				// 받아온 파일 이름을 버킷 객체에 저장
@@ -108,7 +107,6 @@ public class BucketController {
 				// rootPath는 /Bucket_Project/src/main/webapp/WEB-INF/resources를 의미
 				String rootPath = req.getSession().getServletContext().getRealPath("/");  
 			    String attachPath = "resources/img/";
-			    String filename = file.getOriginalFilename();
 				// 파일 이름을 받아온다.
 				String fileName = file.getOriginalFilename();
 				System.out.println(fileName);

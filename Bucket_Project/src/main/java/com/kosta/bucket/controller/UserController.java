@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kosta.bucket.entity.User;
-import com.kosta.bucket.service.BucketService;
 import com.kosta.bucket.service.UserService;
 
 @Controller
@@ -18,8 +17,6 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private BucketService bucketService;
 
 	@RequestMapping("/login")
 	public ModelAndView loginUser(HttpServletRequest req, HttpSession session) {
