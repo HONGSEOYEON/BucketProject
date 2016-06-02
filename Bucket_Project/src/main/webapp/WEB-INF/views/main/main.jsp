@@ -12,6 +12,8 @@
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
+	
+    
         window.alert = function(){};
         var defaultCSS = document.getElementById('bootstrap-css');
         function changeCSS(css){
@@ -36,8 +38,6 @@
                 $(this).ekkoLightbox();
             });                                        
         }); 
-
-        
     </script>
 <style>
 @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
@@ -108,17 +108,17 @@
 <%@include file="/WEB-INF/views/header/header.jspf" %>
 
 
-<form action="searchBucket" method="post">
+<form action="searchBucket" method="post" id="commentForm">
 	<div class="container">
 	<div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <div id="imaginary_container"> 
                 <div class="input-group stylish-input-group">
-                    <input type="text" class="form-control"  placeholder="검색어를 입력하세요" value="" name="word">
+                    <input type="text"  id="commentContent" class="form-control"  placeholder="검색어를 입력하세요"  name="word">
                     <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
+                        <button type="submit"  onclick="registComment(); return false;">
+                         <span class="glyphicon glyphicon-search" ></span>
+                         </button>
                     </span>
                 </div>
             </div>
@@ -151,9 +151,11 @@
 </section>
 </div>
 <!-- Progress Bar -->
-                    <div class="progress">
+                 <!--    <div class="progress">
                       <div  data-percentage="10%" style="width: 80%;" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="10" aria-valuemax="100"></div>
-                    </div>
+                    </div> -->
+                    
+<hr style="height: 15px;  border-color: #13C7A3 ;"/>    
                 
                 
                 
@@ -179,5 +181,22 @@
 </section>
 </div>
 </c:if>
+<script type="text/javascript">
+//검색 유효성 검사
+var comment = function() {
+	if (document.getElementById("commentContent").value == "") {
+		alert("검색어를 입력하세요");
+		document.getElementById("commentContent").focus();
+		return false;
+	} else {
+		return true;
+	} 
+};
+var registComment = function() {
+	if (comment()) {
+		document.getElementById("commentForm").submit();
+	}
+}; 
+</script>
 		</body>
 </html>
