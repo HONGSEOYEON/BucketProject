@@ -13,51 +13,9 @@
 
 
 <style type="text/css">
-/* body {
-	padding-top: 100px;
-	padding-left: 330px;
-	background-color: #fff;
-}
 
-
-
-thead th {
-	width: 200px;
-	border-radius: 4px;
-}
-
-div.wrap {
-	position: relative;
-	padding-top: 30px;
-	width: 850px;
-	height: 300px;
-	overflow: hidden;
-}
-
-div.wrap>div {
-	height: 300px;
-	overflow: auto;
-}
-
-table {
-	width: 800px;
-}
-
-thead th {
-	text-align: center;
-}
-
-tbody td {
-	width: 200px;
-	text-align: center;
-	background-color: window;
-}
-
-tbody tr {
-	height: auto;
-*/
 h1 {
-	padding-left:400px;
+	padding-left:300px;
 	font-weight: bold;
 	color: #5bc0de;
 }
@@ -80,12 +38,19 @@ tbody td {
 	box-shadow: 3px 3px 0px transparent;
 	transition: 0.5s;
 }
+#firstDiv {
+	padding-top: 100px;
+	padding-left: 250px;
+}
 }
 </style>
+
 </head>
 <body>
+<%@include file="/WEB-INF/views/header/header.jspf" %>
+	<div id="firstDiv">
 	<h1>신고된 게시물 목록</h1>
-	<div class="container">
+	<div class="container" >
 		<div class="row col-md-6 col-md-offset-2 custyle">
 			<table class="table table-striped custab">
 				<thead>
@@ -115,37 +80,7 @@ tbody td {
 			</table>
 		</div>
 	</div>
-
-	<%-- <div class="wrap">
-		<div>
-			<table class="table table-condensed">
-				<thead>
-					<tr>
-						<th class="active">ID</th>
-						<th class="active">이미지후기 제목</th>
-						<th class="active">신고수</th>
-						<th class="active">탈퇴</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${accusedBucketList}" var="accuseBucket"
-						varStatus="vs">
-
-						<tr class="info">
-							<td>${accuseBucket.writerId}</td>
-							<td><a href="detailBucket?bucketId=${accuseBucket.bucketId}">${accuseBucket.title}</a></td>
-							<td>
-								<div style="text-align: center;">
-									<span class="badge">${accuseBucket.accuseNum}</span>
-								</div>
-							</td>
-							<td><a id="deleteButton" type="button" class="btn btn-xs btn-default" onclick="return deleteButton();" href="drop?userId=${accuseBucket.writerId}">탈퇴</a></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	</div> --%>
+	</div>
 </body>
 <script type="text/javascript">
 	function deleteButton() {
