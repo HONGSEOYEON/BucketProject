@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,6 +59,22 @@ h1 {
 	font-weight:bold;
 	color : #A0B0DB;
 }
+
+
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
+}
+
+.element {
+  .pull-left();
+}
+.another-element {
+  .pull-right();
+}
+
 	</style>
 	
 	<script src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
@@ -93,6 +110,9 @@ h1 {
      <c:if test="${empty myBuckets}">
                <h3>내가 만든 버킷이 아직 없습니다!</h3>
      </c:if>
+	 <c:if test="${not empty myBuckets}">
+               <h3>마이 버킷 : ${fn:length(myBuckets)} 개</h3>
+     </c:if>     
 
    <!--  <p>Best viewed <a href="http://bootsnipp.com/iframe/Zkk0O" target="_blank">full screen</a>
     </p> -->
