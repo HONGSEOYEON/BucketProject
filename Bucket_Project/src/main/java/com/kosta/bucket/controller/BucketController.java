@@ -234,7 +234,7 @@ public class BucketController {
 		
 		if(session.getAttribute("loginedUser") == null) {
 			return new ModelAndView("redirect:showPageLogin");
-		}
+	}
 		
 		
 		//담은 것인지 확인

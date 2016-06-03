@@ -97,10 +97,10 @@ h1 {
   <br><br><br>
     <h1>${user.userId}님이 담은 버킷 리스트</h1>
      <c:if test="${empty keepbuckets}">
-               <h3>아직 담은 버킷이 없습니다!</h3>
+               <h3><b>아직 담은 버킷이 없습니다!</b></h3>
      </c:if>
       <c:if test="${not empty keepbuckets}">
-               <h3>담은 버킷 : ${fn:length(keepbuckets)} 개</h3>
+               <h4><b>담은 버킷 : ${fn:length(keepbuckets)} 개</b></h4>
      </c:if>
     <hr>
    
