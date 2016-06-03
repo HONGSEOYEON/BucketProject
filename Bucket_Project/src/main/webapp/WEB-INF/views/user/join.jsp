@@ -8,7 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>버킷</title>
 <style type="text/css">
-
+body {
+ background-color:#eee;   
+}    
 .container {
   position:absolute;
   top:35%;

@@ -40,6 +40,9 @@
 	};
 </script>
 <style>
+body {
+ background-color:#eee;   
+}    
 span {
 	font-variant: 700;
 }

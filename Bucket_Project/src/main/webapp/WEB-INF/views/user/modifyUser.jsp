@@ -12,7 +12,9 @@
 	rel="stylesheet">
 
 <style type="text/css">
-
+body {
+ background-color:#eee;   
+}    
 .container {
   position:absolute;
   top:45%;

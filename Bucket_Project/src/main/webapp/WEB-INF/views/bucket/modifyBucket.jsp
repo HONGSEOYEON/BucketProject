@@ -31,6 +31,9 @@
 	};
 </script>
 <style>
+body {
+ background-color:#eee;   
+}    
 td {
 	padding: 10px;
 }

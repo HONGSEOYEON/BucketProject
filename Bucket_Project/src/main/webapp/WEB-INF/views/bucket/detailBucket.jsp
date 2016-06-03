@@ -127,10 +127,10 @@
 	} */
 </script>
 <style>
-/* body {
-	padding: 10% 30%;
-	/* background-image: url("resources/img/back.png"); */
-}
+
+body {
+ background-color:#eee;   
+}    
 td {
 	padding: 10px;
 }

@@ -13,7 +13,9 @@
 
 
 <style type="text/css">
-
+body {
+ background-color:#eee;   
+}    
 h1 {
 	padding-left:300px;
 	font-weight: bold;

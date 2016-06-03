@@ -25,7 +25,7 @@
 }
       
 body {
-  background-color:#fff;
+  background-color:#eee;
   -webkit-font-smoothing: antialiased;
   font: normal 14px Roboto,arial,sans-serif;
 }
