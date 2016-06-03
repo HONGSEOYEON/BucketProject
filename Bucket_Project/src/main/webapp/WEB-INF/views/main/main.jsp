@@ -10,23 +10,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript">
-    
-        $(document).ready(function() {              
-            $('i.glyphicon-thumbs-up, i.glyphicon-thumbs-down').click(function(){    
-                var $this = $(this),
-                c = $this.data('count');    
-                if (!c) c = 0;
-                c++;
-                $this.data('count',c);
-                $('#'+this.id+'-bs3').html(c);
-            });      
-            $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-                event.preventDefault();
-                $(this).ekkoLightbox();
-            });                                        
-        }); 
-    </script>
+
 <style>
 @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
 
@@ -149,7 +133,7 @@
         <article class="white-panel">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="detailBucket?bucketId=${bucket.bucketId}" title="${bucket.title }" class="zoom" data-title="${bucket.title }" data-footer="${bucket.title }" data-type="image" data-toggle="lightbox">
+                    <a href="detailBucket?bucketId=${bucket.bucketId}" title="${bucket.title }" class="zoom" data-title="${bucket.title }" data-footer="${bucket.title }" data-type="image">
                         <img src="${pageContext.request.contextPath}/resources/img/${bucket.image }" alt="${bucket.title }" />
                         <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
                     </a>
@@ -185,7 +169,7 @@
         <article class="white-panel">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="detailBucket?bucketId=${bucket.bucketId}" title="Nature Portfolio" class="zoom" data-title="Amazing Nature" data-footer="The beauty of nature" data-type="image" data-toggle="lightbox">
+                    <a href="detailBucket?bucketId=${bucket.bucketId}" title="Nature Portfolio" class="zoom" data-title="Amazing Nature" data-footer="The beauty of nature" data-type="image">
                         <img src="${pageContext.request.contextPath}/resources/img/${bucket.image }" alt="Nature Portfolio" />
                         <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
                     </a>
@@ -218,7 +202,12 @@ var search = function() {
 			document.getElementById("searchForm").submit();
 		}
 	};
+	$( document ).ready(function() {
+        var iframe_height = parseInt($('html').height()); 
+        window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
+      });
     $(document).ready(function() {
+    	
     	$('.pinBoot').pinterest_grid({
     	no_columns: 4,
     	padding_x: 10,
@@ -227,7 +216,14 @@ var search = function() {
     	single_column_breakpoint: 700
     	});
     	});
-
+    $('i.glyphicon-thumbs-up, i.glyphicon-thumbs-down').click(function(){    
+        var $this = $(this),
+        c = $this.data('count');    
+        if (!c) c = 0;
+        c++;
+        $this.data('count',c);
+        $('#'+this.id+'-bs3').html(c);
+    });      
     	;(function ($, window, document, undefined) {
     	    var pluginName = 'pinterest_grid',
     	        defaults = {
