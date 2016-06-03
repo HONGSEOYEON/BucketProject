@@ -215,18 +215,18 @@ sup {
 								<div class="row form-group">
 									<div class="input-group">
 										<span class="input-group-addon primary">제목</span> <input
-											type="text" class="form-control" name="title" id="title">
+											type="text" class="form-control" name="title" id="title" value="${bucket.title }">
 									</div>
 
 									<div class="input-group">
 										<span class="input-group-addon primary">주소</span> <input
-											type="text" class="form-control" name="address" id="address">
+											type="text" class="form-control" name="address" id="address" value="${bucket.address }">
 									</div>
 								</div>
 								<br> <span><h2>
 										<b>후기</b>
 									</h2></span><br>
-								<textarea class="form-control" name="contents"></textarea>
+								<textarea class="form-control" name="contents">${bucket.contents}</textarea>
 							</div>
 						</div>
 						<div class="col-xs-3 col-md-3">
