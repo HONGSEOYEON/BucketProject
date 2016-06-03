@@ -108,10 +108,10 @@ h1 {
   <br><br><br>
     <h1>마이 버킷 리스트</h1>
      <c:if test="${empty myBuckets}">
-               <h3>내가 만든 버킷이 아직 없습니다!</h3>
+               <h3><b>내가 만든 버킷이 아직 없습니다!</b></h3>
      </c:if>
 	 <c:if test="${not empty myBuckets}">
-               <h3>마이 버킷 : ${fn:length(myBuckets)} 개</h3>
+               <h4><b>마이 버킷 : ${fn:length(myBuckets)} 개</b></h4>
      </c:if>     
 
    <!--  <p>Best viewed <a href="http://bootsnipp.com/iframe/Zkk0O" target="_blank">full screen</a>

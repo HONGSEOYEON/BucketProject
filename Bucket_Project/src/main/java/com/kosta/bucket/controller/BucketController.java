@@ -233,7 +233,7 @@ public class BucketController {
 		
 		if(session.getAttribute("loginedUser") == null) {
 			return new ModelAndView("redirect:showPageLogin");
-		}
+	}
 		
 		
 		//담은 것인지 확인
@@ -254,6 +254,8 @@ public class BucketController {
 		modelAndView.addObject("recomNum", bucket.getRecomNum());
 		return modelAndView;
 	}
+	
+	
 	@RequestMapping("/myBucket")
 	public ModelAndView showMyBucketList(HttpSession session){
 		User loginedUser = (User) session.getAttribute("loginedUser");
@@ -262,6 +264,7 @@ public class BucketController {
 		mav.addObject("myBuckets", myBuckets);
 		return mav;
 	}
+	
 	
 }
 

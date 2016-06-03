@@ -12,6 +12,10 @@
 <script src="${ctx}/resources/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
 	var validate = function() {
+		if (document.getElementById("writerId").value == "") {
+			alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+			return false;
+		}
 		if (document.getElementById("image").value == "") {
 			alert("이미지를 등록해주세요");
 			return false;
@@ -19,6 +23,11 @@
 		if (document.getElementById("title").value == "") {
 			alert("제목을 적어주세요");
 			document.getElementById("title").focus();
+			return false;
+		}
+		if (document.getElementById("address").value == "") {
+			alert("현재 주소를 입력해주세요");
+			document.getElementById("address").focus();
 			return false;
 		}
 		return true;
@@ -32,8 +41,13 @@
 </script>
 <style>
 body {
- background-color:#eee;   
-}    
+	background-color: #eee;
+}
+
+span {
+	font-variant: 700;
+}
+
 td {
 	padding: 10px;
 }
@@ -54,22 +68,17 @@ h5 {
 * /
 
 .coupon {
-	border: 3px dashed #bcbcbc;
-	border-radius: 10px;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
 		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 300;
 }
 
 .coupon #head {
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
 	min-height: 56px;
 }
 
 .coupon #footer {
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
+	
 }
 
 #title .visible-xs {
@@ -88,7 +97,7 @@ h5 {
 	}
 }
 
-.coupon #title span {
+.coupon #title {
 	margin-top: 5px;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -161,46 +170,20 @@ sup {
 }
 
 /*------------------dont copy these lines----------------------*/
-body {
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
-		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	font-weight: 300;
-}
-
-.row {
-	margin: 30px 0;
-}
-
 #quicknav {
 	height: 200px;
 	margin: 0;
 	padding: 0;
-	list-style-type: none;
 	text-align: center;
-}
-
-/* #quicknav ul li {
-	display: inline;
-}
-
-#quicknav ul li a {
-	text-decoration: none;
-	padding: .2em 1em;
-} */
-.btn-danger, .btn-success, .btn-info, .btn-warning, .btn-primary {
-	width: 105px;
 }
 
 .btn-default {
 	margin-bottom: 40px;
 }
 
-table tr {
-	text-align: right;
-}
-
-span {
-	padding: 10px;
+.vertical-center {
+	display: flex;
+	align-items: center;
 }
 </style>
 
@@ -212,44 +195,53 @@ span {
 		<form action="${ctx}/modifyBucket" method="post" id="modifyBucket"
 			enctype="multipart/form-data">
 			<div class="row" id="green">
-				<div class="col-md-6 col-md-offset-3">
-					<div class="panel panel-success coupon">
-						<div class="panel-heading" id="head">
-							<div class="panel-title">
-								<span class="hidden-xs">이미지 후기 수정</span> <input type="hidden" name="writerId" value="${bucket.writerId}"/>
+				<div class="row vertical-center">
+					<div class="col-md-6 col-md-offset-3">
+						<div class="panel panel-success coupon">
+							<div class="panel-heading" id="head">
+								<div class="panel-title">
+									<span class="hidden-xs">이미지 후기 수정</span> <input type="hidden" name="writerId" value="${bucket.writerId}"/>
 									<input type="hidden" name="bucketId" value="${bucket.bucketId}"/>
-							</div>
-						</div>
-						<div class="panel-body">
-							<div class="col-md-9">
-								<div class="offer text-success"></div>
-								<input class="coupon-img img-rounded" type="file" id="image"
-									name="file" />
-							</div>
-						</div>
-						<div class="panel-footer">
-							<div class="row form-group">
-								<div class="input-group">
-									<span class="input-group-addon primary">제목</span> <input
-										type="text" class="form-control" name="title" id="title" value="${bucket.title}">
 								</div>
 							</div>
+							<div class="panel-body">
+								<div class="col-md-9">
+									<div class="offer text-success"></div>
+									<input class="coupon-img img-rounded" type="file" id="image"
+										name="file" />
+								</div>
+							</div>
+							<div class="panel-footer">
+								<div class="row form-group">
+									<div class="input-group">
+										<span class="input-group-addon primary">제목</span> <input
+											type="text" class="form-control" name="title" id="title" value="${bucket.title }">
+									</div>
+
+									<div class="input-group">
+										<span class="input-group-addon primary">주소</span> <input
+											type="text" class="form-control" name="address" id="address" value="${bucket.address }">
+									</div>
+								</div>
+								<br> <span><h2>
+										<b>후기</b>
+									</h2></span><br>
+								<textarea class="form-control" name="contents">${bucket.contents}</textarea>
+							</div>
 						</div>
-						<span>후기</span><br>
-						<textarea class="form-control" name="contents" >${bucket.contents}</textarea>
-						<br>
-						<table>
-							<tr>
-								<td><button type="button" style="float: right"
-										onclick="javascript:history.back()">취소</button>
-									<button type="submit" style="float: right"
-										onclick="modify(); return false;">게시</button></td>
-							</tr>
-						</table>
+						<div class="col-xs-3 col-md-3">
+							<button type="submit" onclick="modify(); return false;"
+								class="btn btn-success btn-block btn-lg">게시</button>
+						</div>
+						<div class="col-xs-3 col-md-3">
+							<button type="button" onclick="javascript:history.back()"
+								class="btn btn-success btn-block btn-lg">취소</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</form>
 	</div>
+
 </body>
 </html>
