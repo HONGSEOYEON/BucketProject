@@ -27,7 +27,7 @@
      
         var mapOptions = {
                             zoom: 18, // 지도를 띄웠을 때의 줌 크기
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                            mapTypeId: google.maps.MapTypeId.HYBRID
                         };
          
          
