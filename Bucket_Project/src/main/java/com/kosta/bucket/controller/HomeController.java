@@ -20,7 +20,6 @@ public class HomeController {
 	@Autowired
 	private BucketService bucketService;
 	
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
 		ModelAndView modelAndView = new ModelAndView("/main/main");

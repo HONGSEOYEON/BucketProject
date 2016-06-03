@@ -255,6 +255,8 @@ public class BucketController {
 		modelAndView.addObject("recomNum", bucket.getRecomNum());
 		return modelAndView;
 	}
+	
+	
 	@RequestMapping("/myBucket")
 	public ModelAndView showMyBucketList(HttpSession session){
 		User loginedUser = (User) session.getAttribute("loginedUser");
@@ -263,6 +265,7 @@ public class BucketController {
 		mav.addObject("myBuckets", myBuckets);
 		return mav;
 	}
+	
 	
 }
 
