@@ -200,7 +200,7 @@ sup {
 						<div class="panel panel-success coupon">
 							<div class="panel-heading" id="head">
 								<div class="panel-title">
-									<span class="hidden-xs">이미지 후기 수정</span> <input type="hidden" name="writerId" value="${bucket.writerId}"/>
+									<span class="hidden-xs">이미지 후기 수정</span> <input type="hidden" name="writerId"  id="writerId"value="${bucket.writerId}"/>
 									<input type="hidden" name="bucketId" value="${bucket.bucketId}"/>
 								</div>
 							</div>
