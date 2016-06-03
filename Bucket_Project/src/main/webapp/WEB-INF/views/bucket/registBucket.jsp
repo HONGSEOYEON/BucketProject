@@ -41,8 +41,9 @@
 </script>
 <style>
 body {
- background-color:#eee;   
-}    
+	background-color: #eee;
+}
+
 span {
 	font-variant: 700;
 }
@@ -77,6 +78,7 @@ h5 {
 }
 
 .coupon #footer {
+	
 }
 
 #title .visible-xs {
@@ -168,8 +170,6 @@ sup {
 }
 
 /*------------------dont copy these lines----------------------*/
-
-
 #quicknav {
 	height: 200px;
 	margin: 0;
@@ -177,17 +177,14 @@ sup {
 	text-align: center;
 }
 
-
 .btn-default {
 	margin-bottom: 40px;
 }
 
 .vertical-center {
-
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
-
 </style>
 
 </head>
@@ -198,47 +195,53 @@ sup {
 		<form action="${ctx}/registBucket" method="post" id="registBucket"
 			enctype="multipart/form-data">
 			<div class="row" id="green">
-			<div class="row vertical-center">
-				<div class="col-md-6 col-md-offset-3">
-					<div class="panel panel-success coupon">
-						<div class="panel-heading" id="head">
-							<div class="panel-title">
-								<span class="hidden-xs">이미지 후기 등록</span> <input type="hidden"
-									name="writerId" id="writerId" value="${loginedUser.userId}">
+				<div class="row vertical-center">
+					<div class="col-md-6 col-md-offset-3">
+						<div class="panel panel-success coupon">
+							<div class="panel-heading" id="head">
+								<div class="panel-title">
+									<span class="hidden-xs">이미지 후기 등록</span> <input type="hidden"
+										name="writerId" id="writerId" value="${loginedUser.userId}">
+								</div>
+							</div>
+							<div class="panel-body">
+								<div class="col-md-9">
+									<div class="offer text-success"></div>
+									<input class="coupon-img img-rounded" type="file" id="image"
+										name="file" />
+								</div>
+							</div>
+							<div class="panel-footer">
+								<div class="row form-group">
+									<div class="input-group">
+										<span class="input-group-addon primary">제목</span> <input
+											type="text" class="form-control" name="title" id="title">
+									</div>
+
+									<div class="input-group">
+										<span class="input-group-addon primary">주소</span> <input
+											type="text" class="form-control" name="address" id="address">
+									</div>
+								</div>
+								<br> <span><h2>
+										<b>후기</b>
+									</h2></span><br>
+								<textarea class="form-control" name="contents"></textarea>
 							</div>
 						</div>
-						<div class="panel-body">
-							<div class="col-md-9">
-								<div class="offer text-success"></div>
-								<input class="coupon-img img-rounded" type="file" id="image"
-									name="file" />
-							</div>
+						<div class="col-xs-3 col-md-3">
+							<button type="submit" onclick="regist(); return false;"
+								class="btn btn-success btn-block btn-lg">게시</button>
 						</div>
-						<div class="panel-footer">
-							<div class="row form-group">
-								<div class="input-group">
-									<span class="input-group-addon primary">제목</span> 
-									<input type="text" class="form-control" name="title" id="title">
-								</div>
-							
-							<div class="input-group">
-								<span class="input-group-addon primary">주소</span>
-								<input type="text"  class="form-control" name="address" id="address"></div>
-								</div>
-								<br>
-									<span><h2><b>후기</b></h2></span><br>
-									<textarea class="form-control" name="contents"></textarea>
-							</div>
+						<div class="col-xs-3 col-md-3">
+							<button type="button" onclick="javascript:history.back()"
+								class="btn btn-success btn-block btn-lg">취소</button>
+						</div>
 					</div>
-																<div class="col-xs-3 col-md-3"><button type="submit" 
-																		onclick="regist(); return false;" class="btn btn-success btn-block btn-lg">게시</button></div>
-																<div class="col-xs-3 col-md-3"><button type="button" 
-																		onclick="javascript:history.back()" class="btn btn-success btn-block btn-lg">취소</button></div>
 				</div>
-			</div>
 			</div>
 		</form>
 	</div>
-		
+
 </body>
 </html>
