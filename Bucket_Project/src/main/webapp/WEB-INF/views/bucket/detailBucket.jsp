@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -405,11 +406,11 @@ text-align : center;
 						</c:if>
 					</div>
 
-					<br> <br>
+					<br> 
 						
 					
 					
-						
+						&nbsp;&nbsp;&nbsp;<b>댓글(${fn:length(comments)})</b><br>
 						<c:forEach items="${comments}" var="comment" varStatus="sts">
 							<p id="commentTag">
 								<b>${comment.writerId} 님</b> : ${comment.contents} &nbsp;
